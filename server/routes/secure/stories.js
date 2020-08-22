@@ -179,4 +179,22 @@ router.patch('/api/story/:sid/chapter/:cid', async (req, res) => {
   }
 });
 
+// ***********************************************//
+// Create a chapter storyid
+// ***********************************************//
+
+router.post('/api/story/:sid/chapter/', async (req, res) => {
+  try {
+    const story = await Story.findOne({
+      _id: req.params.sid,
+      owner: req.user._id
+    });
+    if (!story) return res.status(404).json({ error: 'story not found' });
+    story.chapters.push(req.body);
+    await story.save();
+    res.json(story);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
+  }
+});
 module.exports = router;

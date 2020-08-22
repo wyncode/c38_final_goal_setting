@@ -39,7 +39,8 @@ const storySchema = new mongoose.Schema(
           type: Boolean
         },
         description: {
-          type: String
+          type: String,
+          required: true
         }
       }
     ]
