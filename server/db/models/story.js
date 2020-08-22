@@ -19,6 +19,17 @@ const storySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     },
+    category: {
+      type: String,
+      enum: [
+        'fitness',
+        'education',
+        'finance',
+        'professional',
+        'social',
+        'health'
+      ]
+    },
     chapters: [
       {
         dueDate: {
@@ -31,17 +42,7 @@ const storySchema = new mongoose.Schema(
           type: String
         }
       }
-    ],
-    category: {
-      enum: [
-        'Fitness',
-        'Education',
-        'Finance',
-        'Professional',
-        'Social',
-        'Health'
-      ]
-    }
+    ]
   },
   {
     timestamps: true
