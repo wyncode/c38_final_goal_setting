@@ -58,7 +58,6 @@ router.get('/api/stories', async (req, res) => {
       const parts = req.query.sortBy.split(':');
       sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
     }
-    console.log(req.user);
     await req.user
       .populate({
         path: 'stories',
@@ -97,7 +96,13 @@ router.delete('/api/stories/:id', async (req, res) => {
 // ***********************************************//
 router.patch('/api/stories/:id', async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['description', 'completed', 'dueDate'];
+  const allowedUpdates = [
+    'description',
+    'completed',
+    'dueDate',
+    'chapters',
+    'category'
+  ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
   );
@@ -110,6 +115,63 @@ router.patch('/api/stories/:id', async (req, res) => {
     });
     if (!story) return res.status(404).json({ error: 'story not found' });
     updates.forEach((update) => (story[update] = req.body[update]));
+    await story.save();
+    res.json(story);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
+  }
+});
+
+// ***********************************************//
+// Delete a chapter chapterid&storyid
+// ***********************************************//
+router.delete('/api/story/:sid/chapter/:cid', async (req, res) => {
+  try {
+    console.log(req.params);
+    const story = await Story.findOne({
+      _id: req.params.sid,
+      owner: req.user._id
+    });
+
+    const index = story.chapters.findIndex(
+      (chapt) => chapt._id == req.params.cid
+    );
+
+    story.chapters.splice(index, 1);
+    if (!story) throw new Error('story not found');
+    res.json(story);
+    await story.save();
+  } catch (error) {
+    res.status(404).json({ error: error.toString() });
+  }
+});
+
+// ***********************************************//
+// Update a chapter by chapterid&storyid
+// ***********************************************//
+router.patch('/api/story/:sid/chapter/:cid', async (req, res) => {
+  try {
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['description', 'completed', 'dueDate'];
+
+    const isValidOperation = updates.every((update) =>
+      allowedUpdates.includes(update)
+    );
+    if (!isValidOperation)
+      return res.status(400).send({ error: 'Invalid updates!' });
+
+    const story = await Story.findOne({
+      _id: req.params.sid,
+      owner: req.user._id
+    });
+
+    const index = story.chapters.findIndex(
+      (chapt) => chapt._id == req.params.cid
+    );
+    if (!story) return res.status(404).json({ error: 'story not found' });
+    updates.forEach(
+      (update) => (story.chapters[index][update] = req.body[update])
+    );
     await story.save();
     res.json(story);
   } catch (e) {
