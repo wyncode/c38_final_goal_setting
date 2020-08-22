@@ -101,13 +101,13 @@ userSchema.pre('save', async function (next) {
 });
 
 // Delete user tasks when a user is removed.
-userSchema.pre('remove', async function (next) {
-  const user = this;
-  await Task.deleteMany({
-    owner: user._id,
-  });
-  next();
-});
+// userSchema.pre('remove', async function (next) {
+//   const user = this;
+//   await Task.deleteMany({
+//     owner: user._id,
+//   });
+//   next();
+// });
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;
