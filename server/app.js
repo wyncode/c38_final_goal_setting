@@ -1,7 +1,12 @@
 require('./db/config');
 const express = require('express'),
   path = require('path'),
-  openRoutes = require('./routes/open');
+  cookieParser = require('cookie-parser'),
+  passport = require('./middleware/authentication/'),
+  openRoutes = require('./routes/open'),
+  storyRoutes = require('./routes/secure/stories'),
+  userRoutes = require('./routes/secure/users'),
+  fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -17,6 +22,23 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Any authentication middleware and related routing would be here.
+app.use(cookieParser());
+
+app.use(
+  passport.authenticate('jwt', {
+    session: false
+  })
+);
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/images'
+  })
+);
+
+app.use(userRoutes);
+app.use(storyRoutes);
 
 // Handle React routing, return all requests to React app
 if (process.env.NODE_ENV === 'production') {
@@ -24,4 +46,5 @@ if (process.env.NODE_ENV === 'production') {
     response.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
+
 module.exports = app;
