@@ -1,11 +1,12 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
-
-#demo {
-  width: 100vw;
-  height: 100vh;
+.nav {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 30px;
 }
-
-/* END DEMO */
+.nav button {
+  border: none;
+  background-color: white;
+}
