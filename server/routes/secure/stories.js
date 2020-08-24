@@ -17,7 +17,7 @@ router.post('/api/stories', async (req, res) => {
       owner: req.user._id
     });
     await story.save();
-    res.status(201).json(story);
+    res.status(201).json(suggestions);
   } catch (error) {
     res.status(400).json({ error: error.toString() });
   }
@@ -132,15 +132,15 @@ router.delete('/api/story/:sid/chapter/:cid', async (req, res) => {
       _id: req.params.sid,
       owner: req.user._id
     });
+    if (!story) throw new Error('story not found');
 
     const index = story.chapters.findIndex(
       (chapt) => chapt._id == req.params.cid
     );
 
     story.chapters.splice(index, 1);
-    if (!story) throw new Error('story not found');
-    res.json(story);
     await story.save();
+    res.json(story);
   } catch (error) {
     res.status(404).json({ error: error.toString() });
   }
