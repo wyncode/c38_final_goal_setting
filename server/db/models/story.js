@@ -8,6 +8,19 @@ const storySchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    reflections: [
+      {
+        title: {
+          type: String
+        },
+        notes: {
+          type: String
+        },
+        emoji: {
+          type: String
+        }
+      }
+    ],
     completed: {
       type: Boolean,
       default: false
@@ -49,6 +62,19 @@ const storySchema = new mongoose.Schema(
     timestamps: true
   }
 );
+
+// storySchema.virtual('suggestions').get(function () {
+//   if (this.category === 'fitness') {
+//     return fitnessArray;
+//   }
+// });
+// storySchema.methods.generateSuggestions = async function () {
+//   const story = this;
+//   if (story.category === 'fitness') {
+//     story.suggestions = fitnessArray.fitnessArray;
+//   }
+//   return story;
+// };
 
 storySchema.methods.toJSON = function () {
   const story = this;
