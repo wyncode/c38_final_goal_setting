@@ -17,7 +17,7 @@ router.post('/api/stories', async (req, res) => {
       owner: req.user._id
     });
     await story.save();
-    res.status(201).json(suggestions);
+    res.status(201).json(story);
   } catch (error) {
     res.status(400).json({ error: error.toString() });
   }
