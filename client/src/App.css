@@ -1,11 +1,119 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
-
-#demo {
-  width: 100vw;
+.fullscreen {
   height: 100vh;
+}
+.nav {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 30px;
+}
+.nav button {
+  border: none;
+  background-color: white;
+}
+.nav button {
+  border: none;
+  background-color: white;
+}
+.home {
+  margin-left: 20px;
+  margin-right: 30px;
+  padding: 20px;
 }
 
-/* END DEMO */
+.home-btn {
+  border-radius: 50px;
+  width: 350px;
+  height: 75px;
+  background-color: rgba(62, 60, 60, 0.959);
+}
+.home-icon {
+  display: inline-flex;
+}
+.home-icon div {
+  margin-left: 20px;
+  margin-right: 30px;
+  justify-content: space-evenly;
+}
+.home-icon div p {
+  padding: 20px;
+}
+
+.home-pics {
+  display: inline;
+}
+
+.home-pics div {
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+.home-pics div h4 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.pics div {
+  text-align: center;
+}
+.pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.goals {
+  display: inline;
+}
+.goals h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.goal-btns {
+  text-align: center;
+}
+
+.goal-btns button {
+  border-radius: 50px;
+  width: 300px;
+  height: 75px;
+  background-color: whitesmoke;
+  border: 1px rgba(62, 60, 60, 0.959) solid;
+  margin: 10px;
+}
+.testimonial {
+  width: 100%;
+}
+.testimonial h3 {
+  text-align: center;
+  padding: 10px;
+}
+.testimonial-box {
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.testimonial-box div {
+  padding-top: 30px;
+  border: 1px darkgrey solid;
+  background-color: lightgray;
+  height: 150px;
+  width: 200px;
+  border-radius: 10%;
+  text-align: center;
+}
+.t-box {
+  margin: 10px;
+}
+
+.footer {
+  display: flex;
+  background-color: darkgrey;
+  height: 50px;
+  justify-content: space-around;
+}
+.footer p {
+  margin: 15px 20px;
+}
