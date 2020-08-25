@@ -1,22 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { AppContextProvider } from './context/AppContext';
+import { BrowserRouter as Router, Route,Switch  } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
+import Chapter from './pages/Chapter';
 import Home from './pages/Home';
 import { RiRouteFill } from 'react-icons/ri';
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/" component={Home} />
-      </Switch>
-    </BrowserRouter>
-  );
+<AppContextProvider>
+  <Router>
+    <Switch>
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/" component={Home} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/chapter" component={Chapter} />
+    </Switch>
+  </Router>
+</AppContextProvider>
+);
 }
 
 export default App;
