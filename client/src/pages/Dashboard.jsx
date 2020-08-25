@@ -70,10 +70,7 @@ const Dashboard = () => {
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <Image
         style={{ width: '150px' }}
-        src={
-          currentUser?.avator ||
-          'https://portal.staralliance.com/cms/aux-pictures/prototype-images/avatar-default.png/@@images/image.png'
-        }
+        src={currentUser?.avatar || '../resources/images/default_avator.png'}
         roundedCircle
         clasname="centered"
       />
