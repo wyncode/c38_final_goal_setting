@@ -1,6 +1,5 @@
 const mongoose = require('mongoose'),
   moment = require('moment');
-const fitnessArray = require('../utils/index');
 
 const storySchema = new mongoose.Schema(
   {
