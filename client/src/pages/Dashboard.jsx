@@ -60,6 +60,7 @@ const Dashboard = () => {
 
   const goToChapter = (chaptersArr) => {
     setCurrentChapter(getCurrentChapter(chaptersArr));
+    console.log(currentChapter);
     history.push('/chapter');
   };
 
