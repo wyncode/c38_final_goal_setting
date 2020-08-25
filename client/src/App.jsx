@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { AppContextProvider } from './context/AppContext';
-import ContextDemo from './components/ContextDemo';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
 const App = () => {
-  const [serverMessage, setServerMessage] = useState('');
-
-  const fetchDemoData = () => {
-    fetch('/api/demo')
-      .then((response) => response.json())
-      .then((data) => setServerMessage(data.message));
-  };
-
-  useEffect(fetchDemoData, []);
-
   return (
     <AppContextProvider>
-      <div id="demo">
-        <h3>Hello from client/src/App.js</h3>
-        <ContextDemo />
-        <h3>{serverMessage}</h3>
-      </div>
+      <Router>
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
+      </Router>
     </AppContextProvider>
   );
 };
