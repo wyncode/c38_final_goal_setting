@@ -2,15 +2,22 @@ import React, { useEffect, useContext } from 'react';
 import { Image, Container, Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+import { useHistory } from 'react-router-dom';
+
 const Dashboard = () => {
+  const history = useHistory();
+
   const {
     setStories,
     setFilteredStories,
     search,
     loading,
-    filteredStories,
     currentUser,
-    stories
+    stories,
+    currentChapter,
+    setCurrentChapter
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -25,27 +32,72 @@ const Dashboard = () => {
     // the items in the dependency array will trigger the useEffect when their values are changed
   }, [setStories, setFilteredStories, search, loading]);
 
-  const getCurrentChapter = () => {};
+  const getCurrentChapter = (chapterArr) => {
+    const moment = extendMoment(Moment);
+
+    const today = moment()._d;
+    console.log(today);
+    let rangeStart = 0;
+    let rangeEnd = 1;
+
+    while (rangeEnd < chapterArr.length) {
+      let range = moment.range(
+        chapterArr[rangeStart].dueDate,
+        chapterArr[rangeEnd].dueDate
+      );
+
+      if (range.contains(today)) {
+        return chapterArr[rangeStart];
+      }
+
+      rangeStart++;
+      rangeEnd++;
+    }
+    return chapterArr[0];
+  };
+
+  const getCatagoryStyle = () => {};
+
+  const goToChapter = (chaptersArr) => {
+    setCurrentChapter(getCurrentChapter(chaptersArr));
+    history.push('/chapter');
+  };
+
+  console.log(currentUser);
 
   return (
-    <Container>
-      <Image src={currentUser?.avator} rounded />
+    <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
+      <Image
+        style={{ width: '150px' }}
+        src={
+          currentUser?.avator ||
+          'https://portal.staralliance.com/cms/aux-pictures/prototype-images/avatar-default.png/@@images/image.png'
+        }
+        roundedCircle
+        clasname="centered"
+      />
+      <h2>{currentUser?.name}</h2>
 
       <Table>
         <tbody>
-          {stories?.map((story) => {
+          {stories?.map((story, i) => {
             return (
-              <tr>
+              <tr key={i}>
                 <td>{story.description}</td>
                 <td>
-                  <Button>do something</Button>
+                  <Button
+                    className="btn-default btn-block"
+                    onClick={() => goToChapter(story.chapters)}
+                  >
+                    do something
+                  </Button>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
-      <Button> Write a story</Button>
+      <Button className="btn btn-default btn-block"> Write a story</Button>
     </Container>
   );
 };

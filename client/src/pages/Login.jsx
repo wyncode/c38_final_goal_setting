@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Container, Form, Button } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 
-const Login = ({ history }) => {
+const Login = () => {
   const [formData, setFormData] = useState(null);
   const { setCurrentUser } = useContext(AppContext);
-
+  const history = useHistory();
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -19,14 +19,14 @@ const Login = ({ history }) => {
       .then((response) => {
         sessionStorage.setItem('user', response.data);
         setCurrentUser(response.data);
-        history.push('/');
+        history.push('/dashboard');
       })
       .catch((error) => console.log(error));
   };
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1 className="mb-4">Task Manager</h1>
+      <h1 className="mb-4">Story___</h1>
       <Form style={{ width: 300 }} onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label htmlFor="email">Email Address</Form.Label>

@@ -37,7 +37,9 @@ const AppContextProvider = ({ children }) => {
         search,
         setSearch,
         currentFilter,
-        setCurrentFilter
+        setCurrentFilter,
+        currentChapter,
+        setCurrentChapter
       }}
     >
       {children}
