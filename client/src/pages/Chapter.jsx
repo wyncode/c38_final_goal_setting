@@ -4,11 +4,12 @@ import { AppContext } from '../context/AppContext';
 
 const Chapter = () => {
   const { currentChapter } = useContext(AppContext);
-  console.log(currentChapter);
+  const history = useHistory();
+  if (!currentChapter) history.push('/dashboard');
   return (
     <div>
       <h2>Chapters</h2>
-      {currentChapter.description}
+      {currentChapter?.description}
     </div>
   );
 };

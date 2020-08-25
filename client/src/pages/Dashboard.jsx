@@ -90,7 +90,7 @@ const Dashboard = () => {
                     className="btn-default btn-block"
                     onClick={() => goToChapter(story.chapters)}
                   >
-                    do something
+                    Go to chapter
                   </Button>
                 </td>
               </tr>
