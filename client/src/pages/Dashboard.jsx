@@ -6,8 +6,8 @@ import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { useHistory } from 'react-router-dom';
 
-const Dashboard = () => {
-  const history = useHistory();
+const Dashboard = ({ history }) => {
+  //const history = useHistory();
 
   const {
     setStories,
@@ -17,7 +17,8 @@ const Dashboard = () => {
     currentUser,
     stories,
     currentChapter,
-    setCurrentChapter
+    setCurrentChapter,
+    setCurrentStory
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -58,13 +59,14 @@ const Dashboard = () => {
 
   const getCatagoryStyle = () => {};
 
-  const goToChapter = (chaptersArr) => {
-    setCurrentChapter(getCurrentChapter(chaptersArr));
-    console.log(currentChapter);
+  const goToChapter = (chaptersArr, parentStory, currentIndex) => {
+    setCurrentChapter({
+      chapter: getCurrentChapter(chaptersArr),
+      currentIndex: currentIndex
+    });
+    setCurrentStory(parentStory);
     history.push('/chapter');
   };
-
-  console.log(currentUser);
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
@@ -75,7 +77,6 @@ const Dashboard = () => {
         clasname="centered"
       />
       <h2>{currentUser?.name}</h2>
-
       <Table>
         <tbody>
           {stories?.map((story, i) => {
@@ -85,7 +86,7 @@ const Dashboard = () => {
                 <td>
                   <Button
                     className="btn-default btn-block"
-                    onClick={() => goToChapter(story.chapters)}
+                    onClick={() => goToChapter(story.chapters, story, i)}
                   >
                     Go to chapter
                   </Button>
