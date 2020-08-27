@@ -71,24 +71,53 @@ const HomePage = () => {
       <Jumbotron>
         <div className="home-pics">
           <div>
-            <h4>How are people achieving?</h4>
+            <h3>How are people achieving?</h3>
+            <p>Get a glimpse of how our users are achieving</p>
           </div>
           <div className="pics">
             <div>
-              <Image className="pic" src={require('./images/climb.jpg')} />
-            </div>
-            <div>
               <Image className="pic" src={require('./images/marathon.jpg')} />
             </div>
-            <div>
-              <Image className="pic" src={require('./images/graduate.jpg')} />
+          </div>
+        </div>
+      </Jumbotron>
+      <Jumbotron fluid>
+        <div className="stats">
+          <div>
+            <h3>Statistics</h3>
+            <p>
+              80% of the population never set goals.
+              <br /> Out of the 20% who do, only 30% achieve their goal.
+            </p>
+            <div className="pie">
+              <div className="piechart"></div>
+              <div className="percentage">
+                <div className="p-blue"></div>
+                <div>
+                  <p>% of population who do not set goals</p>
+                </div>
+
+                <div className="p-pink"></div>
+                <div>
+                  <p>% of population that sets goals</p>
+                </div>
+                <div className="p-white"></div>
+                <div>
+                  <p>% of population that achieve their goals</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </Jumbotron>
       <Jumbotron fluid>
         <div className="goals">
-          <h3>Goals</h3>
+          <h3>Goal Types</h3>
+          <p>
+            Not sure what type of goals you are looking to achieve?
+            <br />
+            Take a look a the ones we offer
+          </p>
           <div className="goal-btns">
             <button>Fitness</button>
             <button>Education</button>
@@ -96,32 +125,6 @@ const HomePage = () => {
             <button>Professional</button>
             <button>Social</button>
             <button>Health</button>
-          </div>
-        </div>
-      </Jumbotron>
-
-      <Jumbotron fluid>
-        <div className="testimonial">
-          <h3>Testimonials</h3>
-          <div className="testimonial-box">
-            <div className="t-box">
-              <p>
-                Nick Miller's Fitness Goals: <br />
-                <em>My journey to lose 65 pounds</em>
-              </p>
-            </div>
-            <div className="t-box">
-              <p>
-                Nick Miller's Fitness Goals: <br />
-                <em>My journey to lose 65 pounds</em>
-              </p>
-            </div>
-            <div className="t-box">
-              <p>
-                Nick Miller's Fitness Goals: <br />
-                <em>My journey to lose 65 pounds</em>
-              </p>
-            </div>
           </div>
         </div>
       </Jumbotron>
