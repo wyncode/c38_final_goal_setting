@@ -1,23 +1,49 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Nav from '../components/Nav';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import { useState } from 'react';
+import { useContext } from 'react';
+import swal from 'sweetalert';
 
-const Login = () => {
+const Login = ({ history }) => {
+  const [formData, setFormData] = useState(null);
+  const { setCurrentUser } = useContext(AppContext);
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post('/api/users/login', formData)
+      .then((response) => {
+        sessionStorage.setItem('user', response.data);
+        setCurrentUser(response.data);
+        history.push('/');
+      })
+      .catch(() => swal('Oops!', 'something went wrong', 'warning'));
+  };
+
   return (
     <Container className="login">
       <Nav />
       <div>
         <h1>Login</h1>
       </div>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div>
           <Form.Label className="text">Email address</Form.Label>
           <Form.Control
             className="label"
             type="email"
             placeholder="Enter email"
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -26,7 +52,16 @@ const Login = () => {
             className="label"
             type="password"
             placeholder="Password"
+            onChange={handleChange}
           />
+        </div>
+        <div>
+          <Link className="login-op" to="/reset-password">
+            Forgot Password?
+          </Link>
+          <Link className="login-op" to="/signup">
+            Need an Account? Sign up.
+          </Link>
         </div>
         <div>
           <Form.Check type="checkbox" label="Remember Me" />
