@@ -1,16 +1,28 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
+import { Container, ProgressBar, Button } from 'react-bootstrap';
+import DailyTaskList from '../components/DailyTaskList';
 
-const Chapter = () => {
-  const { currentChapter } = useContext(AppContext);
-  const history = useHistory();
-  if (!currentChapter) history.push('/dashboard');
+const Chapter = ({ history }) => {
+  const { currentChapter, currentStory } = useContext(AppContext);
+  if (!currentChapter || !currentStory) history.push('/dashboard');
+
+  const progress =
+    2 + (currentChapter?.index * 100) / currentStory?.chapters.length;
+
   return (
-    <div>
-      <h2>Chapters</h2>
-      {currentChapter?.description}
-    </div>
+    <Container className="d-flex flex-column">
+      <h1 style={{ textAlign: 'center' }}>Goal Book</h1>
+      <div>
+        <h2>Chapter: {currentChapter?.index + 1}</h2>
+        <h2>Total Chapters: {currentStory?.chapters.length}</h2>
+      </div>
+      <h2>Goal progress board</h2>
+      <ProgressBar now={progress} />
+      <DailyTaskList />
+      <h2>Reflections</h2>
+      <Button>Add a reflection</Button>
+    </Container>
   );
 };
 

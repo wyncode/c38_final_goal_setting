@@ -101,7 +101,11 @@ router.patch('/api/stories/:id', async (req, res) => {
     'completed',
     'dueDate',
     'chapters',
-    'category'
+    'category',
+    'dailyTask',
+    'bonus',
+    'reflected',
+    'reflections'
   ];
   const isValidOperation = updates.every((update) =>
     allowedUpdates.includes(update)
@@ -197,4 +201,9 @@ router.post('/api/story/:sid/chapter/', async (req, res) => {
     res.status(400).json({ error: e.toString() });
   }
 });
+
+// ***********************************************//
+// update a daily tasks storyid
+// ***********************************************//
+
 module.exports = router;

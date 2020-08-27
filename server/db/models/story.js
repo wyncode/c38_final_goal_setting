@@ -43,6 +43,18 @@ const storySchema = new mongoose.Schema(
         'health'
       ]
     },
+    dailyTask: {
+      done: { type: Boolean, default: false },
+      lastUpdated: { type: Date }
+    },
+    bonus: {
+      done: { type: Boolean, default: false },
+      lastUpdated: { type: Date }
+    },
+    reflected: {
+      done: { type: Boolean, default: false },
+      lastUpdated: { type: Date }
+    },
     chapters: [
       {
         dueDate: {
