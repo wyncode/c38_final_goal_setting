@@ -2,6 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import { BsPerson } from 'react-icons/bs';
 
 const Navigation = () => {
@@ -9,18 +11,29 @@ const Navigation = () => {
     <Container className="nav">
       <Navbar collapseOnSelect bg="lg" expand="xlg">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse>
-          <NavDropdown.Item href="">Login</NavDropdown.Item>
+        <Navbar.Collapse className="dropdown">
+          <NavDropdown.Item as={Link} to="/CreateGoal">
+            Create a goal
+          </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="">My Story</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/HowItWork">
+            How it works
+          </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="">Community</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/Login">
+            Login
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item as={Link} to="/SignUp">
+            Register
+          </NavDropdown.Item>
         </Navbar.Collapse>
       </Navbar>
       <h3>Story____</h3>
-      <button>
-        <BsPerson href="link" size="45px" color="grey" />
-      </button>
+
+      <Button className="profile-icon" as={Link} to="/Profile">
+        <BsPerson size="45px" color="grey" />
+      </Button>
     </Container>
   );
 };
