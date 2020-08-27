@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppContextProvider } from './context/AppContext';
-import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -8,7 +8,6 @@ import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import Chapter from './pages/Chapter';
 import Home from './pages/Home';
-import { RiRouteFill } from 'react-icons/ri';
 
 const App = () => {
   return (
@@ -24,6 +23,6 @@ const App = () => {
       </Router>
     </AppContextProvider>
   );
-}
+};
 
 export default App;

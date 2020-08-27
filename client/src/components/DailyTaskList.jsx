@@ -6,17 +6,40 @@ import moment from 'moment';
 
 const DailyTaskList = () => {
   const { currentChapter, currentStory } = useContext(AppContext);
-  const [taskState, setTaskState] = useState();
+  const [updates, setUpdates] = useState(null);
 
   useEffect(() => {
     currentStory &&
       axios
-        .patch(`/api/stories/${currentStory._id}`, taskState, {
+        .patch(`/api/stories/${currentStory._id}`, updates, {
           withCredentials: true
         })
         .then((resp) => console.log(resp))
         .catch((error) => console.log(error.toString()));
-  }, [taskState, currentStory]);
+  }, [updates, setUpdates, currentStory]);
+
+  useEffect(() => {
+    let data = {};
+
+    if (shouldTaskUpdate(currentStory?.dailyTask.lastUpdated)) {
+      data = {
+        dailyTask: { lastUpdated: moment().format(), done: false }
+      };
+    }
+    if (shouldTaskUpdate(currentStory?.reflected.lastUpdated)) {
+      data = {
+        ...data,
+        reflected: { lastUpdated: moment().format(), done: false }
+      };
+    }
+    if (shouldTaskUpdate(currentStory?.bonus.lastUpdated)) {
+      data = {
+        ...data,
+        bonus: { lastUpdated: moment().format(), done: false }
+      };
+    }
+    setUpdates(data);
+  }, [currentStory]);
 
   const shouldTaskUpdate = (taskDate) => {
     if (moment(taskDate).isSame(Date.now(), 'day')) {
@@ -25,18 +48,8 @@ const DailyTaskList = () => {
     return true;
   };
 
-  if (shouldTaskUpdate(currentStory?.dailyTask.lastUpdated)) {
-    setTaskState({ dailyTask: { lastUpdated: Date.now(), done: false } });
-  }
-  if (shouldTaskUpdate(currentStory?.reflected.lastUpdated)) {
-    setTaskState({ reflected: { lastUpdated: Date.now(), done: false } });
-  }
-  if (shouldTaskUpdate(currentStory?.bonus.lastUpdated)) {
-    setTaskState({ bonus: { lastUpdated: Date.now(), done: false } });
-  }
-
   const handleChange = (task) => {
-    setTaskState({
+    setUpdates({
       [task]: { lastUpdated: Date.now(), done: !currentStory[task].done }
     });
   };
