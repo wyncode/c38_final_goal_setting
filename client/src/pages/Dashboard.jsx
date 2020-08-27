@@ -23,6 +23,7 @@ const Dashboard = ({ history }) => {
       .catch((error) => console.log(error));
   }, [setStories, loading]);
 
+  if (!currentUser) return null;
   //const getCatagoryStyle = () => {};
 
   const goToChapter = (chaptersArr, parentStory) => {

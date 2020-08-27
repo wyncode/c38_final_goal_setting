@@ -4,18 +4,6 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import moment from 'moment';
 
-// dailyTask: {
-//     done: { type: Boolean, default: false },
-//     lastUpdated: { type: Date }
-//   },
-//   bonus: {
-//     done: { type: Boolean, default: false },
-//     lastUpdated: { type: Date }
-//   },
-//   reflected: {
-//     done: { type: Boolean, default: false },
-//     lastUpdated: { type: Date }
-
 const DailyTaskList = () => {
   const { currentChapter, currentStory } = useContext(AppContext);
   const [taskState, setTaskState] = useState();
