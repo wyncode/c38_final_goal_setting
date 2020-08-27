@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { Container, ProgressBar, Button, Card } from 'react-bootstrap';
+import { Container, ProgressBar, Button } from 'react-bootstrap';
+import DailyTaskList from '../components/DailyTaskList';
 
 const Chapter = ({ history }) => {
   const { currentChapter, currentStory } = useContext(AppContext);
-  if (!currentChapter) history.push('/dashboard');
+  if (!currentChapter || !currentStory) history.push('/dashboard');
 
   const progress =
     2 + (currentChapter?.index * 100) / currentStory?.chapters.length;
-
-  console.log(currentChapter);
 
   return (
     <Container className="d-flex flex-column">
@@ -20,8 +19,7 @@ const Chapter = ({ history }) => {
       </div>
       <h2>Goal progress board</h2>
       <ProgressBar now={progress} />
-      <h2>Daily Tasks</h2>
-      <h3>{currentChapter?.data.description}</h3>
+      <DailyTaskList />
       <h2>Reflections</h2>
       <Button>Add a reflection</Button>
     </Container>

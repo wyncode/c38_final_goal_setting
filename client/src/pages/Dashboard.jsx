@@ -23,7 +23,7 @@ const Dashboard = ({ history }) => {
       .catch((error) => console.log(error));
   }, [setStories, loading]);
 
-  const getCatagoryStyle = () => {};
+  //const getCatagoryStyle = () => {};
 
   const goToChapter = (chaptersArr, parentStory) => {
     setCurrentChapter(getCurrentChapterObj(chaptersArr));
