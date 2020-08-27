@@ -44,6 +44,7 @@ const Login = ({ history }) => {
             type="email"
             placeholder="Enter email"
             onChange={handleChange}
+            name='email'
           />
         </div>
         <div>
@@ -53,6 +54,7 @@ const Login = ({ history }) => {
             type="password"
             placeholder="Password"
             onChange={handleChange}
+            name="password"
           />
         </div>
         <div>
