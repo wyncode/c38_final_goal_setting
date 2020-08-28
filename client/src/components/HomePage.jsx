@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -107,24 +108,6 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </Jumbotron>
-      <Jumbotron fluid>
-        <div className="goals">
-          <h3>Goal Types</h3>
-          <p>
-            Not sure what type of goals you are looking to achieve?
-            <br />
-            Take a look a the ones we offer
-          </p>
-          <div className="goal-btns">
-            <button>Fitness</button>
-            <button>Education</button>
-            <button>Finance</button>
-            <button>Professional</button>
-            <button>Social</button>
-            <button>Health</button>
           </div>
         </div>
       </Jumbotron>
