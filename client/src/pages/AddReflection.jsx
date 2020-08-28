@@ -6,9 +6,13 @@ import {
   ButtonGroup,
   ToggleButton
 } from 'react-bootstrap';
+//import axios from 'axios';
 
 const AddReflection = () => {
   const [emojiValue, setEmojiValue] = useState();
+  //const [reflectionData, setReflectionData] = useState();
+  const [image, setImage] = useState();
+  const [textbox, setTextbox] = useState();
   useEffect(() => {}, []);
   const emojis = [
     { emoji: '🙂', id: 'smile' },
@@ -18,16 +22,35 @@ const AddReflection = () => {
     { emoji: '😶', id: 'no mouth' },
     { emoji: '🙁', id: 'frown' }
   ];
-  const chooseEmoji = () => {};
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(image, textbox, emojiValue);
+  };
+
+  // {
+  //   title: {
+  //     type: String
+  //   },
+  //   notes: {
+  //     type: String
+  //   },
+  //   emoji: {
+  //     type: String
+  //   }
+  // }
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Label>{}: Reflection</Form.Label>
         <Form.Group>
           <Form.File accept="image/*"></Form.File>
         </Form.Group>
         <Form.Group>
-          <Form.Label>How do you feel today?</Form.Label>
+          <Form.Label onChange={(e) => setImage(e.target.value)}>
+            How do you feel today?
+          </Form.Label>
           <br />
           <ButtonGroup toggle>
             {emojis.map((emoji) => (
@@ -46,9 +69,15 @@ const AddReflection = () => {
         </Form.Group>
         <Form.Group>
           <Form.Label>Write down any thoughts</Form.Label>
-          <Form.Control as="textarea" rows="5"></Form.Control>
+          <Form.Control
+            as="textarea"
+            rows="5"
+            onChange={(e) => {
+              setTextbox(e.target.value);
+            }}
+          ></Form.Control>
         </Form.Group>
-        <Button>Save</Button>
+        <Button type="submit">Save</Button>
       </Form>
     </Container>
   );
