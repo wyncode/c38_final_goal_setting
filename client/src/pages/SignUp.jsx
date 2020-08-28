@@ -43,6 +43,7 @@ const SignUp = ({ history }) => {
             className="label"
             type="name"
             placeholder="Ex. John Smith"
+            name="name"
             onChange={handleChange}
           />
         </div>
@@ -53,6 +54,7 @@ const SignUp = ({ history }) => {
             className="label"
             type="email"
             placeholder="Enter email"
+            name="email"
             onChange={handleChange}
           />
           <Form.Text className="text-muted">
@@ -65,6 +67,7 @@ const SignUp = ({ history }) => {
             className="label"
             type="password"
             placeholder="Password"
+            name="password"
             onChange={handleChange}
           />
         </div>
