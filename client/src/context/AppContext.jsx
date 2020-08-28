@@ -11,6 +11,7 @@ const AppContextProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState(null);
   const [currentChapter, setCurrentChapter] = useState(null);
+  const [currentStory, setCurrentStory] = useState(null);
   const user = sessionStorage.getItem('user');
   const [formData, setFormData] = useState({});
 
@@ -42,7 +43,9 @@ const AppContextProvider = ({ children }) => {
         currentFilter,
         setCurrentFilter,
         currentChapter,
-        setCurrentChapter
+        setCurrentChapter,
+        currentStory,
+        setCurrentStory
       }}
     >
       {children}

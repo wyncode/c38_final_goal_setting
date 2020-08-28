@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "faker": "^5.0.0",
+    "infinite-react-carousel": "^1.2.11",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.27.0",
     "mongodb": "^3.6.0",
@@ -26,6 +27,7 @@
     "react-hook-form": "^6.5.3",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
+    "sweetalert": "^2.1.2",
     "validator": "^13.1.1"
   },
   "devDependencies": {

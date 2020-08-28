@@ -12,7 +12,7 @@ const Nav1 = () => {
         <VscArrowLeft size="30px" color="grey" />
       </Button>
 
-      <h3>Story____</h3>
+      <h3>StoryLine</h3>
 
       <Button className="profile-icon" as={Link} to="/">
         <VscGear size="30px" color="grey" />
