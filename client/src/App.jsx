@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import Chapter from './pages/Chapter';
 import Home from './pages/Home';
+import Wizard from './pages/Wizard';
 import EducationInfo from './components/goalsInfo/EducationInfo';
 import FinanceInfo from './components/goalsInfo/FinanceInfo';
 import FitnessInfo from './components/goalsInfo/FitnessInfo';
@@ -17,11 +18,14 @@ import SocialInfo from './components/goalsInfo/SocialInfo';
 import GoalsHome from './components/GoalsHome';
 import { RiRouteFill } from 'react-icons/ri';
 
+
 const App = () => {
   return (
     <AppContextProvider>
       <Router>
         <Switch>
+
+          <Route exact path="/wizard" component={Wizard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
