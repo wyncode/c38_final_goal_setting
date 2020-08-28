@@ -10,6 +10,10 @@ const Chapter = ({ history }) => {
   const progress =
     2 + (currentChapter?.index * 100) / currentStory?.chapters.length;
 
+  const handleClick = (event) => {
+    history.push('/addReflection');
+  };
+
   return (
     <Container className="d-flex flex-column">
       <h1 style={{ textAlign: 'center' }}>Goal Book</h1>
@@ -21,7 +25,7 @@ const Chapter = ({ history }) => {
       <ProgressBar now={progress} />
       <DailyTaskList />
       <h2>Reflections</h2>
-      <Button>Add a reflection</Button>
+      <Button onClick={handleClick}>Add a reflection</Button>
     </Container>
   );
 };

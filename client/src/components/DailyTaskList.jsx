@@ -8,6 +8,7 @@ const DailyTaskList = () => {
   const { currentChapter, currentStory } = useContext(AppContext);
   const [updates, setUpdates] = useState(null);
 
+  //updates checkboxes on DB
   useEffect(() => {
     currentStory &&
       axios
@@ -18,6 +19,7 @@ const DailyTaskList = () => {
         .catch((error) => console.log(error.toString()));
   }, [updates, setUpdates, currentStory]);
 
+  //Check if they were comleted today and see if they need to be reset
   useEffect(() => {
     let data = {};
 

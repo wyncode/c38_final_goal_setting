@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import Chapter from './pages/Chapter';
 import Home from './pages/Home';
+import AddReflection from './pages/AddReflection';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/addreflection" component={AddReflection} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/chapter" component={Chapter} />
         </Switch>
