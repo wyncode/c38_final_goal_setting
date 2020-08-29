@@ -5,7 +5,7 @@ const ReflectionTile = ({ title, emoji }) => {
   return (
     <Card className="p-1 m-1">
       <Card.Body className="p-1 m-1">
-        <Row className="m0">
+        <Row>
           <Col>
             <span>{title}</span>
           </Col>
