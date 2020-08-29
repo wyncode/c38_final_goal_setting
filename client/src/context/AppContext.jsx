@@ -6,12 +6,12 @@ const AppContextProvider = ({ children }) => {
   // global state that can be used in any component in our application
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [stories, setStories] = useState([]);
-  const [filteredStories, setFilteredStories] = useState([]);
+  const [goals, setGoals] = useState([]);
+  const [filteredGoals, setFilteredGoals] = useState([]);
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState(null);
-  const [currentChapter, setCurrentChapter] = useState(null);
-  const [currentStory, setCurrentStory] = useState(null);
+  const [currentMilestone, setCurrentMilestone] = useState(null);
+  const [currentGoal, setCurrentGoal] = useState(null);
   const user = sessionStorage.getItem('user');
   const [formData, setFormData] = useState({});
 
@@ -34,18 +34,18 @@ const AppContextProvider = ({ children }) => {
         setCurrentUser,
         loading,
         setLoading,
-        stories,
-        setStories,
-        filteredStories,
-        setFilteredStories,
+        goals,
+        setGoals,
+        filteredGoals,
+        setFilteredGoals,
         search,
         setSearch,
         currentFilter,
         setCurrentFilter,
-        currentChapter,
-        setCurrentChapter,
-        currentStory,
-        setCurrentStory
+        currentMilestone,
+        setCurrentMilestone,
+        currentGoal,
+        setCurrentGoal
       }}
     >
       {children}

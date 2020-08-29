@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'),
   moment = require('moment');
 
-const storySchema = new mongoose.Schema(
+const goalSchema = new mongoose.Schema(
   {
     description: {
       type: String,
@@ -17,6 +17,9 @@ const storySchema = new mongoose.Schema(
           type: String
         },
         emoji: {
+          type: String
+        },
+        image: {
           type: String
         }
       }
@@ -55,7 +58,7 @@ const storySchema = new mongoose.Schema(
       done: { type: Boolean, default: false },
       lastUpdated: { type: Date }
     },
-    chapters: [
+    milestones: [
       {
         dueDate: {
           type: Date
@@ -75,28 +78,28 @@ const storySchema = new mongoose.Schema(
   }
 );
 
-// storySchema.virtual('suggestions').get(function () {
+// goalSchema.virtual('suggestions').get(function () {
 //   if (this.category === 'fitness') {
 //     return fitnessArray;
 //   }
 // });
-// storySchema.methods.generateSuggestions = async function () {
-//   const story = this;
-//   if (story.category === 'fitness') {
-//     story.suggestions = fitnessArray.fitnessArray;
+// goalSchema.methods.generateSuggestions = async function () {
+//   const goal = this;
+//   if (goal.category === 'fitness') {
+//     goal.suggestions = fitnessArray.fitnessArray;
 //   }
-//   return story;
+//   return goal;
 // };
 
-storySchema.methods.toJSON = function () {
-  const story = this;
-  const storyObject = story.toObject();
-  if (storyObject.dueDate) {
-    storyObject.dueDate = moment(storyObject.dueDate).format('YYYY-MM-DD');
+goalSchema.methods.toJSON = function () {
+  const goal = this;
+  const goalObject = goal.toObject();
+  if (goalObject.dueDate) {
+    goalObject.dueDate = moment(goalObject.dueDate).format('YYYY-MM-DD');
   }
-  return storyObject;
+  return goalObject;
 };
 
-const Story = mongoose.model('Story', storySchema);
+const Goal = mongoose.model('Goal', goalSchema);
 
-module.exports = Story;
+module.exports = Goal;

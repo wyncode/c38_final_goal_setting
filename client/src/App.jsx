@@ -6,8 +6,9 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
-import Chapter from './pages/Chapter';
+import Milestone from './pages/Milestone';
 import Home from './pages/Home';
+import AddReflection from './pages/AddReflection';
 import Wizard from './pages/Wizard';
 import EducationInfo from './components/goalsInfo/EducationInfo';
 import FinanceInfo from './components/goalsInfo/FinanceInfo';
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/addreflection" component={AddReflection} />
           <Route exact path="/educationinfo" component={EducationInfo} />
           <Route exact path="/financeinfo" component={FinanceInfo} />
           <Route exact path="/fitnessinfo" component={FitnessInfo} />
@@ -37,7 +39,7 @@ const App = () => {
           <Route exact path="/socialinfo" component={SocialInfo} />
           <Route exact path="/goalshome" component={GoalsHome} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="/chapter" component={Chapter} />
+          <PrivateRoute exact path="/milestone" component={Milestone} />
         </Switch>
       </Router>
     </AppContextProvider>
