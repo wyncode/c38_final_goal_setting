@@ -8,11 +8,11 @@ import { VscClose } from 'react-icons/vsc';
 const Nav = () => {
   return (
     <Container className="nav-1">
-      <Button className="profile-icon" as={Link} to="/Profile">
+      <Button className="profile-icon" as={Link} to="/">
         <VscArrowLeft size="30px" color="grey" />
       </Button>
 
-      <h3>Story____</h3>
+      <h3>StoryLine</h3>
 
       <Button className="profile-icon" as={Link} to="/">
         <VscClose size="30px" color="grey" />

@@ -43,6 +43,7 @@ const SignUp = ({ history }) => {
             className="label"
             type="name"
             placeholder="Ex. John Smith"
+            name="name"
             onChange={handleChange}
             name='name'
           />
@@ -54,6 +55,7 @@ const SignUp = ({ history }) => {
             className="label"
             type="email"
             placeholder="Enter email"
+            name="email"
             onChange={handleChange}
             name='email'
           />
@@ -67,6 +69,7 @@ const SignUp = ({ history }) => {
             className="label"
             type="password"
             placeholder="Password"
+            name="password"
             onChange={handleChange}
             name='password'
           />

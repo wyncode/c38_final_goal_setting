@@ -16,7 +16,7 @@ const Navigation = () => {
             Create a goal
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item as={Link} to="/HowItWork">
+          <NavDropdown.Item as={Link} to="/HowItWorks">
             How it works
           </NavDropdown.Item>
           <NavDropdown.Divider />
@@ -29,7 +29,7 @@ const Navigation = () => {
           </NavDropdown.Item>
         </Navbar.Collapse>
       </Navbar>
-      <h3>Story____</h3>
+      <h3>StoryLine</h3>
 
       <Button className="profile-icon" as={Link} to="/Profile">
         <BsPerson size="45px" color="grey" />

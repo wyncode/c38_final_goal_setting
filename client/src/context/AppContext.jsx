@@ -13,6 +13,7 @@ const AppContextProvider = ({ children }) => {
   const [currentMilestone, setCurrentMilestone] = useState(null);
   const [currentGoal, setCurrentGoal] = useState(null);
   const user = sessionStorage.getItem('user');
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     //incase the user refreshes & context is cleared
@@ -27,6 +28,8 @@ const AppContextProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        formData,
+        setFormData,
         currentUser,
         setCurrentUser,
         loading,
