@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
   validator = require('validator'),
   bcrypt = require('bcryptjs'),
   jwt = require('jsonwebtoken'),
-  Story = require('./story');
+  Goal = require('./goal');
 
 const userSchema = new mongoose.Schema(
   {
@@ -54,8 +54,8 @@ const userSchema = new mongoose.Schema(
 );
 
 // Create relation between User and task.
-userSchema.virtual('stories', {
-  ref: Story,
+userSchema.virtual('goals', {
+  ref: Goal,
   localField: '_id',
   foreignField: 'owner'
 });
@@ -103,7 +103,7 @@ userSchema.pre('save', async function (next) {
 // Delete user tasks when a user is removed.
 userSchema.pre('remove', async function (next) {
   const user = this;
-  await Story.deleteMany({
+  await Goal.deleteMany({
     owner: user._id
   });
   next();

@@ -1,52 +1,52 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
-  Story = require('../../db/models/story');
+  Goal = require('../../db/models/goal');
 
 // ***********************************************//
-// Create a story
+// Create a goal
 // ***********************************************//
-router.post('/api/stories', async (req, res) => {
-  const { description, dueDate, completed, chapters, category } = req.body;
+router.post('/api/goals', async (req, res) => {
+  const { description, dueDate, completed, milestones, category } = req.body;
   try {
-    const story = new Story({
+    const goal = new Goal({
       description,
       dueDate,
       completed,
-      chapters,
+      milestones,
       category,
       owner: req.user._id
     });
-    await story.save();
-    res.status(201).json(story);
+    await goal.save();
+    res.status(201).json(goal);
   } catch (error) {
     res.status(400).json({ error: error.toString() });
   }
 });
 
 // ***********************************************//
-// Fetch a story by id
+// Fetch a goal by id
 // ***********************************************//
-router.get('/api/stories/:id', async (req, res) => {
+router.get('/api/goals/:id', async (req, res) => {
   try {
     const _id = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(_id))
-      return res.status(400).json({ error: 'not a valid story id' });
-    const story = await Story.findOne({ _id, owner: req.user._id });
-    if (!story) return res.sendStatus(404);
-    res.json(story);
+      return res.status(400).json({ error: 'not a valid goal id' });
+    const goal = await Goal.findOne({ _id, owner: req.user._id });
+    if (!goal) return res.sendStatus(404);
+    res.json(goal);
   } catch (error) {
     res.status(400).json({ error: error.toString() });
   }
 });
 
 // ***********************************************//
-// Get all stories
-// /stories?completed=true
-// /stories?limit=10&skip=10
-// /stories?sortBy=createdAt:asc
-// /stories?sortBy=dueDate:desc
+// Get all goals
+// /goals?completed=true
+// /goals?limit=10&skip=10
+// /goals?sortBy=createdAt:asc
+// /goals?sortBy=dueDate:desc
 // ***********************************************//
-router.get('/api/stories', async (req, res) => {
+router.get('/api/goals', async (req, res) => {
   try {
     const match = {},
       sort = {};
@@ -60,7 +60,7 @@ router.get('/api/stories', async (req, res) => {
     }
     await req.user
       .populate({
-        path: 'stories',
+        path: 'goals',
         match,
         options: {
           limit: parseInt(req.query.limit),
@@ -69,38 +69,38 @@ router.get('/api/stories', async (req, res) => {
         }
       })
       .execPopulate();
-    res.json(req.user.stories);
+    res.json(req.user.goals);
   } catch (error) {
     res.status(400).json({ error: error.toString() });
   }
 });
 
 // ***********************************************//
-// Delete a story
+// Delete a goal
 // ***********************************************//
-router.delete('/api/stories/:id', async (req, res) => {
+router.delete('/api/goals/:id', async (req, res) => {
   try {
-    const story = await Story.findOneAndDelete({
+    const goal = await Goal.findOneAndDelete({
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!story) throw new Error('story not found');
-    res.json(story);
+    if (!goal) throw new Error('goal not found');
+    res.json(goal);
   } catch (error) {
     res.status(404).json({ error: error.toString() });
   }
 });
 
 // ***********************************************//
-// Update a story
+// Update a goal
 // ***********************************************//
-router.patch('/api/stories/:id', async (req, res) => {
+router.patch('/api/goals/:id', async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = [
     'description',
     'completed',
     'dueDate',
-    'chapters',
+    'milestones',
     'category',
     'dailyTask',
     'bonus',
@@ -113,47 +113,47 @@ router.patch('/api/stories/:id', async (req, res) => {
   if (!isValidOperation)
     return res.status(400).send({ error: 'Invalid updates!' });
   try {
-    const story = await Story.findOne({
+    const goal = await Goal.findOne({
       _id: req.params.id,
       owner: req.user._id
     });
-    if (!story) return res.status(404).json({ error: 'story not found' });
-    updates.forEach((update) => (story[update] = req.body[update]));
-    await story.save();
-    res.json(story);
+    if (!goal) return res.status(404).json({ error: 'goal not found' });
+    updates.forEach((update) => (goal[update] = req.body[update]));
+    await goal.save();
+    res.json(goal);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }
 });
 
 // ***********************************************//
-// Delete a chapter chapterid&storyid
+// Delete a milestone milestoneid&goalid
 // ***********************************************//
-router.delete('/api/story/:sid/chapter/:cid', async (req, res) => {
+router.delete('/api/goal/:sid/milestone/:cid', async (req, res) => {
   try {
     console.log(req.params);
-    const story = await Story.findOne({
+    const goal = await Goal.findOne({
       _id: req.params.sid,
       owner: req.user._id
     });
-    if (!story) throw new Error('story not found');
+    if (!goal) throw new Error('goal not found');
 
-    const index = story.chapters.findIndex(
-      (chapt) => chapt._id == req.params.cid
+    const index = goal.milestones.findIndex(
+      (milestone) => milestone._id == req.params.cid
     );
 
-    story.chapters.splice(index, 1);
-    await story.save();
-    res.json(story);
+    goal.milestones.splice(index, 1);
+    await goal.save();
+    res.json(goal);
   } catch (error) {
     res.status(404).json({ error: error.toString() });
   }
 });
 
 // ***********************************************//
-// Update a chapter by chapterid&storyid
+// Update a milestone by milestoneid&goalid
 // ***********************************************//
-router.patch('/api/story/:sid/chapter/:cid', async (req, res) => {
+router.patch('/api/goal/:sid/milestone/:cid', async (req, res) => {
   try {
     const updates = Object.keys(req.body);
     const allowedUpdates = ['description', 'completed', 'dueDate'];
@@ -164,46 +164,46 @@ router.patch('/api/story/:sid/chapter/:cid', async (req, res) => {
     if (!isValidOperation)
       return res.status(400).send({ error: 'Invalid updates!' });
 
-    const story = await Story.findOne({
+    const goal = await Goal.findOne({
       _id: req.params.sid,
       owner: req.user._id
     });
 
-    const index = story.chapters.findIndex(
-      (chapt) => chapt._id == req.params.cid
+    const index = goal.milestones.findIndex(
+      (milestone) => milestone._id == req.params.cid
     );
-    if (!story) return res.status(404).json({ error: 'story not found' });
+    if (!goal) return res.status(404).json({ error: 'goal not found' });
     updates.forEach(
-      (update) => (story.chapters[index][update] = req.body[update])
+      (update) => (goal.milestones[index][update] = req.body[update])
     );
-    await story.save();
-    res.json(story);
+    await goal.save();
+    res.json(goal);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }
 });
 
 // ***********************************************//
-// Create a chapter storyid
+// Create a milestone goalid
 // ***********************************************//
 
-router.post('/api/story/:sid/chapter/', async (req, res) => {
+router.post('/api/goal/:sid/milestone/', async (req, res) => {
   try {
-    const story = await Story.findOne({
+    const goal = await Goal.findOne({
       _id: req.params.sid,
       owner: req.user._id
     });
-    if (!story) return res.status(404).json({ error: 'story not found' });
-    story.chapters.push(req.body);
-    await story.save();
-    res.json(story);
+    if (!goal) return res.status(404).json({ error: 'goal not found' });
+    goal.milestones.push(req.body);
+    await goal.save();
+    res.json(goal);
   } catch (e) {
     res.status(400).json({ error: e.toString() });
   }
 });
 
 // ***********************************************//
-// update a daily tasks storyid
+// update a daily tasks goalid
 // ***********************************************//
 
 module.exports = router;

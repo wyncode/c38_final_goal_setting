@@ -1,18 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Container,
   Form,
   Button,
   ButtonGroup,
-  ToggleButton
+  ToggleButton,
+  Image
 } from 'react-bootstrap';
-//import axios from 'axios';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 
 const AddReflection = () => {
   const [emojiValue, setEmojiValue] = useState();
   //const [reflectionData, setReflectionData] = useState();
   const [image, setImage] = useState();
   const [textbox, setTextbox] = useState();
+  const [preview, setPreview] = useState(null);
+  const { currentUser, setCurrentUser } = useContext(AppContext);
+  let imagefile;
+  const handleChange = (event) => {
+    setPreview(URL.createObjectURL(event.target.files[0]));
+    setImage(event.target.files[0]);
+    console.log(image);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const img = new FormData();
+    imagefile = img.append('img', image, image.name);
+    // axios
+    //   .post('/api/users/avatar', avatar, { withCredentials: true })
+    //   .then((response) => {
+    //     setCurrentUser({ ...currentUser, avatar: response.data.secure_url });
+    //   })
+    //   .catch((error) => console.log(error));
+  };
+
   useEffect(() => {}, []);
   const emojis = [
     { emoji: '🙂', id: 'smile' },
@@ -22,11 +45,6 @@ const AddReflection = () => {
     { emoji: '😶', id: 'no mouth' },
     { emoji: '🙁', id: 'frown' }
   ];
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(image, textbox, emojiValue);
-  };
 
   // {
   //   title: {
@@ -46,9 +64,10 @@ const AddReflection = () => {
         <Form.Label>{}: Reflection</Form.Label>
         <Form.Group>
           <Form.File accept="image/*"></Form.File>
+          <Image src={imagefile}></Image>
         </Form.Group>
         <Form.Group>
-          <Form.Label onChange={(e) => setImage(e.target.value)}>
+          <Form.Label onChange={handleChange}>
             How do you feel today?
           </Form.Label>
           <br />
