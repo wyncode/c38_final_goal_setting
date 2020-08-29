@@ -38,12 +38,12 @@ const goalSchema = new mongoose.Schema(
     category: {
       type: String,
       enum: [
-        'fitness',
-        'education',
-        'finance',
-        'professional',
-        'social',
-        'health'
+        'Fitness',
+        'Education',
+        'Finance',
+        'Professional',
+        'Social',
+        'Health'
       ]
     },
     dailyTask: {
