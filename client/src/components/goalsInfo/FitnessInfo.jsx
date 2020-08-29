@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { Link } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
 import Nav from '../Nav';
 
 const FitnessInfo = () => {
@@ -11,9 +12,12 @@ const FitnessInfo = () => {
         <div>
           <Nav />
         </div>
-        <Jumbotron fluid>
-          <div>
-            <div className="info-pic"></div>
+        <Jumbotron className="goals-info">
+          <div className="ilustration">
+            <Image
+              className="info-pic"
+              src={require('../images/fitness.png')}
+            />
           </div>
 
           <div className="info">
@@ -34,7 +38,9 @@ const FitnessInfo = () => {
             </div>
             <div className="info-btn-flex">
               <button className="info-btn">
-                <Link className="info-btn-txt">Create Goal</Link>
+                <Link className="info-btn-txt" as={Link} to="/wizard">
+                  Create Goal
+                </Link>
               </button>
             </div>
           </div>

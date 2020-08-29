@@ -4,18 +4,21 @@ import Container from 'react-bootstrap/esm/Container';
 const Footer = () => {
   return (
     <Container>
-      <div className="footer">
-        <div>
-          <p>Footer</p>
-        </div>
-        <div>
-          <p>Footer</p>
-        </div>
-        <div>
-          <p>Footer</p>
-        </div>
-        <div>
-          <p>Footer</p>
+      <div className="home-4">
+        <h6>Follow Us:</h6>
+        <div className="footer">
+          <div>
+            <p>Facebook</p>
+          </div>
+          <div>
+            <p>Instagram</p>
+          </div>
+          <div>
+            <p>Twitter</p>
+          </div>
+          <div>
+            <p>Privacy</p>
+          </div>
         </div>
       </div>
     </Container>

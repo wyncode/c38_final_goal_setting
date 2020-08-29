@@ -5,7 +5,7 @@ import Link from 'react-router-dom/Link';
 const GoalsHome = () => {
   return (
     <Container>
-      <Jumbotron fluid>
+      <Jumbotron className="home-1" id="createAGoal">
         <div className="goals">
           <h3>Goal Types</h3>
           <p>
