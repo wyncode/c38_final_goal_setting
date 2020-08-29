@@ -18,6 +18,9 @@ const goalSchema = new mongoose.Schema(
         },
         emoji: {
           type: String
+        },
+        image: {
+          tpye: String
         }
       }
     ],
