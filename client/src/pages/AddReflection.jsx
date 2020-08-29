@@ -23,7 +23,7 @@ const AddReflection = ({ history }) => {
   useEffect(() => {
     currentGoal && setDayNum(getDayNumber(currentGoal.createdAt));
     setReflection({ title: `Day ${dayNum}: Reflection` });
-  }, [dayNum]);
+  }, [dayNum, currentGoal]);
 
   const getDayNumber = (createdDate) => {
     const start = moment(createdDate);
