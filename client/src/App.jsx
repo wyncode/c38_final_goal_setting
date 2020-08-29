@@ -17,7 +17,6 @@ import HealthInfo from './components/goalsInfo/HealthInfo';
 import ProfessionalInfo from './components/goalsInfo/ProfessionalInfo';
 import SocialInfo from './components/goalsInfo/SocialInfo';
 import GoalsHome from './components/GoalsHome';
-import { RiRouteFill } from 'react-icons/ri';
 
 const App = () => {
   return (
