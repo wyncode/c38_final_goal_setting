@@ -117,26 +117,3 @@ const DailyTaskList = () => {
 };
 
 export default DailyTaskList;
-{
-  /* 
-
-<Form.Check
-          onChange={() => handleChange('dailyTask')}
-          type="checkbox"
-          defaultChecked={currentGoal?.dailyTask.done}
-          label={currentMilestone?.data.description}
-        />
-        <Form.Check
-          onChange={() => handleChange('reflected')}
-          type="checkbox"
-          defaultChecked={currentGoal?.reflected.done}
-          label="Reflect on daily task"
-        />
-        <Form.Check
-          onChange={() => handleChange('bonus')}
-          type="checkbox"
-          defaultChecked={currentGoal?.bonus.done}
-          label="Bonus"
-        />
-       */
-}
