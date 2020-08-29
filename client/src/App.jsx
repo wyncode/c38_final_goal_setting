@@ -17,19 +17,17 @@ import HealthInfo from './components/goalsInfo/HealthInfo';
 import ProfessionalInfo from './components/goalsInfo/ProfessionalInfo';
 import SocialInfo from './components/goalsInfo/SocialInfo';
 import GoalsHome from './components/GoalsHome';
-import { RiRouteFill } from 'react-icons/ri';
-
 
 const App = () => {
   return (
     <AppContextProvider>
       <Router>
         <Switch>
-
           <Route exact path="/wizard" component={Wizard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
+          <PrivateRoute exact path="/addreflection" component={AddReflection} />
           <Route exact path="/addreflection" component={AddReflection} />
           <Route exact path="/educationinfo" component={EducationInfo} />
           <Route exact path="/financeinfo" component={FinanceInfo} />

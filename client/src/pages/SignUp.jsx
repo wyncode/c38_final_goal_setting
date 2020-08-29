@@ -45,7 +45,6 @@ const SignUp = ({ history }) => {
             placeholder="Ex. John Smith"
             name="name"
             onChange={handleChange}
-            name='name'
           />
         </div>
 
@@ -57,7 +56,6 @@ const SignUp = ({ history }) => {
             placeholder="Enter email"
             name="email"
             onChange={handleChange}
-            name='email'
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -71,7 +69,6 @@ const SignUp = ({ history }) => {
             placeholder="Password"
             name="password"
             onChange={handleChange}
-            name='password'
           />
         </div>
         <div>
