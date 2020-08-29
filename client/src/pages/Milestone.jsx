@@ -3,12 +3,12 @@ import { AppContext } from '../context/AppContext';
 import { Container, ProgressBar, Button } from 'react-bootstrap';
 import DailyTaskList from '../components/DailyTaskList';
 
-const Chapter = ({ history }) => {
-  const { currentChapter, currentStory } = useContext(AppContext);
-  if (!currentChapter || !currentStory) history.push('/dashboard');
+const Milestone = ({ history }) => {
+  const { currentMilestone, currentGoal } = useContext(AppContext);
+  if (!currentMilestone || !currentGoal) history.push('/dashboard');
 
   const progress =
-    2 + (currentChapter?.index * 100) / currentStory?.chapters.length;
+    2 + (currentMilestone?.index * 100) / currentGoal?.milestones.length;
 
   const handleClick = (event) => {
     history.push('/addReflection');
@@ -18,8 +18,8 @@ const Chapter = ({ history }) => {
     <Container className="d-flex flex-column">
       <h1 style={{ textAlign: 'center' }}>Goal Book</h1>
       <div>
-        <h2>Chapter: {currentChapter?.index + 1}</h2>
-        <h2>Total Chapters: {currentStory?.chapters.length}</h2>
+        <h2>Milestone: {currentMilestone?.index + 1}</h2>
+        <h2>Total Milestones: {currentGoal?.milestones.length}</h2>
       </div>
       <h2>Goal progress board</h2>
       <ProgressBar now={progress} />
@@ -30,4 +30,4 @@ const Chapter = ({ history }) => {
   );
 };
 
-export default Chapter;
+export default Milestone;

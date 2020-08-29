@@ -2,34 +2,34 @@ import React, { useEffect, useContext } from 'react';
 import { Image, Container, Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
-import { getCurrentChapterObj } from '../utilities/index';
+import { getCurrentMilestoneObj } from '../utilities/index';
 
 const Dashboard = ({ history }) => {
   const {
-    setStories,
+    setGoals,
     loading,
     currentUser,
-    stories,
-    setCurrentChapter,
-    setCurrentStory
+    goals,
+    setCurrentMilestone,
+    setCurrentGoal
   } = useContext(AppContext);
 
   useEffect(() => {
     axios
-      .get('/api/stories?sortBy=dueDate:asc', { withCredentials: true })
+      .get('/api/goals?sortBy=dueDate:asc', { withCredentials: true })
       .then((response) => {
-        setStories(response.data);
+        setGoals(response.data);
       })
       .catch((error) => console.log(error));
-  }, [setStories, loading]);
+  }, [setGoals, loading]);
 
   if (!currentUser) return null;
   //const getCatagoryStyle = () => {};
 
-  const goToChapter = (chaptersArr, parentStory) => {
-    setCurrentChapter(getCurrentChapterObj(chaptersArr));
-    setCurrentStory(parentStory);
-    history.push('/chapter');
+  const goToMilestone = (milestonesArr, parentGoal) => {
+    setCurrentMilestone(getCurrentMilestoneObj(milestonesArr));
+    setCurrentGoal(parentGoal);
+    history.push('/milestone');
   };
 
   return (
@@ -43,16 +43,16 @@ const Dashboard = ({ history }) => {
       <h2>{currentUser?.name}</h2>
       <Table>
         <tbody>
-          {stories?.map((story) => {
+          {goals?.map((goal) => {
             return (
-              <tr key={story._id}>
-                <td>{story.description}</td>
+              <tr key={goal._id}>
+                <td>{goal.description}</td>
                 <td>
                   <Button
                     className="btn-default btn-block"
-                    onClick={() => goToChapter(story.chapters, story)}
+                    onClick={() => goToMilestone(goal.milestones, goal)}
                   >
-                    Go to chapter
+                    Go to milestone
                   </Button>
                 </td>
               </tr>
@@ -60,7 +60,7 @@ const Dashboard = ({ history }) => {
           })}
         </tbody>
       </Table>
-      <Button className="btn btn-default btn-block"> Write a story</Button>
+      <Button className="btn btn-default btn-block"> Write a goal</Button>
     </Container>
   );
 };
