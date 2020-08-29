@@ -1,5 +1,17 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
 .fullscreen {
   height: 100vh;
+}
+
+h3 {
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 36px;
+  line-height: 45px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 /* Navigation */
 .nav {
@@ -10,6 +22,9 @@
   padding-left: 20px;
   padding-right: 30px;
 }
+.nav p {
+  color: black;
+}
 .profile-icon {
   background-color: white;
   border: white;
@@ -18,93 +33,107 @@
 
 /* HomePage */
 .home {
+  background: linear-gradient(
+    179.94deg,
+    rgba(255, 255, 255, 0.72) -9.9%,
+    rgba(254, 254, 255, 0.72) -7.53%,
+    rgba(222, 211, 244, 0.72) 31.66%,
+    rgba(150, 84, 233, 0.72) 82.34%,
+    rgba(137, 36, 239, 0.72) 99.95%
+  );
   margin-left: 20px;
   margin-right: 30px;
   padding: 20px;
+  border-radius: 10px;
+  height: 450px;
+}
+h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+}
+.quote {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 21px;
 }
 
 .home-btn {
-  border-radius: 50px;
+  background: #8546d4;
+  border: 1px solid #8546d4;
+  border-radius: 10px;
   width: 350px;
-  height: 75px;
-  background-color: rgba(62, 60, 60, 0.959);
+  height: 50px;
 }
+.home-btn p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 21px;
+  color: #fafdff;
+  margin: auto;
+}
+
+/*How it Works*/
+.home-1 {
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  align-content: center;
+  margin: auto;
+  padding-left: 5%;
+}
+.home-1 p {
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
 .home-icon {
   display: inline-flex;
 }
 .home-icon div {
-  margin-left: 20px;
-  margin-right: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 20px;
   justify-content: space-evenly;
 }
+
 .home-icon div p {
-  padding: 20px;
-}
+  padding: 10px;
+  text-align: left;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 21px;
 
-/* How are People Achieving*/
-.home-pics {
-  display: inline;
+  color: #455a64;
 }
-
-.home-pics div {
-  width: 100%;
-  margin: 10px;
-  text-align: center;
-}
-.home-pics div h3 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 40px;
-}
-.home-pics div p {
-  font-weight: 200;
-}
-.pics div {
-  text-align: center;
-}
-.pic {
-  width: 200px;
-  height: 200px;
-  border: 5px solid white;
-
-  margin-bottom: 20px;
-}
-/* Goals HomePage*/
-.goals {
-  display: inline;
-}
-.goals h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.goals p {
-  font-weight: 200;
-  text-align: center;
-}
-.goal-btns {
-  text-align: center;
-}
-
-.goal-btns button {
-  border-radius: 40px;
-  width: 150px;
-  height: 50px;
-  background-color: whitesmoke;
-  border: 1px rgba(62, 60, 60, 0.959) solid;
-  margin: 10px;
-}
-.link {
-  color: black;
-}
-
 /* Statistics*/
+.home-2 {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 243, 238, 0.0248) 0%,
+    rgba(173, 220, 209, 0.62) 26.04%,
+    rgba(119, 205, 184, 0.62) 52.08%
+  );
+  margin-left: 20px;
+  margin-right: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
 .stats {
-  height: 500px;
+  height: 550px;
 }
-.stats h3 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+
 .stats p {
   font-weight: 200;
   text-align: center;
@@ -120,7 +149,12 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-image: conic-gradient(white 1deg, pink 19deg, lightblue 80deg);
+  background-image: conic-gradient(
+    rgba(107, 229, 197, 0.92) 1deg,
+    #fbbcb3 19deg,
+    rgba(133, 70, 212, 0.67) 80deg
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .percentage {
@@ -134,9 +168,9 @@
 .p-blue {
   height: 20px;
   width: 20px;
-  border: 1px solid lightblue;
+  border: 1px solid rgba(133, 70, 212, 0.67);
   border-radius: 50%;
-  background-color: lightblue;
+  background-color: rgba(133, 70, 212, 0.67);
   margin-left: 10px;
   margin-right: 5px;
   padding: 10px;
@@ -144,9 +178,9 @@
 .p-pink {
   height: 20px;
   width: 20px;
-  border: 1px solid pink;
+  border: 1px solid #fbbcb3;
   border-radius: 50%;
-  background-color: pink;
+  background-color: #fbbcb3;
   margin-left: 10px;
   margin-right: 5px;
   padding: 10px;
@@ -154,44 +188,95 @@
 .p-white {
   height: 20px;
   width: 20px;
-  border: 1px solid white;
+  border: 1px solid rgba(107, 229, 197, 0.92);
   border-radius: 50%;
-  background-color: white;
+  background-color: rgba(107, 229, 197, 0.92);
   margin-left: 10px;
   margin-right: 10px;
   padding: 10px;
 }
-/* Testimonials Carousel*/
+
+/* Goals HomePage*/
+.goals {
+  display: inline;
+}
+
+.goals p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 21px;
+  text-align: center;
+}
+.goal-btns {
+  text-align: center;
+}
+
+.goal-btns button {
+  width: 150px;
+  height: 50px;
+  margin: 10px;
+  background: rgba(146, 227, 206, 0.2);
+  border-radius: 16px;
+  border-color: rgba(146, 227, 206, 0.2);
+}
+
+.link {
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #8edac8;
+}
+
+/* HomeSlides*/
+.home-3 {
+  background: linear-gradient(
+    180deg,
+    rgba(220, 243, 238, 0.0248) 0%,
+    rgba(173, 220, 209, 0.62) 26.04%,
+    rgba(119, 205, 184, 0.62) 52.08%
+  );
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
 
 .testimonials h3 {
-  text-align: center;
-  padding-top: 30px;
-  color: rgba(70, 63, 63, 0.959);
+  text-align: left;
 }
 .t-box {
-  text-align: center;
-  padding: 20px 20px 10px 20px;
+  display: inline-block;
+  padding: 10px;
 }
 
 .pic-t {
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
-  margin-bottom: 20px;
-  margin-left: 35%;
-  margin-right: 35%;
+  float: left;
+  margin-right: 30px;
 }
-
+.t-text {
+  display: inline;
+  text-align: left;
+}
 /* Footer */
-
+.home-4 {
+  background: linear-gradient(270deg, #abe0d3 0%, #ad6df2 100%);
+}
+.home-4 h6 {
+  padding-top: 20px;
+  margin-left: 30px;
+  font-weight: 900;
+  font-size: 16px;
+}
 .footer {
   display: flex;
-  background-color: darkgrey;
-  height: 50px;
   justify-content: space-around;
 }
 .footer p {
-  margin: 15px 20px;
+  font-size: 15px;
+  padding: 10px;
 }
 /*SignUp*/
 .signUp {
@@ -254,15 +339,38 @@
   border-bottom: 1px solid lightgray;
 }
 /* Goals Info*/
-.info-flex {
-  display: inline;
+.goals-info {
+  background: white;
+  display: inline-flexbox;
+  justify-content: center;
 }
 .info-pic {
-  height: 250px;
-  width: 400px;
-  border: 1px solid black;
+  height: 220px;
+  width: 290px;
+
   margin-top: 10px;
   margin: auto;
+}
+.ilustration {
+  display: flex;
+}
+
+.goals-info h5 {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+  color: #777777;
+}
+.goals-info p {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+
+  color: #777777;
 }
 
 .info {
@@ -282,8 +390,8 @@
 .info-btn {
   width: 350px;
   height: 40px;
-  border-radius: 20px;
-  background-color: dimgray;
+  background: #8546d4;
+  border-radius: 10px;
   margin: auto;
 }
 .info-btn-txt {

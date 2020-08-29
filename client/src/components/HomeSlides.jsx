@@ -17,19 +17,20 @@ function HomeSlides({ props }) {
 
   return (
     <Container>
-      <Jumbotron>
+      <Jumbotron className="home-3">
         <div className="testimonials">
           <h3>User Stories</h3>
         </div>
+
         <Slider dots {...settings}>
           <div className="t-box">
             <div>
-              <Image className="pic-t" src={require('./images/climb.jpg')} />
+              <Image className="pic-t" src={require('./images/3.png')} />
+            </div>
+            <div className="t-text">
               <p>
-                <em>
-                  "I hate setting goals, always have, always will. This website
-                  though has completely changed that."
-                </em>
+                "I hate setting goals, always have, always will. This website
+                though has completely changed that."
                 <br /> -Nick Miller
               </p>
             </div>
@@ -37,7 +38,9 @@ function HomeSlides({ props }) {
 
           <div className="t-box">
             <div>
-              <Image className="pic-t" src={require('./images/marathon.jpg')} />
+              <Image className="pic-t" src={require('./images/1.png')} />
+            </div>
+            <div className="t-text">
               <p>
                 "Because of StoryLine, I was able to track my savings and
                 eventually buy my first home"
@@ -48,7 +51,9 @@ function HomeSlides({ props }) {
 
           <div className="t-box">
             <div>
-              <Image className="pic-t" src={require('./images/graduate.jpg')} />
+              <Image className="pic-t" src={require('./images/2.png')} />
+            </div>
+            <div className="t-text">
               <p>
                 "I love a challenge - and taking advantage of Storyline's
                 teaching challenges enhances my techniques."
