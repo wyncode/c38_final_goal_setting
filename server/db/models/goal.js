@@ -20,7 +20,7 @@ const goalSchema = new mongoose.Schema(
           type: String
         },
         image: {
-          tpye: String
+          type: String
         }
       }
     ],

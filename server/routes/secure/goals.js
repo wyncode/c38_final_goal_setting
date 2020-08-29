@@ -1,6 +1,8 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
-  Goal = require('../../db/models/goal');
+  Goal = require('../../db/models/goal'),
+  cloudinary = require('cloudinary').v2,
+  async = require('async');
 
 // ***********************************************//
 // Create a goal
@@ -129,17 +131,17 @@ router.patch('/api/goals/:id', async (req, res) => {
 // ***********************************************//
 // Delete a milestone milestoneid&goalid
 // ***********************************************//
-router.delete('/api/goal/:sid/milestone/:cid', async (req, res) => {
+router.delete('/api/goal/:gid/milestone/:mid', async (req, res) => {
   try {
     console.log(req.params);
     const goal = await Goal.findOne({
-      _id: req.params.sid,
+      _id: req.params.gid,
       owner: req.user._id
     });
     if (!goal) throw new Error('goal not found');
 
     const index = goal.milestones.findIndex(
-      (milestone) => milestone._id == req.params.cid
+      (milestone) => milestone._id == req.params.mid
     );
 
     goal.milestones.splice(index, 1);
@@ -153,7 +155,7 @@ router.delete('/api/goal/:sid/milestone/:cid', async (req, res) => {
 // ***********************************************//
 // Update a milestone by milestoneid&goalid
 // ***********************************************//
-router.patch('/api/goal/:sid/milestone/:cid', async (req, res) => {
+router.patch('/api/goal/:gid/milestone/:mid', async (req, res) => {
   try {
     const updates = Object.keys(req.body);
     const allowedUpdates = ['description', 'completed', 'dueDate'];
@@ -165,12 +167,12 @@ router.patch('/api/goal/:sid/milestone/:cid', async (req, res) => {
       return res.status(400).send({ error: 'Invalid updates!' });
 
     const goal = await Goal.findOne({
-      _id: req.params.sid,
+      _id: req.params.gid,
       owner: req.user._id
     });
 
     const index = goal.milestones.findIndex(
-      (milestone) => milestone._id == req.params.cid
+      (milestone) => milestone._id == req.params.mid
     );
     if (!goal) return res.status(404).json({ error: 'goal not found' });
     updates.forEach(
@@ -187,10 +189,10 @@ router.patch('/api/goal/:sid/milestone/:cid', async (req, res) => {
 // Create a milestone goalid
 // ***********************************************//
 
-router.post('/api/goal/:sid/milestone/', async (req, res) => {
+router.post('/api/goal/:gid/milestone/', async (req, res) => {
   try {
     const goal = await Goal.findOne({
-      _id: req.params.sid,
+      _id: req.params.gid,
       owner: req.user._id
     });
     if (!goal) return res.status(404).json({ error: 'goal not found' });
@@ -203,7 +205,29 @@ router.post('/api/goal/:sid/milestone/', async (req, res) => {
 });
 
 // ***********************************************//
-// update a daily tasks goalid
+// add a reflection to a goal by goalid
 // ***********************************************//
+
+router.post('/api/goal/:gid/reflection/', async (req, res) => {
+  try {
+    let img = null;
+    const goal = await Goal.findOne({
+      _id: req.params.gid,
+      owner: req.user._id
+    });
+    if (!goal) return res.status(404).json({ error: 'goal not found' });
+    if (req.files) {
+      const response = await cloudinary.uploader.upload(
+        req.files.image.tempFilePath
+      );
+      img = response.secure_url;
+    }
+    goal.reflections.push({ ...req.body, image: img });
+    await goal.save();
+    res.json(goal);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
+  }
+});
 
 module.exports = router;
