@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { BsPerson } from 'react-icons/bs';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 const Navigation = () => {
   return (
@@ -12,20 +13,24 @@ const Navigation = () => {
       <Navbar collapseOnSelect bg="lg" expand="xlg">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="dropdown">
-          <NavDropdown.Item as={Link} to="/CreateGoal">
-            Create a goal
+          <NavDropdown.Item>
+            <AnchorLink offset="300" href="#createAGoal">
+              <p>Create a Goal</p>
+            </AnchorLink>
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item as={Link} to="/HowItWorks">
-            How it works
+          <NavDropdown.Item>
+            <AnchorLink offset="350" href="#howItWorks">
+              <p>How it works</p>
+            </AnchorLink>
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item as={Link} to="/Login">
-            Login
+            <p>Login</p>
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item as={Link} to="/SignUp">
-            Register
+            <p>Register</p>
           </NavDropdown.Item>
         </Navbar.Collapse>
       </Navbar>
