@@ -297,11 +297,7 @@ h1 {
 .label {
   border-radius: 10px;
 }
-.signUp-btn {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-}
+
 .text {
   padding-left: 5px;
 }
@@ -319,11 +315,7 @@ h1 {
 .login div {
   padding: 10px 30px;
 }
-.login-btn {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-}
+
 .login-op {
   color: rgb(52, 102, 155);
   margin: 5px;
@@ -397,4 +389,134 @@ h1 {
 .info-btn-txt {
   color: white;
   margin: auto;
+}
+/*wizard step-1*/
+.wizard {
+  display: flex;
+  columns: 2;
+  margin: auto;
+  justify-content: center;
+}
+.steps {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-flex {
+  display: flex;
+  width: 200px;
+}
+.ilustration-wizard {
+  display: inline;
+  width: 250px;
+}
+.wizard-btn1 {
+  width: 150px;
+  height: 50px;
+  margin-left: 50px;
+  background: #e8dcf7;
+  border-radius: 20px;
+  border-color: #e8dcf7;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+.wizard-btn1 p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #8546d4;
+  margin-top: 10px;
+}
+.ilustration-step1 {
+  width: 200px;
+  margin: 20px;
+}
+.ilustration-step2-1 {
+  width: 125px;
+
+  margin: 20px;
+  margin: 20px;
+}
+.ilustration-step2 {
+  width: 175px;
+  margin: 20px;
+  margin-bottom: 20px;
+}
+.wizard-btn2 {
+  width: 150px;
+  height: 50px;
+  margin-left: 50px;
+  background: #e8dcf7;
+  border-radius: 20px;
+  border-color: #e8dcf7;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.wizard-btn2 p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #8546d4;
+  margin-top: 10px;
+}
+.step3 {
+  display: flex;
+}
+.ilustration-step3 {
+  margin: auto;
+}
+
+.wizard-btn3 {
+  width: 150px;
+  height: 40px;
+  margin-left: 50px;
+  background: white;
+  border-radius: 20px;
+  border: 0.5px solid #8546d4;
+  margin-top: 20px;
+}
+.wizard-btn3 p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #8546d4;
+  margin-top: 10px;
+}
+.btn-flex-step3 {
+  display: flex;
+  width: 200px;
+  margin: 20px;
+}
+/* step 4*/
+.addMilestone {
+  display: flex;
+  justify-content: center;
+}
+
+.ilustration-step4 {
+  justify-content: center;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.btn-part4 {
+  width: 350px;
+  height: 40px;
+  background: #8546d4;
+  border-radius: 10px;
+  margin: auto;
+}
+.btn-part4 p {
+  margin-top: 5px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 21px;
+  text-align: center;
+  color: #ffffff;
 }
