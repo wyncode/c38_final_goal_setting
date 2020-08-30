@@ -3,6 +3,7 @@ import { AppContext } from '../context/AppContext';
 import { Container, ProgressBar, Button } from 'react-bootstrap';
 import DailyTaskList from '../components/DailyTaskList';
 import ReflectionTile from '../components/ReflectionTile';
+
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
   if (!currentMilestone || !currentGoal) history.push('/dashboard');
