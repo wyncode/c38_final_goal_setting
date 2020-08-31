@@ -5,17 +5,26 @@ import axios from 'axios';
 import moment from 'moment';
 
 const DailyTaskList = () => {
-  const { currentMilestone, currentGoal } = useContext(AppContext);
+  const {
+    currentMilestone,
+    currentGoal,
+    setReloadTasks,
+    reloadTasks
+  } = useContext(AppContext);
   const [updates, setUpdates] = useState(null);
 
   //updates checkboxes on DB
   useEffect(() => {
+    setReloadTasks(true);
     currentGoal &&
       axios
         .patch(`/api/goals/${currentGoal._id}`, updates, {
           withCredentials: true
         })
-        .then((resp) => console.log(resp))
+        .then((resp) => {
+          console.log(resp);
+          setReloadTasks(false);
+        })
         .catch((error) => console.log(error.toString()));
   }, [updates, setUpdates, currentGoal]);
 

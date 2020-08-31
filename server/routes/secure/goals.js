@@ -51,7 +51,6 @@ router.get('/api/goals', async (req, res) => {
   try {
     const match = {},
       sort = {};
-    console.log(req.query);
     if (req.query.completed) {
       match.completed = req.query.completed === 'true';
     }

@@ -4,22 +4,30 @@ import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/GoalTile';
 import { Link } from 'react-router-dom';
-import DailyTaskButton from '../components/DailyTaskButton'
+import DailyTaskButton from '../components/DailyTaskButton';
 
-const Dashboard = ({ history }) => {
-  const { setGoals, loading, currentUser, goals } = useContext(AppContext);
+const Dashboard = () => {
+  const {
+    setGoals,
+    currentUser,
+    goals,
+    setReloadTasks,
+    reloadTasks
+  } = useContext(AppContext);
 
   useEffect(() => {
+    setReloadTasks(false);
     axios
       .get('/api/goals?sortBy=dueDate:asc', { withCredentials: true })
       .then((response) => {
         setGoals(response.data);
+        setReloadTasks(false);
       })
       .catch((error) => console.log(error));
-  }, [setGoals, loading]);
+  }, [setGoals, goals, reloadTasks]);
 
   if (!currentUser) return null;
-  
+
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <Image
@@ -31,19 +39,21 @@ const Dashboard = ({ history }) => {
       <h2>{currentUser?.name}</h2>
       <h2>Daily Tasks</h2>
       <div className="d-flex flex-wrap">
-      {goals?.map((goal)=>{return <DailyTaskButton key={goal._id} goal={goal}/>})}
+        {goals?.map((goal) => {
+          return <DailyTaskButton key={goal._id} goal={goal} />;
+        })}
       </div>
       <br />
       <div className="d-flex justify-content-between align-items-center w-100">
-        <h2 >Current Goals</h2>
+        <h2>Current Goals</h2>
         <Link to="/wizard">Add New Goal</Link>
       </div>
       {goals?.map((goal) => {
-        return !(goal?.completed) && <GoalTile key={goal._id} goal={goal} />;
+        return !goal?.completed && <GoalTile key={goal._id} goal={goal} />;
       })}
       <h2 className="text-left w-100">Completed Goals</h2>
       {goals?.map((goal) => {
-        return (goal?.completed) && <GoalTile key={goal._id} goal={goal} />;
+        return goal?.completed && <GoalTile key={goal._id} goal={goal} />;
       })}
     </Container>
   );

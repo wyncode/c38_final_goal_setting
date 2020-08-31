@@ -5,14 +5,15 @@ import { AppContext } from '../context/AppContext';
 
 const DailyTaskButton = ({ goal }) => {
   const [dailyTaskDesc, setDailyTaskDesc] = useState();
-  const { currentGoal } = useContext(AppContext);
+  const { currentGoal, setReloadTasks } = useContext(AppContext);
+
   useEffect(() => {
     const mileObj = getCurrentMilestoneObj(goal.milestones);
     setDailyTaskDesc(mileObj.data.description);
   }, [goal.milestones, currentGoal]);
 
   const handleClick = () => {
-    console.log(goal._id);
+    setReloadTasks(true);
     goal &&
       axios
         .patch(
@@ -22,7 +23,10 @@ const DailyTaskButton = ({ goal }) => {
             withCredentials: true
           }
         )
-        .then((resp) => console.log(resp))
+        .then((resp) => {
+          console.log(resp);
+          setReloadTasks(false);
+        })
         .catch((error) => console.log(error.toString()));
     console.log('clicked');
   };
