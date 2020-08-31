@@ -39,7 +39,6 @@ const StoryTile = ({ goal }) => {
     setTheme(getGoalTileTheme(goal.category));
   }, [goal]);
 
-  console.log(theme);
   return (
     <Card
       className="btn btn-default btn-block"
@@ -66,14 +65,3 @@ const StoryTile = ({ goal }) => {
 
 export default StoryTile;
 
-// <tr key={goal._id}>
-// <td>{goal.description}</td>
-// <td>
-//   <Button
-//     className="btn-default btn-block"
-//     onClick={() => goToMilestone(goal.milestones, goal)}
-//   >
-//     Go to milestone
-//   </Button>
-// </td>
-// </tr>
