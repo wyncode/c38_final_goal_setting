@@ -3,12 +3,42 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
 const allCategories = {
-  fitness: ['fitness-1', 'fitness-2', 'fitness-3', 'fitness-4'],
-  education: ['education-1', 'education-2', 'education-3', 'education-4'],
-  career: ['career-1', 'career-2', 'career-3', 'career-4'],
-  social: ['social-1', 'social-2', 'social-3', 'social-4'],
-  finance: ['finance-1', 'finance-2', 'finance-3', 'finace-4'],
-  health: ['health-1', 'health-2', 'health-3', 'health-4']
+  fitness: [
+    'Run a 10K',
+    'Lift Your Bodyweight',
+    'Learn to Surf',
+    'Beef Up Your Squat'
+  ],
+  education: [
+    'Master Basic Skills',
+    'Become a Critical Thinker',
+    'Bulid Good Study Habits',
+    'Earn a Degree or Certification'
+  ],
+  career: [
+    'Get a Promotion',
+    'Become an Expert in Your Field',
+    'Start Your Own Business',
+    'Boost Your Networking Abilities'
+  ],
+  social: [
+    'Volunteer',
+    'Making Donations',
+    'Develop Empathy',
+    'Make New Friends'
+  ],
+  finance: [
+    'Buy a House',
+    'Pay Off Debt',
+    'Build an Emergency Fund',
+    'Save For a Vacation'
+  ],
+  health: [
+    'Achieve a Healthy Weight',
+    'Eat more Plant Based Foods',
+    'Self Care',
+    'Sleep a Little More'
+  ]
   // fill in the rest of the goals here
 };
 
