@@ -1,5 +1,7 @@
 import React from 'react';
-
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Nav from './Nav';
 const allCategories = {
   fitness: ['fitness-1', 'fitness-2', 'fitness-3', 'fitness-4'],
   education: ['education-1', 'education-2', 'education-3', 'education-4'],
@@ -14,14 +16,39 @@ const Step3 = ({ handleSelect, formData }) => {
   const relevantCategories = allCategories[formData.goals.toLowerCase()];
 
   return (
-    <div>
-      <h2>Step 3: Categories</h2>
-      {relevantCategories.map((Categories, index) => (
-        <button key={index} onClick={() => handleSelect(Categories)}>
-          {Categories}
-        </button>
-      ))}
-    </div>
+    <Container>
+      <div>
+        <Nav />
+      </div>
+      <h5 className="steps">Step 3: Set Goal</h5>
+      <p className="steps">
+        What are you trying to achieve?
+        <br />
+        Pick an end goal
+      </p>
+      <div className="step3">
+        <div className="ilustration-step3">
+          <Image
+            className="info-pic"
+            src={require('../components/images/booklover.png')}
+          />
+
+          <div className="btn-flex-step3">
+            <div>
+              {relevantCategories.map((Categories, index) => (
+                <button
+                  className="wizard-btn3"
+                  key={index}
+                  onClick={() => handleSelect(Categories)}
+                >
+                  {Categories}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
   );
 };
 
