@@ -1,26 +1,42 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Container, Button } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
-const Step4 = ({ handleSelect, formData }) => {
-  //     const relevantMilestones = allMilestones[formData.goals.toLowerCase()];
-  const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
-  const [milestoneData, setMilestoneData] = useState(null);
-  //   const { setLoading } = useContext(AppContext);
+import moment from 'moment';
 
-  //   const handleMilestoneSubmission = async (e) => {
-  //     e.preventDefault();
-  //     setMilestoneData((milestoneData = e.target));
-  //     console.log('handleMilestoneSubmission');
-  //   };
+const Step4 = ({ handleSelect }) => {
+  const { formData } = useContext(AppContext);
+
+  const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
+
+  const setDueDates = (deadline) => {
+    let end = moment(formData.dueDate);
+
+    let totalDays = end.diff(moment(), 'days');
+
+    const interval = totalDays / milestones.length;
+    let sum = interval;
+    milestones.forEach((milestone, index, milestoneArray) => {
+      milestoneArray[index] = {
+        ...milestoneArray[index],
+        dueDate: moment().add(sum, 'days').format()
+      };
+
+      sum = sum + interval;
+    });
+  };
+
+  useEffect(() => {
+    formData && setDueDates(formData.duedate);
+  }, [formData]);
+
   const handleChange = (event) => {
     event.preventDefault();
-    milestones[event.target.name] = { description: event.target.value };
-    console.log(event.target.key);
-    console.log(event.target.value);
-    console.log(milestones);
-    //setMilestoneData({ ...milestone, [event.target.name]: event.target.value });
+    milestones[event.target.name] = {
+      ...milestones[event.target.name],
+      description: event.target.value
+    };
   };
   const handleSave = (event) => {
     event.preventDefault();
