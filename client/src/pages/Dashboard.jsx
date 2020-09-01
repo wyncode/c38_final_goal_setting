@@ -50,7 +50,6 @@ const Dashboard = () => {
           );
         })}
       </div>
-      <br />
       <div className="d-flex justify-content-between align-items-center w-100">
         <h2>Current Goals</h2>
         <Link to="/wizard">Add New Goal</Link>
