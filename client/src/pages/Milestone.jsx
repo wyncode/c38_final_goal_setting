@@ -25,10 +25,8 @@ const Milestone = ({ history }) => {
       <ProgressBar now={progress} />
       <DailyTaskList />
       <h2>Reflections</h2>
-      {currentGoal?.reflections.map((item, index) => {
-        return (
-          <ReflectionTile key={index} title={item.title} emoji={item.emoji} />
-        );
+      {currentGoal?.reflections.map((reflection, index) => {
+        return <ReflectionTile key={index} reflection={reflection} />;
       })}
       <Button onClick={handleClick}>Add a reflection</Button>
     </Container>

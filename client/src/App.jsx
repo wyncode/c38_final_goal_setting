@@ -10,6 +10,7 @@ import Milestone from './pages/Milestone';
 import Home from './pages/Home';
 import AddReflection from './pages/AddReflection';
 import Wizard from './pages/Wizard';
+import Reflection from './pages/Reflection';
 import EducationInfo from './components/goalsInfo/EducationInfo';
 import FinanceInfo from './components/goalsInfo/FinanceInfo';
 import FitnessInfo from './components/goalsInfo/FitnessInfo';
@@ -27,7 +28,6 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/addreflection" component={AddReflection} />
           <Route exact path="/addreflection" component={AddReflection} />
           <Route exact path="/educationinfo" component={EducationInfo} />
           <Route exact path="/financeinfo" component={FinanceInfo} />
@@ -38,6 +38,8 @@ const App = () => {
           <Route exact path="/goalshome" component={GoalsHome} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/milestone" component={Milestone} />
+          <PrivateRoute exact path="/reflection" component={Reflection} />
+          <PrivateRoute exact path="/addreflection" component={AddReflection} />
         </Switch>
       </Router>
     </AppContextProvider>

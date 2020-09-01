@@ -10,8 +10,6 @@ const GoalTile = ({ goal }) => {
   const history = useHistory();
   const [theme, setTheme] = useState(null);
 
-  //console.log(goal?.dailyTask?.done, goal?.description, 'goalTile dashboard');
-
   const goToMilestone = (milestonesArr, parentGoal) => {
     setCurrentMilestone(getCurrentMilestoneObj(milestonesArr));
     setCurrentGoal(parentGoal);

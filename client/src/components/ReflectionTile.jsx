@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
+import { AppContext } from '../context/AppContext';
 
-const ReflectionTile = ({ title, emoji }) => {
+const ReflectionTile = ({ reflection }) => {
+  const history = useHistory();
+  const { setCurrentReflection } = useContext(AppContext);
+
+  const handleClick = () => {
+    setCurrentReflection(reflection);
+    history.push('/reflection');
+  };
   return (
-    <Card className="p-1 m-1">
+    <Card className="reflectionTile p-1 m-1" onClick={handleClick}>
       <Card.Body className="p-1 m-1">
         <Row>
           <Col>
-            <span>{title}</span>
+            <span>{reflection?.title}</span>
           </Col>
           <Col style={{ textAlign: 'right' }}>
-            <span>{emoji}</span>
+            <span>{reflection?.emoji}</span>
           </Col>
         </Row>
       </Card.Body>
