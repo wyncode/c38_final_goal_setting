@@ -43,7 +43,7 @@ const allDescription = {
 };
 
 const Step3 = ({ handleSelect, formData }) => {
-  console.log(formData);
+  
   const relevantDescription = allDescription[formData.category.toLowerCase()];
 
   return (
