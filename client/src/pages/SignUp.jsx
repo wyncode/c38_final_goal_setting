@@ -7,6 +7,7 @@ import Nav from '../components/Nav';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
+import Image from 'react-bootstrap/Image';
 
 const SignUp = ({ history }) => {
   const [formData, setFormData] = useState(null);
@@ -35,6 +36,12 @@ const SignUp = ({ history }) => {
           The final step, lets set up your profile so we can save your progress.
         </h6>
         <p>Don't worry, your information is safe with us</p>
+      </div>
+      <div className="ilustration">
+        <Image
+          className="info-pic"
+          src={require('../components/images/profile.png')}
+        />
       </div>
       <Form onSubmit={handleSubmit}>
         <div>
@@ -81,9 +88,11 @@ const SignUp = ({ history }) => {
         </div>
 
         <div>
-          <Button className="signUp-btn" variant="secondary" type="submit">
-            Submit Profile
-          </Button>
+          <div className="info-btn-flex">
+            <Button className="info-btn" variant="secondary" type="submit">
+              Login
+            </Button>
+          </div>
         </div>
       </Form>
     </Container>
