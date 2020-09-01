@@ -4,28 +4,29 @@ import { AppContext } from '../context/AppContext';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
 import moment from 'moment';
-import { useHistory } from 'react-router-dom';
 
 const Step4 = ({ handleSelect }) => {
-  const { formData } = useContext(AppContext);
-  const history = useHistory();
+  const { formData, setFormData } = useContext(AppContext);
   const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
 
   const setDueDates = (deadline) => {
-    let end = moment(formData.dueDate);
+    const end = moment(formData.dueDate);
 
-    let totalDays = end.diff(moment(), 'days');
+    const totalDays = end.diff(moment(), 'days');
 
     const interval = totalDays / milestones.length;
-    let sum = interval;
-    milestones.forEach((milestone, index, milestoneArray) => {
-      milestoneArray[index] = {
-        ...milestoneArray[index],
-        dueDate: moment().add(sum, 'days').format()
-      };
+    let sum = 0;
+    const milestonesUpdates = milestones.map(
+      (milestone, index, milestoneArray) => {
+        sum = sum + interval;
+        return {
+          ...milestoneArray[index],
+          dueDate: moment().add(sum, 'days').format()
+        };
+      }
+    );
 
-      sum = sum + interval;
-    });
+    setMilestones(milestonesUpdates);
   };
 
   useEffect(() => {
@@ -34,10 +35,13 @@ const Step4 = ({ handleSelect }) => {
 
   const handleChange = (event) => {
     event.preventDefault();
-    milestones[event.target.name] = {
-      ...milestones[event.target.name],
-      description: event.target.value
-    };
+    setMilestones(
+      milestones.map((milestone, index) => {
+        return Number(event.target.name) === index
+          ? { ...milestone, description: event.target.value }
+          : milestone;
+      })
+    );
   };
   const handleSave = (event) => {
     event.preventDefault();
@@ -45,6 +49,7 @@ const Step4 = ({ handleSelect }) => {
   };
   const handleBonusChange = (event) => {
     event.preventDefault();
+    setFormData({ ...formData, bonus: { description: event.target.value } });
   };
   return (
     <Container>
@@ -65,9 +70,9 @@ const Step4 = ({ handleSelect }) => {
           </div>
           <div>
             <Form onSubmit={handleSave}>
-              {milestones.map((_, index) => {
+              {milestones?.map((_, index) => {
                 return (
-                  <Form.Group>
+                  <Form.Group key={index}>
                     <Form.Control
                       className="milestone"
                       type="text"
@@ -88,13 +93,9 @@ const Step4 = ({ handleSelect }) => {
                   name="bonus"
                 />
               </Form.Group>
-              <button
-                onClick={() => history.push('/dashboard')}
-                className="btn-part4"
-                type="submit"
-              >
+              <Button className="btn-part4" type="submit">
                 <p>Submit</p>
-              </button>
+              </Button>
             </Form>
           </div>
         </div>

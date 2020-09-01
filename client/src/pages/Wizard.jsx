@@ -26,7 +26,7 @@ const schema = {
   }
 };
 
-const Wizard = () => {
+const Wizard = ({ history }) => {
   const [activeFormId, setActiveFormId] = useState('category');
   const { formData, setFormData } = useContext(AppContext);
   const handleSelect = (choice) => {
@@ -38,13 +38,11 @@ const Wizard = () => {
     if (formSchema.next) {
       setActiveFormId(formSchema.next);
     } else {
-      console.log(updatedFormData);
       axios
         .post('/api/goals', updatedFormData, { withCredentials: true })
-        .then((response) => {
-          console.log(response.data);
-        })
+        .then((response) => {})
         .catch((error) => console.log(error));
+      history.push('/dashboard');
     }
   };
 

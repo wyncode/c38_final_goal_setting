@@ -8,7 +8,14 @@ const router = require('express').Router(),
 // Create a goal
 // ***********************************************//
 router.post('/api/goals', async (req, res) => {
-  const { description, dueDate, completed, milestones, category } = req.body;
+  const {
+    description,
+    dueDate,
+    completed,
+    milestones,
+    category,
+    bonus
+  } = req.body;
   try {
     const goal = new Goal({
       description,
@@ -16,6 +23,7 @@ router.post('/api/goals', async (req, res) => {
       completed,
       milestones,
       category,
+      bonus,
       owner: req.user._id
     });
     await goal.save();
@@ -52,7 +60,7 @@ router.get('/api/goals', async (req, res) => {
   try {
     const match = {},
       sort = {};
-    console.log(req.query);
+
     if (req.query.completed) {
       match.completed = req.query.completed === 'true';
     }
@@ -133,7 +141,6 @@ router.patch('/api/goals/:id', async (req, res) => {
 // ***********************************************//
 router.delete('/api/goal/:gid/milestone/:mid', async (req, res) => {
   try {
-    console.log(req.params);
     const goal = await Goal.findOne({
       _id: req.params.gid,
       owner: req.user._id
