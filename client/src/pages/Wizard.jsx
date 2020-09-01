@@ -38,7 +38,7 @@ const Wizard = () => {
     if (formSchema.next) {
       setActiveFormId(formSchema.next);
     } else {
-      console.log(updatedFormData);
+      
       axios
         .post('/api/goals', updatedFormData, { withCredentials: true })
         .then((response) => {
