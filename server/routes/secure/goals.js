@@ -1,8 +1,7 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
   Goal = require('../../db/models/goal'),
-  cloudinary = require('cloudinary').v2,
-  async = require('async');
+  cloudinary = require('cloudinary').v2;
 
 // ***********************************************//
 // Create a goal

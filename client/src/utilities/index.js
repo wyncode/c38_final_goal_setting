@@ -1,9 +1,8 @@
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
+const moment = extendMoment(Moment);
 
 const getCurrentMilestoneObj = (milestoneArr) => {
-  const moment = extendMoment(Moment);
-
   const today = moment()._d;
   let rangeStart = 0;
   let rangeEnd = 1;
@@ -30,4 +29,11 @@ const getCurrentMilestoneObj = (milestoneArr) => {
   };
 };
 
-export { getCurrentMilestoneObj };
+const shouldTaskUpdate = (taskDate) => {
+  if (moment(taskDate).isSame(Date.now(), 'day')) {
+    return false;
+  }
+  return true;
+};
+
+export { getCurrentMilestoneObj, shouldTaskUpdate };

@@ -79,19 +79,6 @@ const goalSchema = new mongoose.Schema(
   }
 );
 
-// goalSchema.virtual('suggestions').get(function () {
-//   if (this.category === 'fitness') {
-//     return fitnessArray;
-//   }
-// });
-// goalSchema.methods.generateSuggestions = async function () {
-//   const goal = this;
-//   if (goal.category === 'fitness') {
-//     goal.suggestions = fitnessArray.fitnessArray;
-//   }
-//   return goal;
-// };
-
 goalSchema.methods.toJSON = function () {
   const goal = this;
   const goalObject = goal.toObject();

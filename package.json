@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "14.x.x"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@sendgrid/mail": "^7.2.4",
-    "async": "^3.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.2",
     "cloudinary": "^1.22.0",
