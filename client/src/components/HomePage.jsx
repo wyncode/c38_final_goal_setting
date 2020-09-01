@@ -3,7 +3,6 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
 import { VscBook } from 'react-icons/vsc';
 import { VscVerified } from 'react-icons/vsc';
 import { VscChecklist } from 'react-icons/vsc';
