@@ -4,10 +4,11 @@ import { AppContext } from '../context/AppContext';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
 import moment from 'moment';
+import { useHistory } from 'react-router-dom';
 
 const Step4 = ({ handleSelect }) => {
   const { formData } = useContext(AppContext);
-
+  const history = useHistory();
   const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
 
   const setDueDates = (deadline) => {
@@ -42,6 +43,9 @@ const Step4 = ({ handleSelect }) => {
     event.preventDefault();
     handleSelect(milestones);
   };
+  const handleBonusChange = (event) => {
+    event.preventDefault();
+  };
   return (
     <Container>
       <div>
@@ -75,7 +79,20 @@ const Step4 = ({ handleSelect }) => {
                   </Form.Group>
                 );
               })}
-              <button className="btn-part4" type="submit">
+              <Form.Group>
+                <Form.Control
+                  placeholder="Daily Bonus Challenge"
+                  className="Bonus"
+                  type="text"
+                  onChange={handleBonusChange}
+                  name="bonus"
+                />
+              </Form.Group>
+              <button
+                onClick={() => history.push('/dashboard')}
+                className="btn-part4"
+                type="submit"
+              >
                 <p>Submit</p>
               </button>
             </Form>
