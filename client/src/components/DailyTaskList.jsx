@@ -35,7 +35,7 @@ const DailyTaskList = () => {
         bonus: { lastUpdated: moment().format(), done: false }
       };
     }
-    updateDailyTask(currentGoal._id, data);
+    updateDailyTask(currentGoal?._id, data);
   }, [currentGoal, updateDailyTask]);
 
   const shouldTaskUpdate = (taskDate) => {
@@ -87,7 +87,9 @@ const DailyTaskList = () => {
           <Card.Body className="p-1 m-1">
             <Row>
               <Col style={{ textAlign: 'left' }}>
-                <Form.Label>Bonus</Form.Label>
+                <Form.Label>
+                  {currentGoal?.bonus?.description || 'Add a daily challenge'}
+                </Form.Label>
               </Col>
               <Col>
                 <Form.Check
