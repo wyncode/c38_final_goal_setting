@@ -39,7 +39,7 @@ const allDescription = {
     'Self Care',
     'Sleep a Little More'
   ]
-  // fill in the rest of the goals here
+ 
 };
 
 const Step3 = ({ handleSelect, formData }) => {
