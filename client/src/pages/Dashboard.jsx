@@ -12,19 +12,20 @@ const Dashboard = () => {
     currentUser,
     goals,
     setReloadTasks,
-    reloadTasks
+    reloadTasks,
+    updateDailyTask
   } = useContext(AppContext);
 
   useEffect(() => {
-    setReloadTasks(false);
-    axios
-      .get('/api/goals?sortBy=dueDate:asc', { withCredentials: true })
-      .then((response) => {
-        setGoals(response.data);
-        setReloadTasks(false);
-      })
-      .catch((error) => console.log(error));
-  }, [setGoals, goals, reloadTasks]);
+    reloadTasks &&
+      axios
+        .get('/api/goals?sortBy=dueDate:asc', { withCredentials: true })
+        .then((response) => {
+          setGoals(response.data);
+          setReloadTasks(false);
+        })
+        .catch((error) => console.log(error));
+  }, [reloadTasks, setReloadTasks, setGoals]);
 
   if (!currentUser) return null;
 
@@ -40,7 +41,13 @@ const Dashboard = () => {
       <h2>Daily Tasks</h2>
       <div className="d-flex flex-wrap">
         {goals?.map((goal) => {
-          return <DailyTaskButton key={goal._id} goal={goal} />;
+          return (
+            <DailyTaskButton
+              key={goal._id}
+              goal={goal}
+              updateDailyTask={updateDailyTask}
+            />
+          );
         })}
       </div>
       <br />

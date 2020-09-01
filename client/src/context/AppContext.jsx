@@ -14,7 +14,19 @@ const AppContextProvider = ({ children }) => {
   const [currentGoal, setCurrentGoal] = useState(null);
   const user = sessionStorage.getItem('user');
   const [formData, setFormData] = useState({});
-  const [reloadTasks, setReloadTasks] = useState(null);
+  const [reloadTasks, setReloadTasks] = useState(true);
+
+  const updateDailyTask = (goalId, taskUpdate) => {
+    axios
+      .patch(`/api/goals/${goalId}`, taskUpdate, {
+        withCredentials: true
+      })
+      .then((resp) => {
+        //console.log(reloadTask, 'reload before set');
+        setReloadTasks(true);
+      })
+      .catch((error) => console.log(error.toString()));
+  };
 
   useEffect(() => {
     //incase the user refreshes & context is cleared
@@ -48,7 +60,8 @@ const AppContextProvider = ({ children }) => {
         currentGoal,
         setCurrentGoal,
         reloadTasks,
-        setReloadTasks
+        setReloadTasks,
+        updateDailyTask
       }}
     >
       {children}

@@ -1,32 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Form, Row, Col, Card } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
-import axios from 'axios';
 import moment from 'moment';
 
 const DailyTaskList = () => {
-  const {
-    currentMilestone,
-    currentGoal,
-    setReloadTasks,
-    reloadTasks
-  } = useContext(AppContext);
-  const [updates, setUpdates] = useState(null);
+  const { currentMilestone, currentGoal, updateDailyTask } = useContext(
+    AppContext
+  );
 
-  //updates checkboxes on DB
-  useEffect(() => {
-    setReloadTasks(true);
-    currentGoal &&
-      axios
-        .patch(`/api/goals/${currentGoal._id}`, updates, {
-          withCredentials: true
-        })
-        .then((resp) => {
-          console.log(resp);
-          setReloadTasks(false);
-        })
-        .catch((error) => console.log(error.toString()));
-  }, [updates, setUpdates, currentGoal]);
+  const handleChange = (task) => {
+    updateDailyTask(currentGoal._id, {
+      [task]: { lastUpdated: Date.now(), done: !currentGoal[task].done }
+    });
+  };
 
   //Check if they were comleted today and see if they need to be reset
   useEffect(() => {
@@ -49,20 +35,14 @@ const DailyTaskList = () => {
         bonus: { lastUpdated: moment().format(), done: false }
       };
     }
-    setUpdates(data);
-  }, [currentGoal]);
+    updateDailyTask(currentGoal._id, data);
+  }, [currentGoal, updateDailyTask]);
 
   const shouldTaskUpdate = (taskDate) => {
     if (moment(taskDate).isSame(Date.now(), 'day')) {
       return false;
     }
     return true;
-  };
-
-  const handleChange = (task) => {
-    setUpdates({
-      [task]: { lastUpdated: Date.now(), done: !currentGoal[task].done }
-    });
   };
 
   return (
