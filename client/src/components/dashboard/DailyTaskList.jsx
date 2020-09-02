@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Form, Row, Col, Card } from 'react-bootstrap';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from './../../context/AppContext';
 import moment from 'moment';
 
 const DailyTaskList = () => {

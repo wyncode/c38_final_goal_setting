@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
-import { AppContext } from '../context/AppContext';
-import { getCurrentMilestoneObj } from '../utilities/index';
+import { AppContext } from './../../context/AppContext';
+import { getCurrentMilestoneObj } from './../../utilities/index';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -9,8 +9,6 @@ const GoalTile = ({ goal }) => {
   const { setCurrentMilestone, setCurrentGoal } = useContext(AppContext);
   const history = useHistory();
   const [theme, setTheme] = useState(null);
-
-  //console.log(goal?.dailyTask?.done, goal?.description, 'goalTile dashboard');
 
   const goToMilestone = (milestonesArr, parentGoal) => {
     setCurrentMilestone(getCurrentMilestoneObj(milestonesArr));

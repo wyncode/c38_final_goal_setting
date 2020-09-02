@@ -2,9 +2,9 @@ import React, { useEffect, useContext } from 'react';
 import { Image, Container } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
-import GoalTile from '../components/GoalTile';
+import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
-import DailyTaskButton from '../components/DailyTaskButton';
+import DailyTaskButton from '../components/dashboard/DailyTaskButton';
 
 const Dashboard = () => {
   const {
@@ -33,9 +33,8 @@ const Dashboard = () => {
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <Image
         style={{ width: '150px' }}
-        src={currentUser?.avatar}
+        src={currentUser?.avatar || '../resources/images/default_avatar.png'}
         roundedCircle
-        clasname="centered"
       />
       <h2>{currentUser?.name}</h2>
       <h2>Daily Tasks</h2>
@@ -50,7 +49,6 @@ const Dashboard = () => {
           );
         })}
       </div>
-      <br />
       <div className="d-flex justify-content-between align-items-center w-100">
         <h2>Current Goals</h2>
         <Link to="/wizard">Add New Goal</Link>

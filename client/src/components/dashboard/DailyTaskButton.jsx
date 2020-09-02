@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getCurrentMilestoneObj } from '../utilities/index';
-import { AppContext } from '../context/AppContext';
-import { shouldTaskUpdate } from '../utilities/index';
+import { getCurrentMilestoneObj } from './../../utilities/index';
+import { AppContext } from './../../context/AppContext';
+import { shouldTaskUpdate } from './../../utilities/index';
 
 const DailyTaskButton = ({ goal }) => {
   const [dailyTaskDesc, setDailyTaskDesc] = useState();

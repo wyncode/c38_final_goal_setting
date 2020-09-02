@@ -12,7 +12,6 @@ const Home = () => {
       <HomePage />
       <GoalsHome />
       <HomeSlides />
-
       <Footer />
     </div>
   );
