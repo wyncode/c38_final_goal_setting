@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col, Card } from 'react-bootstrap';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from './../../context/AppContext';
 
 const ReflectionTile = ({ reflection }) => {
   const history = useHistory();

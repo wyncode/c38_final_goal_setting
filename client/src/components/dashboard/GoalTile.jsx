@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
-import { AppContext } from '../context/AppContext';
-import { getCurrentMilestoneObj } from '../utilities/index';
+import { AppContext } from './../../context/AppContext';
+import { getCurrentMilestoneObj } from './../../utilities/index';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import { Container, ProgressBar, Button } from 'react-bootstrap';
-import DailyTaskList from '../components/DailyTaskList';
-import ReflectionTile from '../components/ReflectionTile';
+import DailyTaskList from '../components/dashboard/DailyTaskList';
+import ReflectionTile from '../components/dashboard/ReflectionTile';
 
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
