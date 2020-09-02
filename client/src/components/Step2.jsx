@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-
+import { Container } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
+import Nav from './Nav';
 const dueDate = ['3 Months', '6 Months', '1 Year', '2 Years'];
 
 const getMonths = (time) => {
@@ -25,14 +27,53 @@ const Step2 = ({ handleSelect }) => {
   };
 
   return (
-    <div>
-      <h2>Step 2: Goal length</h2>
-      {dueDate.map((dueDate, index) => (
-        <button key={index} onClick={() => handleClick(dueDate)}>
-          {dueDate}
-        </button>
-      ))}
-    </div>
+    <Container>
+      <div>
+        <Nav />
+      </div>
+      <h5 className="steps">Step 2: Goal length</h5>
+      <div className="wizard">
+        <div className="ilustrations-wizard">
+          <div>
+            <Image
+              className="ilustration-step2-1"
+              src={require('../components/images/3months.png')}
+            />
+          </div>
+          <div>
+            <Image
+              className="ilustration-step2-1"
+              src={require('../components/images/6months.png')}
+            />
+          </div>
+          <div>
+            <Image
+              className="ilustration-step2"
+              src={require('../components/images/1year.png')}
+            />
+          </div>
+          <div>
+            <Image
+              className="ilustration-step2"
+              src={require('../components/images/2years.png')}
+            />
+          </div>
+        </div>
+        <div className="btn-flex">
+          <div>
+            {dueDate.map((dueDate, index) => (
+              <button
+                className="wizard-btn2"
+                key={index}
+                onClick={() => handleClick(dueDate)}
+              >
+                <p>{dueDate}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Container>
   );
 };
 

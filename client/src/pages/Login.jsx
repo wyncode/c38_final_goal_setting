@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useContext } from 'react';
 import swal from 'sweetalert';
+import Image from 'react-bootstrap/Image';
 
 const Login = ({ history }) => {
   const [formData, setFormData] = useState(null);
@@ -68,8 +69,14 @@ const Login = ({ history }) => {
         <div>
           <Form.Check type="checkbox" label="Remember Me" />
         </div>
-        <div>
-          <Button className="login-btn" variant="secondary" type="submit">
+        <div className="ilustration">
+          <Image
+            className="info-pic"
+            src={require('../components/images/login.png')}
+          />
+        </div>
+        <div className="info-btn-flex">
+          <Button className="info-btn" variant="secondary" type="submit">
             Login
           </Button>
         </div>
