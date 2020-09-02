@@ -2,14 +2,30 @@ import React, { useState, useEffect, useContext } from 'react';
 import { getCurrentMilestoneObj } from './../../utilities/index';
 import { AppContext } from './../../context/AppContext';
 import { shouldTaskUpdate } from './../../utilities/index';
-
+import moment from 'moment';
 const DailyTaskButton = ({ goal }) => {
   const [dailyTaskDesc, setDailyTaskDesc] = useState();
   const { updateDailyTask } = useContext(AppContext);
   const [doneClass, setDoneClass] = useState();
-
-  if (shouldTaskUpdate(goal.dailyTask.lastUpdated))
-    updateDailyTask(goal._id, { done: false, lastUpdated: Date.now() });
+  let data = null;
+  if (shouldTaskUpdate(goal?.dailyTask.lastUpdated)) {
+    data = {
+      dailyTask: { lastUpdated: moment().format(), done: false }
+    };
+  }
+  if (shouldTaskUpdate(goal?.reflected.lastUpdated)) {
+    data = {
+      ...data,
+      reflected: { lastUpdated: moment().format(), done: false }
+    };
+  }
+  if (shouldTaskUpdate(goal?.bonus.lastUpdated)) {
+    data = {
+      ...data,
+      bonus: { lastUpdated: moment().format(), done: false }
+    };
+  }
+  if (data) updateDailyTask(goal?._id, data);
 
   useEffect(() => {
     let mileObj = getCurrentMilestoneObj(goal.milestones);
