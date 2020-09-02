@@ -52,7 +52,8 @@ const goalSchema = new mongoose.Schema(
     },
     bonus: {
       done: { type: Boolean, default: false },
-      lastUpdated: { type: Date }
+      lastUpdated: { type: Date },
+      description: { type: String }
     },
     reflected: {
       done: { type: Boolean, default: false },

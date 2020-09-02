@@ -1,30 +1,55 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Form, Container, Button } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
-const Step4 = ({ handleSelect, formData }) => {
-  //     const relevantMilestones = allMilestones[formData.goals.toLowerCase()];
-  const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
-  const [milestoneData, setMilestoneData] = useState(null);
-  //   const { setLoading } = useContext(AppContext);
+import moment from 'moment';
 
-  //   const handleMilestoneSubmission = async (e) => {
-  //     e.preventDefault();
-  //     setMilestoneData((milestoneData = e.target));
-  //     console.log('handleMilestoneSubmission');
-  //   };
+const Step4 = ({ handleSelect }) => {
+  const { formData, setFormData } = useContext(AppContext);
+  const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
+
+  const setDueDates = (deadline) => {
+    const end = moment(formData.dueDate);
+
+    const totalDays = end.diff(moment(), 'days');
+
+    const interval = totalDays / milestones.length;
+    let sum = 0;
+    const milestonesUpdates = milestones.map(
+      (milestone, index, milestoneArray) => {
+        sum = sum + interval;
+        return {
+          ...milestoneArray[index],
+          dueDate: moment().add(sum, 'days').format()
+        };
+      }
+    );
+
+    setMilestones(milestonesUpdates);
+  };
+
+  useEffect(() => {
+    formData && setDueDates(formData.duedate);
+  }, [formData]);
+
   const handleChange = (event) => {
     event.preventDefault();
-    milestones[event.target.name] = { description: event.target.value };
-    console.log(event.target.key);
-    console.log(event.target.value);
-    console.log(milestones);
-    //setMilestoneData({ ...milestone, [event.target.name]: event.target.value });
+    setMilestones(
+      milestones.map((milestone, index) => {
+        return Number(event.target.name) === index
+          ? { ...milestone, description: event.target.value }
+          : milestone;
+      })
+    );
   };
   const handleSave = (event) => {
     event.preventDefault();
     handleSelect(milestones);
+  };
+  const handleBonusChange = (event) => {
+    event.preventDefault();
+    setFormData({ ...formData, bonus: { description: event.target.value } });
   };
   return (
     <Container>
@@ -45,9 +70,9 @@ const Step4 = ({ handleSelect, formData }) => {
           </div>
           <div>
             <Form onSubmit={handleSave}>
-              {milestones.map((_, index) => {
+              {milestones?.map((_, index) => {
                 return (
-                  <Form.Group>
+                  <Form.Group key={index}>
                     <Form.Control
                       className="milestone"
                       type="text"
@@ -59,9 +84,18 @@ const Step4 = ({ handleSelect, formData }) => {
                   </Form.Group>
                 );
               })}
-              <button className="btn-part4" type="submit">
+              <Form.Group>
+                <Form.Control
+                  placeholder="Daily Bonus Challenge"
+                  className="Bonus"
+                  type="text"
+                  onChange={handleBonusChange}
+                  name="bonus"
+                />
+              </Form.Group>
+              <Button className="btn-part4" type="submit">
                 <p>Submit</p>
-              </button>
+              </Button>
             </Form>
           </div>
         </div>
