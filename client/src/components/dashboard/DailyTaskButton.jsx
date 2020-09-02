@@ -3,9 +3,10 @@ import { getCurrentMilestoneObj } from './../../utilities/index';
 import { AppContext } from './../../context/AppContext';
 import { shouldTaskUpdate } from './../../utilities/index';
 import moment from 'moment';
+import { Button } from 'react-bootstrap';
 const DailyTaskButton = ({ goal }) => {
   const [dailyTaskDesc, setDailyTaskDesc] = useState();
-  const { updateDailyTask } = useContext(AppContext);
+  const { updateDailyTask, reloadTasks } = useContext(AppContext);
   const [doneClass, setDoneClass] = useState();
   let data = null;
   if (shouldTaskUpdate(goal?.dailyTask.lastUpdated)) {
@@ -41,16 +42,17 @@ const DailyTaskButton = ({ goal }) => {
   };
 
   return (
-    <div
-      className={
+    <Button
+      bsPrefix={
         doneClass
           ? 'taskButton d-flex align-items-center justify-content-center'
           : 'doneTaskButton'
       }
-      onClick={handleClick}
+      disabled={reloadTasks}
+      onClick={!reloadTasks ? handleClick : null}
     >
       <span>{doneClass && dailyTaskDesc}</span>
-    </div>
+    </Button>
   );
 };
 

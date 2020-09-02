@@ -15,7 +15,6 @@ const GoalTile = ({ goal }) => {
     setCurrentGoal(parentGoal);
     history.push('/milestone');
   };
-
   const getGoalTileTheme = (category) => {
     switch (category) {
       case 'Fitness':
@@ -47,7 +46,7 @@ const GoalTile = ({ goal }) => {
       <Card.Body className="p-1 m-1">
         <Row>
           <Col>{theme?.icon}</Col>
-          <Col>{goal.category} Goal</Col>
+          <Col>{goal?.description}</Col>
           <Col
             className="d-flex justify-content-end"
             style={{ textAlign: 'right' }}
