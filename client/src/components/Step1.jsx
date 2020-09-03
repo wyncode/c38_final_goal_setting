@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
 
-const goals = ['Fitness', 'Education', 'Career', 'Social', 'Finance', 'Health'];
+const goals = ['Fitness', 'Education', 'Professional', 'Social', 'Finance', 'Health'];
 
 const Step1 = ({ handleSelect }) => {
   return (

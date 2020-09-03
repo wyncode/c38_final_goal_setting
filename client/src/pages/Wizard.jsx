@@ -40,7 +40,7 @@ const Wizard = ({ history }) => {
     } else {
       axios
         .post('/api/goals', updatedFormData, { withCredentials: true })
-        .then((response) => {})
+        .then()
         .catch((error) => console.log(error));
       history.push('/dashboard');
     }
