@@ -5,6 +5,7 @@ import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
 import DailyTaskButton from '../components/dashboard/DailyTaskButton';
+import Img from 'react-cool-img';
 
 const Dashboard = () => {
   const {
@@ -32,8 +33,8 @@ const Dashboard = () => {
 
   return (
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <Image
-        style={{ width: '150px' }}
+      <Img
+        style={{ width: '150px', borderRadius: '50%' }}
         src={currentUser?.avatar || '../resources/images/default_avatar.png'}
         roundedCircle
       />
