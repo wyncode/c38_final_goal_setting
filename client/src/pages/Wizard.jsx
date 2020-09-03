@@ -4,19 +4,20 @@ import Step2 from '../components/Step2';
 import Step3 from '../components/Step3';
 import Step4 from '../components/Step4';
 import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 
 const schema = {
-  goals: {
+  category: {
     Component: Step1,
     next: 'dueDate'
   },
   dueDate: {
     Component: Step2,
-    next: 'categories'
+    next: 'description'
   },
-  categories: {
+  description: {
     Component: Step3,
-    // pretending this is the submit
+
     next: 'milestones'
   },
   milestones: {
@@ -25,8 +26,8 @@ const schema = {
   }
 };
 
-const Wizard = () => {
-  const [activeFormId, setActiveFormId] = useState('goals');
+const Wizard = ({ history }) => {
+  const [activeFormId, setActiveFormId] = useState('category');
   const { formData, setFormData } = useContext(AppContext);
   const handleSelect = (choice) => {
     const updatedFormData = { ...formData, [activeFormId]: choice };
@@ -37,7 +38,11 @@ const Wizard = () => {
     if (formSchema.next) {
       setActiveFormId(formSchema.next);
     } else {
-      console.log('pretend i am submitng this data here', updatedFormData);
+      axios
+        .post('/api/goals', updatedFormData, { withCredentials: true })
+        .then((response) => {})
+        .catch((error) => console.log(error));
+      history.push('/dashboard');
     }
   };
 

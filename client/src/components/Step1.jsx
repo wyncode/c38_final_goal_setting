@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from 'react-bootstrap/esm/Container';
-
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
 

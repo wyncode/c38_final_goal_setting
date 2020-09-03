@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
-const allCategories = {
+const allDescription = {
   fitness: [
     'Run a 10K',
     'Lift Your Bodyweight',
@@ -43,7 +43,7 @@ const allCategories = {
 };
 
 const Step3 = ({ handleSelect, formData }) => {
-  const relevantCategories = allCategories[formData.goals.toLowerCase()];
+  const relevantDescription = allDescription[formData.category.toLowerCase()];
 
   return (
     <Container>
@@ -65,13 +65,13 @@ const Step3 = ({ handleSelect, formData }) => {
 
           <div className="btn-flex-step3">
             <div>
-              {relevantCategories.map((Categories, index) => (
+              {relevantDescription.map((description, index) => (
                 <button
                   className="wizard-btn3"
                   key={index}
-                  onClick={() => handleSelect(Categories)}
+                  onClick={() => handleSelect(description)}
                 >
-                  {Categories}
+                  {description}
                 </button>
               ))}
             </div>

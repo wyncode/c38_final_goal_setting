@@ -2,10 +2,10 @@ import React, { useEffect, useContext } from 'react';
 import { Image, Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
-import GoalTile from '../components/GoalTile';
+import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
-import DailyTaskButton from '../components/DailyTaskButton';
 import Nav1 from '../components/Nav1';
+import DailyTaskButton from '../components/dashboard/DailyTaskButton';
 
 const Dashboard = () => {
   const {
@@ -42,15 +42,11 @@ const Dashboard = () => {
           </div>
 
           <div>
-            {/* <Image
-          style={{ width: '150px' }}
-          src={currentUser?.avatar}
-          roundedCircle
-          classname="centered"
-        /> */}
             <Image
               className="dash-pic"
-              src={require('../components/images/1.png')}
+              src={
+                currentUser?.avatar || '../resources/images/default_avatar.png'
+              }
             />
           </div>
         </Jumbotron>
@@ -71,7 +67,6 @@ const Dashboard = () => {
           );
         })}
       </div>
-
       <br />
       <div className="current-goals">
         <div>

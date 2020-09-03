@@ -5,16 +5,16 @@ const AppContext = createContext();
 const AppContextProvider = ({ children }) => {
   // global state that can be used in any component in our application
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [goals, setGoals] = useState([]);
   const [filteredGoals, setFilteredGoals] = useState([]);
   const [search, setSearch] = useState('');
   const [currentFilter, setCurrentFilter] = useState(null);
   const [currentMilestone, setCurrentMilestone] = useState(null);
   const [currentGoal, setCurrentGoal] = useState(null);
-  const user = sessionStorage.getItem('user');
   const [formData, setFormData] = useState({});
   const [reloadTasks, setReloadTasks] = useState(true);
+  const [currentReflection, setCurrentReflection] = useState(null);
+  const user = sessionStorage.getItem('user');
 
   const updateDailyTask = (goalId, taskUpdate) => {
     axios
@@ -45,8 +45,6 @@ const AppContextProvider = ({ children }) => {
         setFormData,
         currentUser,
         setCurrentUser,
-        loading,
-        setLoading,
         goals,
         setGoals,
         filteredGoals,
@@ -61,7 +59,9 @@ const AppContextProvider = ({ children }) => {
         setCurrentGoal,
         reloadTasks,
         setReloadTasks,
-        updateDailyTask
+        updateDailyTask,
+        currentReflection,
+        setCurrentReflection
       }}
     >
       {children}
