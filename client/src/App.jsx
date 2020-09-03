@@ -24,7 +24,6 @@ const App = () => {
     <AppContextProvider>
       <Router>
         <Switch>
-          <Route exact path="/wizard" component={Wizard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/" component={Home} />
@@ -36,6 +35,7 @@ const App = () => {
           <Route exact path="/professionalinfo" component={ProfessionalInfo} />
           <Route exact path="/socialinfo" component={SocialInfo} />
           <Route exact path="/goalshome" component={GoalsHome} />
+          <PrivateRoute exact path="/wizard" component={Wizard} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/milestone" component={Milestone} />
           <PrivateRoute exact path="/reflection" component={Reflection} />

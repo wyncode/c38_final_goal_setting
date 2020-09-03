@@ -4,6 +4,7 @@ import { AppContext } from './../../context/AppContext';
 import { shouldTaskUpdate } from './../../utilities/index';
 import moment from 'moment';
 import { Button } from 'react-bootstrap';
+
 const DailyTaskButton = ({ goal }) => {
   const [dailyTaskDesc, setDailyTaskDesc] = useState();
   const { updateDailyTask, reloadTasks } = useContext(AppContext);
