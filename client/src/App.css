@@ -4,7 +4,25 @@
 .fullscreen {
   height: 100vh;
 }
+a:link {
+  text-decoration: none;
+  color: none;
+}
 
+a:visited {
+  text-decoration: none;
+  color: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: none;
+}
+
+a:active {
+  text-decoration: none;
+  color: none;
+}
 h3 {
   font-style: normal;
   font-weight: bolder;
@@ -428,6 +446,7 @@ h1 {
 .reflectionTile {
   cursor: pointer;
 }
+
 /*wizard step-1*/
 .wizard {
   display: flex;
@@ -446,7 +465,6 @@ h1 {
 }
 .ilustration-wizard {
   display: inline;
-  width: 250px;
 }
 .wizard-btn1 {
   width: 150px;
@@ -509,7 +527,6 @@ h1 {
 }
 
 .wizard-btn3 {
-
   width: 300px;
   height: 40px;
   background: white;
@@ -557,4 +574,107 @@ h1 {
   line-height: 21px;
   text-align: center;
   color: #ffffff;
+}
+/* Dashboard page*/
+.username h3 {
+  text-align: left;
+  font-size: 40px;
+  line-height: 2px;
+  margin-bottom: 0px;
+}
+.dashboard h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 37px;
+  color: #484848;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.dashboard-user {
+  height: 130px;
+  background: linear-gradient(
+    90deg,
+    #beeee2 33.3%,
+    rgba(133, 70, 212, 0.85) 105.78%
+  );
+}
+.dash-pic {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  margin-left: 5px;
+  margin-top: 30px;
+}
+.daily-tasks {
+  margin-top: 100px;
+  display: flex;
+  justify-content: left;
+}
+.done {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.taskButton {
+  background: #ffffff;
+  border: 1px solid #8546d4;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 5rem;
+  height: 5rem;
+  white-space: normal;
+  text-align: center;
+  overflow: hidden;
+  font-size: 0.75rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.doneTaskButton {
+  background-image: url('./components/images/check.png');
+  background-repeat: no-repeat;
+  background-color: #8546d4;
+  border: 1px solid #945fd7;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  margin: 5px;
+}
+
+.current-goals {
+  display: flex;
+  justify-content: space-between;
+}
+.add-new {
+  margin-top: 40px;
+}
+.current-goal {
+  display: flex;
+  height: 50px;
+  border: 2px solid #979797;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.circle {
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.current-icon-goal {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10%;
 }
