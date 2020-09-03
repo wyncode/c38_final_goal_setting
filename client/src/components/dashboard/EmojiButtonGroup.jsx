@@ -14,7 +14,7 @@ const EmojiButtonGroup = ({ handleChange }) => {
     <ToggleButtonGroup type="checkbox" name="emoji">
       {emojis.map((emoji) => (
         <ToggleButton
-          className={'px-4'}
+          className="px-4"
           style={{ fontSize: '2rem' }}
           key={emoji.id}
           name="emoji"

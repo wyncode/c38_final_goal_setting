@@ -287,7 +287,7 @@ router.patch('/api/goal/:gid/reflection/:rid', async (req, res) => {
     });
 
     const index = goal.reflections.findIndex(
-      (reflection) => reflection._id == req.params.rid
+      (reflection) => reflection._id === req.params.rid
     );
     if (!goal) return res.status(404).json({ error: 'goal not found' });
 

@@ -95,7 +95,7 @@ const Reflection = ({ history }) => {
         </button>
       </div>
       {editMode && <EmojiButtonGroup handleChange={handleChange} />}
-      <Image className="w-75" src={preview ? preview : image} />
+      <Image className="w-75" src={preview || image} />
       {editMode && (
         <Form.File
           name="image"
