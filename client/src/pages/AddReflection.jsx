@@ -6,7 +6,6 @@ import moment from 'moment';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
 
 const AddReflection = ({ history }) => {
-  //const [reflectionData, setReflectionData] = useState();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [dayNum, setDayNum] = useState(null);
@@ -24,15 +23,6 @@ const AddReflection = ({ history }) => {
     const today = moment();
     return today.diff(start, 'days') + 1;
   };
-
-  const emojis = [
-    { emoji: '🙂', id: 'smile' },
-    { emoji: '😍', id: 'heart eyes' },
-    { emoji: '😅', id: 'grining sweat' },
-    { emoji: '😐', id: 'nuetral face' },
-    { emoji: '😶', id: 'no mouth' },
-    { emoji: '🙁', id: 'frown' }
-  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();

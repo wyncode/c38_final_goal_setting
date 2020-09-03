@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
-const EmojiButtonGroup = ({ handleChange, emojiVal }) => {
+const EmojiButtonGroup = ({ handleChange }) => {
   const emojis = [
     { emoji: '🙂', id: 'smile' },
     { emoji: '😍', id: 'heart eyes' },
@@ -9,7 +9,6 @@ const EmojiButtonGroup = ({ handleChange, emojiVal }) => {
     { emoji: '😶', id: 'no mouth' },
     { emoji: '🙁', id: 'frown' }
   ];
-  const [value, setValue] = useState('');
 
   return (
     <ToggleButtonGroup type="checkbox" name="emoji">

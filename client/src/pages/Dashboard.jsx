@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Image, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/dashboard/GoalTile';
@@ -25,7 +25,6 @@ const Dashboard = () => {
         .then((response) => {
           setGoals(response.data);
           setReloadTasks(false);
-          console.log(response.data);
         })
         .catch((error) => console.log(error));
   }, [reloadTasks, currentReflection, setReloadTasks, setGoals]);
