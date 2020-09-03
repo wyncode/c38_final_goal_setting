@@ -1,7 +1,8 @@
 const router = require('express').Router(),
   mongoose = require('mongoose'),
   Goal = require('../../db/models/goal'),
-  cloudinary = require('cloudinary').v2;
+  cloudinary = require('cloudinary').v2,
+  moment = require('moment');
 
 // ***********************************************//
 // Create a goal
@@ -67,6 +68,12 @@ router.get('/api/goals', async (req, res) => {
       const parts = req.query.sortBy.split(':');
       sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
     }
+    const today = moment().startOf('day');
+
+    await Goal.updateMany(
+      { dueDate: { $lte: moment(today).toDate() } },
+      { completed: true }
+    );
     await req.user
       .populate({
         path: 'goals',

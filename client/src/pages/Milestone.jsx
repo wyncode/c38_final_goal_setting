@@ -13,6 +13,10 @@ const Milestone = ({ history }) => {
   const progress =
     2 + (currentMilestone?.index * 100) / currentGoal?.milestones.length;
 
+  //     (moment(currentGoal?.createdAt).diff(moment(), 'days') * 100) /
+  //     moment(currentGoal?.createdAt).diff(moment(currentGoal?.dueDate), 'days');
+  // console.log(object)
+
   return (
     <Container className="d-flex flex-column">
       <h1 style={{ textAlign: 'center' }}>{currentGoal?.category} Goal</h1>

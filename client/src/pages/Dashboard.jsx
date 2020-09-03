@@ -23,6 +23,7 @@ const Dashboard = () => {
         .then((response) => {
           setGoals(response.data);
           setReloadTasks(false);
+          console.log(response.data);
         })
         .catch((error) => console.log(error));
   }, [reloadTasks, setReloadTasks, setGoals]);
