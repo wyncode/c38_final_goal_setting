@@ -10,7 +10,7 @@ const AddReflection = ({ history }) => {
   const [preview, setPreview] = useState(null);
   const [dayNum, setDayNum] = useState(null);
   const [reflection, setReflection] = useState(null);
-  const { currentUser, currentGoal } = useContext(AppContext);
+  const { currentUser, currentGoal, setCurrentGoal } = useContext(AppContext);
   if (!currentGoal || !currentUser) history.push('/dashboard');
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const AddReflection = ({ history }) => {
         withCredentials: true
       })
       .then((response) => {
-        console.log(response);
+        setCurrentGoal(response.data);
       })
       .catch((error) => console.log(error));
     history.push('/milestone');

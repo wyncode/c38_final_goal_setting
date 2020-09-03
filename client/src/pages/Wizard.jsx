@@ -5,7 +5,6 @@ import Step3 from '../components/Step3';
 import Step4 from '../components/Step4';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
-
 const schema = {
   category: {
     Component: Step1,
@@ -28,7 +27,7 @@ const schema = {
 
 const Wizard = ({ history }) => {
   const [activeFormId, setActiveFormId] = useState('category');
-  const { formData, setFormData } = useContext(AppContext);
+  const { formData, setFormData, setReloadTasks } = useContext(AppContext);
   const handleSelect = (choice) => {
     const updatedFormData = { ...formData, [activeFormId]: choice };
     setFormData(updatedFormData);
@@ -40,7 +39,9 @@ const Wizard = ({ history }) => {
     } else {
       axios
         .post('/api/goals', updatedFormData, { withCredentials: true })
-        .then()
+        .then(() => {
+          setReloadTasks(true);
+        })
         .catch((error) => console.log(error));
       history.push('/dashboard');
     }
