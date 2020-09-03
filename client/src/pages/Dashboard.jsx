@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react';
-import { Container } from 'react-bootstrap';
+import { Image, Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
+import Nav1 from '../components/Nav1';
 import DailyTaskButton from '../components/dashboard/DailyTaskButton';
 import Img from 'react-cool-img';
 
@@ -32,15 +33,31 @@ const Dashboard = () => {
   if (!currentUser) return null;
 
   return (
-    <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
-      <Img
-        style={{ width: '150px', borderRadius: '50%' }}
-        src={currentUser?.avatar}
-        placeholder={require('../resources/images/default_avatar.png')}
-      />
-      <h2>{currentUser?.name}</h2>
-      <h2>Daily Tasks</h2>
-      <div className="d-flex flex-wrap">
+
+    <Container className="dashboard">
+      <div>
+        <Nav1 />
+      </div>
+      <div>
+        <Jumbotron className="dashboard-user">
+          <div className="username">
+            <h3>{currentUser?.name}</h3>
+          </div>
+          <div>
+            <Img
+              className="dash-pic"
+              src={currentUser?.avatar}
+              placeholder={require('../resources/images/default_avatar.png')}
+            />
+          </div>
+        </Jumbotron>
+      </div>
+      <div className="daily-tasks">
+        <div>
+          <h2>Daily Tasks</h2>
+        </div>
+      </div>
+      <div className="done">
         {goals?.map((goal) => {
           return (
             <DailyTaskButton
@@ -51,17 +68,26 @@ const Dashboard = () => {
           );
         })}
       </div>
-      <div className="d-flex justify-content-between align-items-center w-100">
-        <h2>Current Goals</h2>
-        <Link to="/wizard">Add New Goal</Link>
+      <br />
+      <div className="current-goals">
+        <div>
+          <h2>Current Goals</h2>
+        </div>
+        <div className="add-new">
+          <Link to="/wizard">Add New Goal</Link>
+        </div>
       </div>
-      {goals?.map((goal) => {
-        return !goal?.completed && <GoalTile key={goal._id} goal={goal} />;
-      })}
-      <h2 className="text-left w-100">Completed Goals</h2>
-      {goals?.map((goal) => {
-        return goal?.completed && <GoalTile key={goal._id} goal={goal} />;
-      })}
+      <div className="goals">
+        <div>
+          {goals?.map((goal) => {
+            return !goal?.completed && <GoalTile key={goal._id} goal={goal} />;
+          })}
+          <h2 className="text-left w-100">Completed Goals</h2>
+          {goals?.map((goal) => {
+            return goal?.completed && <GoalTile key={goal._id} goal={goal} />;
+          })}
+        </div>
+      </div>
     </Container>
   );
 };

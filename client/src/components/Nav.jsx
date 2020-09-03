@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { VscArrowLeft } from 'react-icons/vsc';
 import { VscClose } from 'react-icons/vsc';
@@ -8,15 +7,15 @@ import { VscClose } from 'react-icons/vsc';
 const Nav = () => {
   return (
     <Container className="nav-1">
-      <Button className="profile-icon" as={Link} to="/">
+      <Link className="profile-icon" as={Link} to="/">
         <VscArrowLeft size="30px" color="grey" />
-      </Button>
+      </Link>
 
       <h3>StoryLine</h3>
 
-      <Button className="profile-icon" as={Link} to="/">
+      <Link className="profile-icon" as={Link} to="/">
         <VscClose size="30px" color="grey" />
-      </Button>
+      </Link>
     </Container>
   );
 };
