@@ -9,15 +9,14 @@ const Step4 = ({ handleSelect }) => {
   const { formData, setFormData } = useContext(AppContext);
   const [milestones, setMilestones] = useState([{}, {}, {}, {}, {}, {}]);
 
-  const setDueDates = (deadline) => {
+  useEffect(() => {
     const end = moment(formData.dueDate);
-
     const totalDays = end.diff(moment(), 'days');
 
     const interval = totalDays / milestones.length;
     let sum = 0;
     const milestonesUpdates = milestones.map(
-      (milestone, index, milestoneArray) => {
+      (_, index, milestoneArray) => {
         sum = sum + interval;
         return {
           ...milestoneArray[index],
@@ -25,12 +24,7 @@ const Step4 = ({ handleSelect }) => {
         };
       }
     );
-
     setMilestones(milestonesUpdates);
-  };
-
-  useEffect(() => {
-    formData && setDueDates(formData.duedate);
   }, [formData]);
 
   const handleChange = (event) => {

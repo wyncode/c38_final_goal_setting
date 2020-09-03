@@ -6,6 +6,7 @@ import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
 import Nav1 from '../components/Nav1';
 import DailyTaskButton from '../components/dashboard/DailyTaskButton';
+import Img from 'react-cool-img';
 
 const Dashboard = () => {
   const {
@@ -14,7 +15,8 @@ const Dashboard = () => {
     goals,
     setReloadTasks,
     reloadTasks,
-    updateDailyTask
+    updateDailyTask,
+    currentReflection
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -26,11 +28,12 @@ const Dashboard = () => {
           setReloadTasks(false);
         })
         .catch((error) => console.log(error));
-  }, [reloadTasks, setReloadTasks, setGoals]);
+  }, [reloadTasks, currentReflection, setReloadTasks, setGoals]);
 
   if (!currentUser) return null;
 
   return (
+
     <Container className="dashboard">
       <div>
         <Nav1 />
@@ -40,13 +43,11 @@ const Dashboard = () => {
           <div className="username">
             <h3>{currentUser?.name}</h3>
           </div>
-
           <div>
-            <Image
+            <Img
               className="dash-pic"
-              src={
-                currentUser?.avatar || '../resources/images/default_avatar.png'
-              }
+              src={currentUser?.avatar}
+              placeholder={require('../resources/images/default_avatar.png')}
             />
           </div>
         </Jumbotron>

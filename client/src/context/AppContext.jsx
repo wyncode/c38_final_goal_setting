@@ -22,7 +22,6 @@ const AppContextProvider = ({ children }) => {
         withCredentials: true
       })
       .then((resp) => {
-        //console.log(reloadTask, 'reload before set');
         setReloadTasks(true);
       })
       .catch((error) => console.log(error.toString()));
