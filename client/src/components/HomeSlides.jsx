@@ -9,7 +9,7 @@ function HomeSlides({ props }) {
     arrows: false,
     adaptiveHeight: true,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4000,
     duration: 100,
     shift: 200,
     swipe: false

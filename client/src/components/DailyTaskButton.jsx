@@ -25,15 +25,17 @@ const DailyTaskButton = ({ goal }) => {
   };
 
   return (
-    <div
-      className={
-        doneClass
-          ? 'taskButton d-flex align-items-center justify-content-center'
-          : 'doneTaskButton'
-      }
-      onClick={handleClick}
-    >
-      <span>{doneClass && dailyTaskDesc}</span>
+    <div>
+      <div
+        className={
+          doneClass
+            ? 'taskButton d-flex align-items-center justify-content-center'
+            : 'doneTaskButton'
+        }
+        onClick={handleClick}
+      >
+        <span>{doneClass && dailyTaskDesc}</span>
+      </div>
     </div>
   );
 };

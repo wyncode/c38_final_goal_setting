@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Form, Container, Button } from 'react-bootstrap';
+import { Form, Container } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
