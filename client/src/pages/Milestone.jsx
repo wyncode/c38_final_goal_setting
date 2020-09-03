@@ -5,7 +5,7 @@ import DailyTaskList from '../components/dashboard/DailyTaskList';
 import ReflectionTile from '../components/dashboard/ReflectionTile';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import moment from 'moment'
+import moment from 'moment';
 
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
@@ -15,11 +15,13 @@ const Milestone = ({ history }) => {
   const today = moment();
   const start = moment(currentGoal?.createdAt);
   const end = moment(currentGoal?.dueDate);
-  const progress= Math.abs(start.diff(today, 'days') * 100/ start.diff(end, 'days'))
+  const progress = Math.abs(
+    (start.diff(today, 'days') * 100) / start.diff(end, 'days')
+  );
 
   return (
     <Container className="d-flex flex-column">
-      <h1 style={{ textAlign: 'center' }}>{currentGoal?.category} Goal</h1>
+      <h1 style={{ textAlign: 'center' }}>{currentGoal?.description} Goal</h1>
       <div>
         <h2>Current Milestone: {currentMilestone?.index + 1}</h2>
         <h2>Total Milestones: {currentGoal?.milestones.length}</h2>

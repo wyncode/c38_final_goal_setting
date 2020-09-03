@@ -14,7 +14,8 @@ const Dashboard = () => {
     goals,
     setReloadTasks,
     reloadTasks,
-    updateDailyTask
+    updateDailyTask,
+    currentReflection
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Dashboard = () => {
           console.log(response.data);
         })
         .catch((error) => console.log(error));
-  }, [reloadTasks, setReloadTasks, setGoals]);
+  }, [reloadTasks, currentReflection, setReloadTasks, setGoals]);
 
   if (!currentUser) return null;
 
@@ -35,8 +36,8 @@ const Dashboard = () => {
     <Container className="container d-flex flex-column align-items-center justify-content-center fullscreen">
       <Img
         style={{ width: '150px', borderRadius: '50%' }}
-        src={currentUser?.avatar || '../resources/images/default_avatar.png'}
-        roundedCircle
+        src={currentUser?.avatar}
+        placeholder={require('../resources/images/default_avatar.png')}
       />
       <h2>{currentUser?.name}</h2>
       <h2>Daily Tasks</h2>

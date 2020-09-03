@@ -243,4 +243,68 @@ router.post('/api/goal/:gid/reflection/', async (req, res) => {
   }
 });
 
+// ***********************************************//
+// Delete a reflection reflectionid & goalid
+// ***********************************************//
+router.delete('/api/goal/:gid/reflection/:rid', async (req, res) => {
+  try {
+    const goal = await Goal.findOne({
+      _id: req.params.gid,
+      owner: req.user._id
+    });
+    if (!goal) throw new Error('goal not found');
+
+    const index = goal.reflections.findIndex(
+      (reflection) => reflection._id == req.params.rid
+    );
+
+    goal.reflections.splice(index, 1);
+    await goal.save();
+    res.json(goal);
+  } catch (error) {
+    res.status(404).json({ error: error.toString() });
+  }
+});
+
+// ***********************************************//
+// Patch a reflection reflectionid & goalid
+// ***********************************************//
+
+router.patch('/api/goal/:gid/reflection/:rid', async (req, res) => {
+  try {
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['title', 'notes', 'emoji', 'image'];
+    const isValidOperation = updates.every((update) =>
+      allowedUpdates.includes(update)
+    );
+    let body = req.body;
+    if (!isValidOperation)
+      return res.status(400).send({ error: 'Invalid updates!' });
+
+    const goal = await Goal.findOne({
+      _id: req.params.gid,
+      owner: req.user._id
+    });
+
+    const index = goal.reflections.findIndex(
+      (reflection) => reflection._id == req.params.rid
+    );
+    if (!goal) return res.status(404).json({ error: 'goal not found' });
+
+    if (req.files) {
+      const response = await cloudinary.uploader.upload(
+        req.files.image.tempFilePath
+      );
+      body = { ...body, image: response.secure_url };
+    }
+    updates.forEach(
+      (update) => (goal.reflections[index][update] = body[update])
+    );
+    await goal.save();
+    res.json(goal);
+  } catch (e) {
+    res.status(400).json({ error: e.toString() });
+  }
+});
+
 module.exports = router;

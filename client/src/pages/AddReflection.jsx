@@ -77,11 +77,10 @@ const AddReflection = ({ history }) => {
             accept="image/*"
             onChange={handleChange}
           ></Form.File>
-        </Form.Group>{' '}
+        </Form.Group>
         {preview && <Image src={preview} alt="reflection" width={250} />}
         <Form.Group>
           <Form.Label>How do you feel today?</Form.Label>
-          <br />
           <ButtonGroup toggle>
             {emojis.map((emoji) => (
               <ToggleButton
