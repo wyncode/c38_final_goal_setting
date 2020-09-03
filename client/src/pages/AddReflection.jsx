@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {
-  Container,
-  Form,
-  Button,
-  ButtonGroup,
-  ToggleButton,
-  Image
-} from 'react-bootstrap';
+import { Container, Form, Button, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import moment from 'moment';
+import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
 
 const AddReflection = ({ history }) => {
   //const [reflectionData, setReflectionData] = useState();
@@ -81,19 +75,7 @@ const AddReflection = ({ history }) => {
         {preview && <Image src={preview} alt="reflection" width={250} />}
         <Form.Group>
           <Form.Label>How do you feel today?</Form.Label>
-          <ButtonGroup toggle>
-            {emojis.map((emoji) => (
-              <ToggleButton
-                key={emoji.id}
-                type="radio"
-                name="emoji"
-                value={emoji.emoji}
-                onChange={handleChange}
-              >
-                {emoji.emoji}
-              </ToggleButton>
-            ))}
-          </ButtonGroup>
+          <EmojiButtonGroup handleChange={handleChange} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Write down any thoughts</Form.Label>
