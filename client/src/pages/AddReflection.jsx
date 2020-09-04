@@ -1,23 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {
-  Container,
-  Form,
-  Button,
-  ButtonGroup,
-  ToggleButton,
-  Image
-} from 'react-bootstrap';
+import { Container, Form, Button, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import moment from 'moment';
+import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
 
 const AddReflection = ({ history }) => {
-  //const [reflectionData, setReflectionData] = useState();
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [dayNum, setDayNum] = useState(null);
   const [reflection, setReflection] = useState(null);
-  const { currentUser, currentGoal } = useContext(AppContext);
+  const { currentUser, currentGoal, setCurrentGoal } = useContext(AppContext);
   if (!currentGoal || !currentUser) history.push('/dashboard');
 
   useEffect(() => {
@@ -31,15 +24,6 @@ const AddReflection = ({ history }) => {
     return today.diff(start, 'days') + 1;
   };
 
-  const emojis = [
-    { emoji: '🙂', id: 'smile' },
-    { emoji: '😍', id: 'heart eyes' },
-    { emoji: '😅', id: 'grining sweat' },
-    { emoji: '😐', id: 'nuetral face' },
-    { emoji: '😶', id: 'no mouth' },
-    { emoji: '🙁', id: 'frown' }
-  ];
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const reflectionPost = new FormData();
@@ -52,7 +36,7 @@ const AddReflection = ({ history }) => {
         withCredentials: true
       })
       .then((response) => {
-        console.log(response);
+        setCurrentGoal(response.data);
       })
       .catch((error) => console.log(error));
     history.push('/milestone');
@@ -78,10 +62,11 @@ const AddReflection = ({ history }) => {
             accept="image/*"
             onChange={handleChange}
           ></Form.File>
-        </Form.Group>{' '}
+        </Form.Group>
         {preview && <Image src={preview} alt="reflection" width={250} />}
         <Form.Group>
           <Form.Label>How do you feel today?</Form.Label>
+
           <br />
           <ButtonGroup toggle>
             {emojis.map((emoji) => (
@@ -97,6 +82,7 @@ const AddReflection = ({ history }) => {
               </ToggleButton>
             ))}
           </ButtonGroup>
+
         </Form.Group>
         <Form.Group>
           <Form.Label>Write down any thoughts</Form.Label>

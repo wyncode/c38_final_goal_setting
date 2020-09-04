@@ -2,14 +2,32 @@ import React, { useState, useEffect, useContext } from 'react';
 import { getCurrentMilestoneObj } from './../../utilities/index';
 import { AppContext } from './../../context/AppContext';
 import { shouldTaskUpdate } from './../../utilities/index';
+import moment from 'moment';
+import { Button } from 'react-bootstrap';
 
 const DailyTaskButton = ({ goal }) => {
   const [dailyTaskDesc, setDailyTaskDesc] = useState();
-  const { updateDailyTask } = useContext(AppContext);
+  const { updateDailyTask, reloadTasks } = useContext(AppContext);
   const [doneClass, setDoneClass] = useState();
-
-  if (shouldTaskUpdate(goal.dailyTask.lastUpdated))
-    updateDailyTask(goal._id, { done: false, lastUpdated: Date.now() });
+  let data = null;
+  if (shouldTaskUpdate(goal?.dailyTask.lastUpdated)) {
+    data = {
+      dailyTask: { lastUpdated: moment().format(), done: false }
+    };
+  }
+  if (shouldTaskUpdate(goal?.reflected.lastUpdated)) {
+    data = {
+      ...data,
+      reflected: { lastUpdated: moment().format(), done: false }
+    };
+  }
+  if (shouldTaskUpdate(goal?.bonus.lastUpdated)) {
+    data = {
+      ...data,
+      bonus: { lastUpdated: moment().format(), done: false }
+    };
+  }
+  if (data) updateDailyTask(goal?._id, data);
 
   useEffect(() => {
     let mileObj = getCurrentMilestoneObj(goal.milestones);
@@ -25,18 +43,17 @@ const DailyTaskButton = ({ goal }) => {
   };
 
   return (
-    <div>
-      <div
-        className={
-          doneClass
-            ? 'taskButton d-flex align-items-center justify-content-center'
-            : 'doneTaskButton'
-        }
-        onClick={handleClick}
-      >
-        <span>{doneClass && dailyTaskDesc}</span>
-      </div>
-    </div>
+    <Button
+      bsPrefix={
+        doneClass
+          ? 'taskButton d-flex align-items-center justify-content-center'
+          : 'doneTaskButton'
+      }
+      disabled={reloadTasks}
+      onClick={!reloadTasks ? handleClick : null}
+    >
+      <span>{doneClass && dailyTaskDesc}</span>
+    </Button>
   );
 };
 

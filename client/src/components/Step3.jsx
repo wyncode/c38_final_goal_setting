@@ -15,7 +15,7 @@ const allDescription = {
     'Bulid Good Study Habits',
     'Earn a Degree or Certification'
   ],
-  career: [
+  professional: [
     'Get a Promotion',
     'Become an Expert in Your Field',
     'Start Your Own Business',

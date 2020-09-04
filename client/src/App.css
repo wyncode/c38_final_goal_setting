@@ -32,7 +32,11 @@ h3 {
   text-align: center;
   margin-bottom: 20px;
 }
+
+/*************************/
 /* Navigation */
+/*************************/
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -50,7 +54,10 @@ h3 {
   color: white;
 }
 
+/*************************/
 /* HomePage */
+/*************************/
+
 .home {
   background: linear-gradient(
     179.94deg,
@@ -95,7 +102,10 @@ h1 {
   margin: auto;
 }
 
+/*************************/
 /*How it Works*/
+/*************************/
+
 .home-1 {
   background-color: white;
   margin-left: 20px;
@@ -136,7 +146,11 @@ h1 {
 
   color: #455a64;
 }
+
+/*************************/
 /* Statistics*/
+/*************************/
+
 .home-2 {
   background: linear-gradient(
     180deg,
@@ -214,8 +228,10 @@ h1 {
   margin-right: 10px;
   padding: 10px;
 }
-
+/*************************/
 /* Goals HomePage*/
+/*************************/
+
 .goals {
   display: inline;
 }
@@ -247,7 +263,10 @@ h1 {
   color: #8edac8;
 }
 
+/*************************/
 /* HomeSlides*/
+/*************************/
+
 .home-3 {
   background: linear-gradient(
     180deg,
@@ -279,7 +298,9 @@ h1 {
   display: inline;
   text-align: left;
 }
+/*************************/
 /* Footer */
+/*************************/
 .home-4 {
   background: linear-gradient(270deg, #abe0d3 0%, #ad6df2 100%);
 }
@@ -297,7 +318,11 @@ h1 {
   font-size: 15px;
   padding: 10px;
 }
+
+/*************************/
 /*SignUp*/
+/*************************/
+
 .signUp {
   width: 100%;
   display: flexbox;
@@ -320,7 +345,11 @@ h1 {
 .text {
   padding-left: 5px;
 }
+
+/*************************/
 /* Login */
+/*************************/
+
 .login {
   width: 100%;
   display: flexbox;
@@ -339,7 +368,11 @@ h1 {
   color: rgb(52, 102, 155);
   margin: 5px;
 }
+
+/*************************/
 /* Nav and Nav-1*/
+/*************************/
+
 .nav-1 {
   display: flex;
   justify-content: space-between;
@@ -349,7 +382,11 @@ h1 {
   padding-right: 30px;
   border-bottom: 1px solid lightgray;
 }
+
+/*************************/
 /* Goals Info*/
+/*************************/
+
 .goals-info {
   background: white;
   display: inline-flexbox;
@@ -409,7 +446,9 @@ h1 {
   margin: auto;
 }
 
+/*************************/
 /* dashboard page*/
+/*************************/
 
 .circle {
   padding: 0;
@@ -431,9 +470,21 @@ h1 {
   overflow: hidden;
   font-size: 0.75rem;
   padding: 0.4rem;
-  cursor: pointer;
+  color: #000000;
+  outline: 0;
 }
-
+.taskButton:hover {
+  color: black !important;
+  background-color: rgba(133, 70, 212, 0.19);
+  border-color: #8546d4;
+  outline: 0;
+}
+.taskButton:active {
+  outline: 0;
+}
+.taskButton:focus {
+  outline: 0;
+}
 .doneTaskButton {
   background: #8546d4;
   border: 1px solid #945fd7;
@@ -441,9 +492,39 @@ h1 {
   width: 5rem;
   height: 5rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
+  color: #000000;
+  outline: 0;
+  background-image: url('./resources/images/check.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.doneTaskButton:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.doneTaskButton:hover {
+  outline: 0;
+}
+.doneTaskButton:active {
+  outline: 0;
 }
 
+.editButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  color: #007bff;
+}
+.editButton:hover {
+  text-decoration: underline;
+}
+
+.editButton:focus {
+  outline: none;
+}
 .reflectionTile {
   cursor: pointer;
 }

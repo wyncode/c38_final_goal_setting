@@ -23,7 +23,6 @@ const GoalTile = ({ goal }) => {
     setCurrentGoal(parentGoal);
     history.push('/milestone');
   };
-
   const getGoalTileTheme = (category) => {
     switch (category) {
       case 'Fitness':
@@ -59,12 +58,13 @@ const GoalTile = ({ goal }) => {
       onClick={() => goToMilestone(goal.milestones, goal)}
     >
       <Card.Body className="p-1 m-1">
+
         <Row className="current-icon-goal">
           <div>
             <Col>{theme?.icon}</Col>
           </div>
           <div>
-            <Col>{goal.category} Goal</Col>
+            <Col>{goal?.description}</Col>
           </div>
           <div>
             <Col>
