@@ -68,7 +68,8 @@ const AddReflection = ({ history }) => {
   };
 
   return (
-    <Container>
+    <Container className="add-reflection">
+      <h3>Add Reflection</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Label>Day {dayNum}: Reflection</Form.Label>
         <Form.Group>
@@ -85,6 +86,7 @@ const AddReflection = ({ history }) => {
           <ButtonGroup toggle>
             {emojis.map((emoji) => (
               <ToggleButton
+                className="emoji-btn"
                 key={emoji.id}
                 type="radio"
                 name="emoji"
