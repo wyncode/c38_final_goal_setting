@@ -18,10 +18,17 @@ const Milestone = ({ history }) => {
   const progress = Math.abs(
     (start.diff(today, 'days') * 100) / start.diff(end, 'days')
   );
-
   return (
     <Container className="d-flex flex-column">
       <h1 style={{ textAlign: 'center' }}>{currentGoal?.description} Goal</h1>
+      <button
+        className="editButton"
+        onClick={() => {
+          history.push('/editgoal');
+        }}
+      >
+        Edit
+      </button>
       <div>
         <h2>Current Milestone: {currentMilestone?.index + 1}</h2>
         <h2>Total Milestones: {currentGoal?.milestones.length}</h2>

@@ -87,7 +87,6 @@ const Reflection = ({ history }) => {
         <h2>{!editMode && reflection?.emoji}</h2>
         <button
           className="editButton"
-          style={{ cursor: 'pointer' }}
           onClick={() => {
             setEditMode(!editMode);
           }}
