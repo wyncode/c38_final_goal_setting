@@ -52,7 +52,8 @@ const AddReflection = ({ history }) => {
   };
 
   return (
-    <Container>
+    <Container className="add-reflection">
+      <h3>Add Reflection</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Label>Day {dayNum}: Reflection</Form.Label>
         <Form.Group>
@@ -65,7 +66,23 @@ const AddReflection = ({ history }) => {
         {preview && <Image src={preview} alt="reflection" width={250} />}
         <Form.Group>
           <Form.Label>How do you feel today?</Form.Label>
-          <EmojiButtonGroup handleChange={handleChange} />
+
+          <br />
+          <ButtonGroup toggle>
+            {emojis.map((emoji) => (
+              <ToggleButton
+                className="emoji-btn"
+                key={emoji.id}
+                type="radio"
+                name="emoji"
+                value={emoji.emoji}
+                onChange={handleChange}
+              >
+                {emoji.emoji}
+              </ToggleButton>
+            ))}
+          </ButtonGroup>
+
         </Form.Group>
         <Form.Group>
           <Form.Label>Write down any thoughts</Form.Label>

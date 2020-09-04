@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import { AppContext } from './../../context/AppContext';
 
 const ReflectionTile = ({ reflection }) => {
@@ -12,18 +12,16 @@ const ReflectionTile = ({ reflection }) => {
     history.push('/reflection');
   };
   return (
-    <Card className="reflectionTile p-1 m-1" onClick={handleClick}>
-      <Card.Body className="p-1 m-1">
-        <Row>
-          <Col>
-            <span>{reflection?.title}</span>
-          </Col>
-          <Col style={{ textAlign: 'right' }}>
-            <span>{reflection?.emoji}</span>
-          </Col>
-        </Row>
-      </Card.Body>
-    </Card>
+    <Container>
+      <Form className="reflections" onClick={handleClick}>
+        <div className="reflection">
+          <span>{reflection?.title}</span>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <span className="emoji">{reflection?.emoji}</span>
+        </div>
+      </Form>
+    </Container>
   );
 };
 

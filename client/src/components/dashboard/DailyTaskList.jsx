@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Form, Row, Col, Card } from 'react-bootstrap';
+import { Form, Container } from 'react-bootstrap';
 import { AppContext } from './../../context/AppContext';
 import moment from 'moment';
 
@@ -46,64 +46,54 @@ const DailyTaskList = () => {
   };
 
   return (
-    <>
+    <Container>
       <h2>Daily Tasks</h2>
       <Form>
-        <Card className="p-1 m-1">
-          <Card.Body className="p-1 m-1">
-            <Row>
-              <Col style={{ textAlign: 'left' }}>
-                <Form.Label>{currentMilestone?.data.description}</Form.Label>{' '}
-              </Col>
-              <Col>
-                <Form.Check
-                  style={{ textAlign: 'right' }}
-                  onChange={() => handleChange('dailyTask')}
-                  type="checkbox"
-                  defaultChecked={currentGoal?.dailyTask.done}
-                />
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-        <Card className="p-1 m-1">
-          <Card.Body className="p-1 m-1">
-            <Row>
-              <Col style={{ textAlign: 'left' }}>
-                <Form.Label>Reflect on daily task</Form.Label>
-              </Col>
-              <Col>
-                <Form.Check
-                  style={{ textAlign: 'right' }}
-                  onChange={() => handleChange('reflected')}
-                  type="checkbox"
-                  defaultChecked={currentGoal?.reflected.done}
-                />
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-        <Card className="p-1 m-1">
-          <Card.Body className="p-1 m-1">
-            <Row>
-              <Col style={{ textAlign: 'left' }}>
-                <Form.Label>
-                  {currentGoal?.bonus?.description || 'Add a daily challenge'}
-                </Form.Label>
-              </Col>
-              <Col>
-                <Form.Check
-                  style={{ textAlign: 'right' }}
-                  onChange={() => handleChange('bonus')}
-                  type="checkbox"
-                  defaultChecked={currentGoal?.bonus.done}
-                />
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
+        <div className="daily-task">
+          <div style={{ textAlign: 'left' }}>
+            <Form.Label>{currentMilestone?.data.description}</Form.Label>{' '}
+          </div>
+          <div>
+            <Form.Check
+              style={{ textAlign: 'right' }}
+              onChange={() => handleChange('dailyTask')}
+              type="checkbox"
+              defaultChecked={currentGoal?.dailyTask.done}
+            />
+          </div>
+        </div>
+
+        <div className="daily-task">
+          <div style={{ textAlign: 'left' }}>
+            <Form.Label>Reflect on daily task</Form.Label>
+          </div>
+          <div>
+            <Form.Check
+              style={{ textAlign: 'right' }}
+              onChange={() => handleChange('reflected')}
+              type="checkbox"
+              defaultChecked={currentGoal?.reflected.done}
+            />
+          </div>
+        </div>
+
+        <div className="daily-task">
+          <div style={{ textAlign: 'left' }}>
+            <Form.Label>
+              {currentGoal?.bonus?.description || 'Add a daily challenge'}
+            </Form.Label>
+          </div>
+          <div>
+            <Form.Check
+              style={{ textAlign: 'right' }}
+              onChange={() => handleChange('bonus')}
+              type="checkbox"
+              defaultChecked={currentGoal?.bonus.done}
+            />
+          </div>
+        </div>
       </Form>
-    </>
+    </Container>
   );
 };
 
