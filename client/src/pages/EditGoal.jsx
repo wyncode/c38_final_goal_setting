@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import Nav from '../components/Nav';
 import { AppContext } from '../context/AppContext';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import { VscAdd, VscChromeMinimize } from 'react-icons/vsc';
 import moment from 'moment';
 import axios from 'axios';
 import { getCurrentMilestoneObj } from '../utilities';
@@ -45,7 +45,7 @@ const EditGoal = ({ history }) => {
 
     setRedoDates(false);
     setUpdates({ ...updates, ...due, milestones: milestonesUpdates });
-  }, [redoDates]);
+  }, [redoDates, currentGoal.createdAt]);
 
   useEffect(() => {
     setUpdates(
@@ -143,10 +143,10 @@ const EditGoal = ({ history }) => {
         <div className="d-flex">
           <Form.Label htmlFor="milestone">Milestones</Form.Label>
           <div className="btn p-1 ml-auto">
-            <AiOutlineMinus onClick={handleMinusClick} size={20} />
+            <VscChromeMinimize onClick={handleMinusClick} size={20} />
           </div>
           <div className="btn p-1">
-            <AiOutlinePlus onClick={handlePlusClick} size={20} />
+            <VscAdd onClick={handlePlusClick} size={20} />
           </div>
         </div>
         {updates?.milestones?.map((milestone, index) => {
