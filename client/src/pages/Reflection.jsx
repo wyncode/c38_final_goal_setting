@@ -28,9 +28,7 @@ const Reflection = ({ history }) => {
       reflection['emoji'] === event.target.value
     ) {
       setReflection({ ...reflection, emoji: '' });
-      console.log('gotcha');
     } else {
-      console.log('else value', { [event.target.name]: event.target.value });
       setReflection({ ...reflection, [event.target.name]: event.target.value });
     }
   };
@@ -48,7 +46,6 @@ const Reflection = ({ history }) => {
   };
 
   const handleSave = (event) => {
-    console.log('save running ');
     const reflectionPost = new FormData();
     preview && reflectionPost.append('image', image, image.name);
     Object.keys(reflection).forEach((key) => {
