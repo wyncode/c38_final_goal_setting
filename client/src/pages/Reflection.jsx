@@ -7,11 +7,12 @@ import axios from 'axios';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
 
 const Reflection = ({ history }) => {
-  const { currentReflection } = useContext(AppContext);
+  const { currentReflection, currentGoal, setCurrentGoal } = useContext(
+    AppContext
+  );
   const [editMode, setEditMode] = useState(false);
   const [reflection, setReflection] = useState(currentReflection);
   const [image, setImage] = useState(currentReflection?.image);
-  const { currentGoal, setCurrentGoal } = useContext(AppContext);
   const [preview, setPreview] = useState(null);
 
   if (!currentReflection) history.push('/dashboard');
@@ -27,9 +28,7 @@ const Reflection = ({ history }) => {
       reflection['emoji'] === event.target.value
     ) {
       setReflection({ ...reflection, emoji: '' });
-      console.log('gotcha');
     } else {
-      console.log('else value', { [event.target.name]: event.target.value });
       setReflection({ ...reflection, [event.target.name]: event.target.value });
     }
   };
@@ -40,14 +39,13 @@ const Reflection = ({ history }) => {
         withCredentials: true
       })
       .then((response) => {
-        console.log(response.data);
+        setCurrentGoal(response.data);
       })
       .catch((error) => console.log(error));
     history.push('/milestone');
   };
 
   const handleSave = (event) => {
-    console.log('save running ');
     const reflectionPost = new FormData();
     preview && reflectionPost.append('image', image, image.name);
     Object.keys(reflection).forEach((key) => {

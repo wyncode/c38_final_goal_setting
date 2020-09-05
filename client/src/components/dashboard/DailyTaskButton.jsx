@@ -31,7 +31,7 @@ const DailyTaskButton = ({ goal }) => {
 
   useEffect(() => {
     let mileObj = getCurrentMilestoneObj(goal.milestones);
-    setDailyTaskDesc(mileObj.data.description);
+    setDailyTaskDesc(mileObj?.data?.description);
     setDoneClass(!goal.dailyTask.done);
   }, [dailyTaskDesc, goal]);
 

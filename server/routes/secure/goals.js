@@ -286,10 +286,14 @@ router.patch('/api/goal/:gid/reflection/:rid', async (req, res) => {
       owner: req.user._id
     });
 
-    const index = goal.reflections.findIndex(
-      (reflection) => reflection._id === req.params.rid
-    );
     if (!goal) return res.status(404).json({ error: 'goal not found' });
+
+    const index = goal.reflections.findIndex((reflection) => {
+      return reflection._id.toString() === req.params.rid;
+    });
+
+    if (index === -1)
+      return res.status(404).json({ error: 'reflection not found' });
 
     if (req.files) {
       const response = await cloudinary.uploader.upload(
@@ -297,6 +301,7 @@ router.patch('/api/goal/:gid/reflection/:rid', async (req, res) => {
       );
       body = { ...body, image: response.secure_url };
     }
+
     updates.forEach(
       (update) => (goal.reflections[index][update] = body[update])
     );
