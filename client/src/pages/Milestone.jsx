@@ -14,7 +14,6 @@ const Milestone = ({ history }) => {
   const [progress, setProgress] = useState();
   const maxItems = 5;
 
-  console.log(progress);
   useEffect(() => {
     const today = moment();
     const start = moment(currentGoal?.createdAt);
