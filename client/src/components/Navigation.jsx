@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import { Navbar, Nav, NavbarBrand, Dropdown } from 'react-bootstrap';
+import { Navbar, Dropdown } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/Dropdown';
 import Logout from '../components/Logout';
 import { Link, useHistory } from 'react-router-dom';

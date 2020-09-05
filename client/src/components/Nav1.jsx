@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { VscArrowLeft } from 'react-icons/vsc';
 import { VscGear } from 'react-icons/vsc';
