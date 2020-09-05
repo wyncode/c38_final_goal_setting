@@ -1,6 +1,7 @@
 * {
-  font-family: 'Quicksand', sans-serif;
+  font-family: Quicksand;
 }
+
 .fullscreen {
   height: 100vh;
 }
@@ -759,4 +760,80 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding: 0px 10%;
+}
+/*Milestone Page*/
+
+.milestones {
+  display: inline;
+}
+.milestones h2 {
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #484848;
+}
+.m-pic {
+  display: flex;
+  justify-content: center;
+}
+.milestone-pic {
+  width: 450px;
+  height: 300px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.current-m {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #c0c0c0;
+  padding: 20px;
+}
+.total-m {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #c0c0c0;
+  padding: 20px;
+}
+.p-bar {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.bar {
+  background: white;
+  border: 0.5px solid #455a64;
+  border-radius: 10px 0px 0px 10px;
+  height: 30px;
+  width: 90%;
+}
+
+.daily-task {
+  display: flex;
+  justify-content: space-between;
+  background: #ebfcf8;
+  border-radius: 10px;
+  padding: 15px 30px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-size: 17px;
+}
+.reflection-t {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 20px 10px 20px;
+}
+.reflections {
+  display: flex;
+  justify-content: space-between;
+  background: #e9eaff;
+  border-radius: 10px;
+  padding: 15px 30px;
+  margin-bottom: 15px;
+}
+.reflection {
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.emoji {
+  font-size: 30px;
 }
