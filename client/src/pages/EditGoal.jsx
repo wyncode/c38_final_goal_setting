@@ -114,6 +114,18 @@ const EditGoal = ({ history }) => {
     }
   };
 
+  const handleDelete = () => {
+    axios
+      .delete(`/api/goals/${currentGoal._id}`, {
+        withCredentials: true
+      })
+      .then((resp) => {
+        setReloadTasks(true);
+        history.push('/dashboard');
+      })
+      .catch((error) => console.log(error.toString()));
+  };
+
   return (
     <Container>
       <Nav />
@@ -178,6 +190,9 @@ const EditGoal = ({ history }) => {
           Save
         </Button>
       </Form>
+      <Button className="btn-part4" onClick={handleDelete}>
+        Delete
+      </Button>
     </Container>
   );
 };

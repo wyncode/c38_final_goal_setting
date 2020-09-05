@@ -847,3 +847,7 @@ h1 {
 .emoji {
   font-size: 30px;
 }
+
+.rotate {
+  transform: rotate(180deg);
+}

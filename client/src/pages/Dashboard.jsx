@@ -6,6 +6,7 @@ import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
 import Nav1 from '../components/Nav1';
 import DailyTaskButton from '../components/dashboard/DailyTaskButton';
+import PlaceholderTile from '../components/dashboard/PlaceholderTile';
 
 const Dashboard = ({ history }) => {
   const {
@@ -80,9 +81,15 @@ const Dashboard = ({ history }) => {
       </div>
       <div className="goals">
         <div>
-          {goals?.map((goal) => {
-            return !goal?.completed && <GoalTile key={goal._id} goal={goal} />;
-          })}
+          {goals?.length !== 0 ? (
+            goals?.map((goal) => {
+              return (
+                !goal?.completed && <GoalTile key={goal._id} goal={goal} />
+              );
+            })
+          ) : (
+            <PlaceholderTile />
+          )}
           <h2 className="text-left w-100">Completed Goals</h2>
           {goals?.map((goal) => {
             return goal?.completed && <GoalTile key={goal._id} goal={goal} />;

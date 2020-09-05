@@ -11,16 +11,18 @@ const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
   if (!currentMilestone || !currentGoal) history.push('/dashboard');
   const [showMore, setShowMore] = useState(false);
-  const [progress, setProgress] = useState();
+  const [progress, setProgress] = useState(0);
   const maxItems = 5;
 
   useEffect(() => {
     const today = moment();
     const start = moment(currentGoal?.createdAt);
     const end = moment(currentGoal?.dueDate);
-    setProgress(
-      Math.abs((start.diff(today, 'days') * 100) / start.diff(end, 'days'))
-    );
+    if (end.isBefore(today)) setProgress(100);
+    else
+      setProgress(
+        Math.abs((start.diff(today, 'days') * 100) / start.diff(end, 'days'))
+      );
   }, [currentGoal, setProgress]);
   return (
     <Container>
