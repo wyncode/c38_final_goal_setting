@@ -33,7 +33,7 @@ const Login = ({ history }) => {
 
   return (
     <Container className="login">
-      <Nav />
+      <Nav cross="/" />
       <div>
         <h1>Login</h1>
       </div>

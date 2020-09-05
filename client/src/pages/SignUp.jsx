@@ -30,7 +30,7 @@ const SignUp = ({ history }) => {
   };
   return (
     <Container className="signUp">
-      <Nav />
+      <Nav cross="/" />
       <div>
         <h6>
           The final step, lets set up your profile so we can save your progress.
