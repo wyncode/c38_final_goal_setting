@@ -60,7 +60,6 @@ const EditGoal = ({ history }) => {
 
   const handleSave = (event) => {
     event.preventDefault();
-    console.log(updates);
     axios
       .patch(`/api/goals/${currentGoal._id}`, updates, {
         withCredentials: true
@@ -118,13 +117,6 @@ const EditGoal = ({ history }) => {
   return (
     <Container>
       <Nav />
-      <button
-        onClick={() => {
-          console.log(updates);
-        }}
-      >
-        updates
-      </button>
       <Form onSubmit={handleSave}>
         <h5 className="steps">Edit Your Goal</h5>
         <p className="steps"></p>
