@@ -33,59 +33,62 @@ const Dashboard = () => {
   if (!currentUser) return null;
 
   return (
-
     <Container className="dashboard">
       <div>
-        <Nav1 />
-      </div>
-      <div>
-        <Jumbotron className="dashboard-user">
-          <div className="username">
-            <h3>{currentUser?.name}</h3>
-          </div>
+        <div>
+          <Nav1 />
+        </div>
+        <div>
+          <Jumbotron className="dashboard-user">
+            <div className="username">
+              <h3>{currentUser?.name}</h3>
+            </div>
+            <div>
+              <Img
+                className="dash-pic"
+                src={currentUser?.avatar}
+                placeholder={require('../resources/images/default_avatar.png')}
+              />
+            </div>
+          </Jumbotron>
+        </div>
+        <div className="daily-tasks">
           <div>
-            <Img
-              className="dash-pic"
-              src={currentUser?.avatar}
-              placeholder={require('../resources/images/default_avatar.png')}
-            />
+            <h2>Daily Tasks</h2>
           </div>
-        </Jumbotron>
-      </div>
-      <div className="daily-tasks">
-        <div>
-          <h2>Daily Tasks</h2>
         </div>
-      </div>
-      <div className="done">
-        {goals?.map((goal) => {
-          return (
-            <DailyTaskButton
-              key={goal._id}
-              goal={goal}
-              updateDailyTask={updateDailyTask}
-            />
-          );
-        })}
-      </div>
-      <br />
-      <div className="current-goals">
-        <div>
-          <h2>Current Goals</h2>
-        </div>
-        <div className="add-new">
-          <Link to="/wizard">Add New Goal</Link>
-        </div>
-      </div>
-      <div className="goals">
-        <div>
+        <div className="done">
           {goals?.map((goal) => {
-            return !goal?.completed && <GoalTile key={goal._id} goal={goal} />;
+            return (
+              <DailyTaskButton
+                key={goal._id}
+                goal={goal}
+                updateDailyTask={updateDailyTask}
+              />
+            );
           })}
-          <h2 className="text-left w-100">Completed Goals</h2>
-          {goals?.map((goal) => {
-            return goal?.completed && <GoalTile key={goal._id} goal={goal} />;
-          })}
+        </div>
+        <br />
+        <div className="current-goals">
+          <div>
+            <h2>Current Goals</h2>
+          </div>
+          <div className="add-new">
+            <Link to="/wizard">Add New Goal</Link>
+          </div>
+        </div>
+        <div className="goals">
+          <div>
+            {goals?.map((goal) => {
+              return (
+                !goal?.completed && <GoalTile key={goal._id} goal={goal} />
+              );
+            })}
+            <h2 className="text-left w-100">Completed Goals</h2>
+            {goals?.map((goal) => {
+              return goal?.completed && <GoalTile key={goal._id} goal={goal} />;
+            })}
+          </div>
         </div>
       </div>
     </Container>

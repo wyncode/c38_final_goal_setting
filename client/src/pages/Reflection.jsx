@@ -70,54 +70,88 @@ const Reflection = ({ history }) => {
   };
 
   return (
-    <Container className="d-flex flex-column align-items-center">
-      <div className="d-flex">
-        <h2>
-          {!editMode ? (
-            reflection?.title
-          ) : (
-            <input
-              value={reflection?.title}
-              onChange={handleChange}
-              name="title"
-            ></input>
-          )}
-        </h2>
-        <h2>{!editMode && reflection?.emoji}</h2>
-        <button
-          className="editButton"
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            setEditMode(!editMode);
-          }}
-        >
-          Edit
-        </button>
-      </div>
-      {editMode && <EmojiButtonGroup handleChange={handleChange} />}
-      <Image className="w-75" src={preview || image} />
-      {editMode && (
-        <Form.File
-          name="image"
-          accept="image/*"
-          onChange={handleChange}
-        ></Form.File>
-      )}
-      {!editMode ? (
-        <p>{reflection?.notes}</p>
-      ) : (
-        <input
-          value={reflection?.notes}
-          name="notes"
-          onChange={handleChange}
-        ></input>
-      )}
-      {editMode && (
-        <div>
-          <Button onClick={handleDelete}>Delete</Button>
-          <Button onClick={handleSave}>Save</Button>
+    <Container>
+      <div>
+        <div className="reflection-page-header">
+          <h2>
+            {!editMode ? (
+              reflection?.title
+            ) : (
+              <input
+                value={reflection?.title}
+                onChange={handleChange}
+                className="text-area-edit"
+                name="title"
+              ></input>
+            )}
+          </h2>
+
+          <div>
+            <button
+              className="editButton"
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                setEditMode(!editMode);
+              }}
+            >
+              Edit
+            </button>
+          </div>
         </div>
-      )}
+      </div>
+      <div className="reflection-page-emoji">
+        <h2>{!editMode && reflection?.emoji}</h2>
+      </div>
+
+      <div className="reflection-edit">
+        <div>
+          <p>How are you feeling today?</p>
+          {editMode && <EmojiButtonGroup handleChange={handleChange} />}
+        </div>
+        <div>
+          <Image className="w-75" src={preview || image} />
+        </div>
+
+        <div className="upload-image">
+          {editMode && (
+            <Form.File
+              className="choose-file"
+              name="image"
+              accept="image/*"
+              onChange={handleChange}
+            ></Form.File>
+          )}
+        </div>
+        <p className="your-ref">Your Reflection</p>
+        <div className="reflection-text">
+          <div>
+            {!editMode ? (
+              <p>{reflection?.notes}</p>
+            ) : (
+              <textarea
+                className="text-area-ref"
+                value={reflection?.notes}
+                name="notes"
+                onChange={handleChange}
+              ></textarea>
+            )}
+          </div>
+        </div>
+        {editMode && (
+          <div className="reflection-btns">
+            <div>
+              <Button className="ref-btn" onClick={handleDelete}>
+                Delete
+              </Button>
+            </div>
+            <div>
+              <Button className="ref-btn" onClick={handleSave}>
+                Save
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
     </Container>
   );
 };

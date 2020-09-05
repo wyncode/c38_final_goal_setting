@@ -5,7 +5,7 @@ import DailyTaskList from '../components/dashboard/DailyTaskList';
 import ReflectionTile from '../components/dashboard/ReflectionTile';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
+import moment from 'moment';
 
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
@@ -20,14 +20,12 @@ const Milestone = ({ history }) => {
   );
 
   return (
-
     <Container>
       <div className="m-pic">
         <Image
           className="milestone-pic"
           src={require('../components/images/fitness.png')}
         />
-
       </div>
       <h3 style={{ textAlign: 'center' }}>{currentGoal?.category} Goal</h3>
 
