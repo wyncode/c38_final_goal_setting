@@ -44,7 +44,7 @@ const allDescription = {
 };
 
 const Step3 = ({ handleSelect }) => {
-  const { formData, setFormData } = useContext(AppContext);
+  const { formData } = useContext(AppContext);
   const relevantDescription = allDescription[formData.category.toLowerCase()];
   const [input, setInput] = useState('');
   return (
