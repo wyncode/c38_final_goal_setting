@@ -66,23 +66,7 @@ const AddReflection = ({ history }) => {
         {preview && <Image src={preview} alt="reflection" width={250} />}
         <Form.Group>
           <Form.Label>How do you feel today?</Form.Label>
-
-          <br />
-          <ButtonGroup toggle>
-            {emojis.map((emoji) => (
-              <ToggleButton
-                className="emoji-btn"
-                key={emoji.id}
-                type="radio"
-                name="emoji"
-                value={emoji.emoji}
-                onChange={handleChange}
-              >
-                {emoji.emoji}
-              </ToggleButton>
-            ))}
-          </ButtonGroup>
-
+          <EmojiButtonGroup handleChange={handleChange} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Write down any thoughts</Form.Label>

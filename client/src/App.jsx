@@ -18,15 +18,16 @@ import HealthInfo from './components/goalsInfo/HealthInfo';
 import ProfessionalInfo from './components/goalsInfo/ProfessionalInfo';
 import SocialInfo from './components/goalsInfo/SocialInfo';
 import GoalsHome from './components/GoalsHome';
+import EditGoal from './pages/EditGoal';
 
 const App = () => {
   return (
     <AppContextProvider>
       <Router>
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/" component={Home} />
           <Route exact path="/addreflection" component={AddReflection} />
           <Route exact path="/educationinfo" component={EducationInfo} />
           <Route exact path="/financeinfo" component={FinanceInfo} />
@@ -40,6 +41,7 @@ const App = () => {
           <PrivateRoute exact path="/milestone" component={Milestone} />
           <PrivateRoute exact path="/reflection" component={Reflection} />
           <PrivateRoute exact path="/addreflection" component={AddReflection} />
+          <PrivateRoute exact path="/editgoal" component={EditGoal} />
         </Switch>
       </Router>
     </AppContextProvider>

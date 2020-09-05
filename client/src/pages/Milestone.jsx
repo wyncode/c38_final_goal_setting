@@ -4,33 +4,41 @@ import { Container, ProgressBar, Button, Image } from 'react-bootstrap';
 import DailyTaskList from '../components/dashboard/DailyTaskList';
 import ReflectionTile from '../components/dashboard/ReflectionTile';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import moment from 'moment';
 
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
   if (!currentMilestone || !currentGoal) history.push('/dashboard');
   const [showMore, setShowMore] = useState(false);
+  const [progress, setProgress] = useState();
   const maxItems = 5;
-  const today = moment();
-  const start = moment(currentGoal?.createdAt);
-  const end = moment(currentGoal?.dueDate);
-  const progress = Math.abs(
-    (start.diff(today, 'days') * 100) / start.diff(end, 'days')
-  );
 
+  useEffect(() => {
+    const today = moment();
+    const start = moment(currentGoal?.createdAt);
+    const end = moment(currentGoal?.dueDate);
+    setProgress(
+      Math.abs((start.diff(today, 'days') * 100) / start.diff(end, 'days'))
+    );
+  }, [currentGoal, setProgress]);
   return (
-
     <Container>
       <div className="m-pic">
         <Image
           className="milestone-pic"
           src={require('../components/images/fitness.png')}
         />
-
       </div>
-      <h3 style={{ textAlign: 'center' }}>{currentGoal?.category} Goal</h3>
-
+      <h3 style={{ textAlign: 'center' }}>{currentGoal?.description}</h3>
+      <button
+        className="editButton"
+        onClick={() => {
+          history.push('/editgoal');
+        }}
+      >
+        Edit
+      </button>
       <div className="milestones">
         <div className="current-m">
           <div>

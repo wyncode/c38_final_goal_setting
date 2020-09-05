@@ -18,18 +18,18 @@ const DailyTaskList = () => {
   useEffect(() => {
     let data = {};
 
-    if (shouldTaskUpdate(currentGoal?.dailyTask.lastUpdated)) {
+    if (shouldTaskUpdate(currentGoal?.dailyTask?.lastUpdated)) {
       data = {
         dailyTask: { lastUpdated: moment().format(), done: false }
       };
     }
-    if (shouldTaskUpdate(currentGoal?.reflected.lastUpdated)) {
+    if (shouldTaskUpdate(currentGoal?.reflected?.lastUpdated)) {
       data = {
         ...data,
         reflected: { lastUpdated: moment().format(), done: false }
       };
     }
-    if (shouldTaskUpdate(currentGoal?.bonus.lastUpdated)) {
+    if (shouldTaskUpdate(currentGoal?.bonus?.lastUpdated)) {
       data = {
         ...data,
         bonus: { lastUpdated: moment().format(), done: false }

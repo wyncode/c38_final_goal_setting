@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Image, Container, Jumbotron } from 'react-bootstrap';
+import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/dashboard/GoalTile';
@@ -33,7 +33,6 @@ const Dashboard = () => {
   if (!currentUser) return null;
 
   return (
-
     <Container className="dashboard">
       <div>
         <Nav1 />
