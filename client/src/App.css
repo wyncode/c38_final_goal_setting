@@ -1,6 +1,16 @@
 * {
   font-family: Quicksand;
 }
+.no-out:active {
+  outline: none;
+}
+
+.no-out:hover {
+  outline: none;
+}
+.no-out:focus {
+  outline: none;
+}
 
 .fullscreen {
   height: 100vh;

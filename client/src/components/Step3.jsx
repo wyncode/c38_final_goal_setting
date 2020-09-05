@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
+import { AppContext } from '../context/AppContext';
 const allDescription = {
   fitness: [
     'Run a 10K',
@@ -42,9 +43,10 @@ const allDescription = {
   // fill in the rest of the goals here
 };
 
-const Step3 = ({ handleSelect, formData }) => {
+const Step3 = ({ handleSelect }) => {
+  const { formData, setFormData } = useContext(AppContext);
   const relevantDescription = allDescription[formData.category.toLowerCase()];
-
+  const [input, setInput] = useState('');
   return (
     <Container>
       <div>
@@ -74,6 +76,24 @@ const Step3 = ({ handleSelect, formData }) => {
                   {description}
                 </button>
               ))}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log(input);
+                  handleSelect(input);
+                }}
+              >
+                <input
+                  type="text"
+                  className="wizard-btn3 p-2 no-out text-center"
+                  value={input}
+                  required
+                  placeholder="Type Your Own"
+                  onChange={(e) => {
+                    setInput(e.target.value);
+                  }}
+                />
+              </form>
             </div>
           </div>
         </div>
