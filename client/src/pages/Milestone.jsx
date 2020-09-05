@@ -4,20 +4,25 @@ import { Container, ProgressBar, Button } from 'react-bootstrap';
 import DailyTaskList from '../components/dashboard/DailyTaskList';
 import ReflectionTile from '../components/dashboard/ReflectionTile';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import moment from 'moment';
 
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
   if (!currentMilestone || !currentGoal) history.push('/dashboard');
   const [showMore, setShowMore] = useState(false);
+  const [progress, setProgress] = useState();
   const maxItems = 5;
-  const today = moment();
-  const start = moment(currentGoal?.createdAt);
-  const end = moment(currentGoal?.dueDate);
-  const progress = Math.abs(
-    (start.diff(today, 'days') * 100) / start.diff(end, 'days')
-  );
+
+  console.log(progress);
+  useEffect(() => {
+    const today = moment();
+    const start = moment(currentGoal?.createdAt);
+    const end = moment(currentGoal?.dueDate);
+    setProgress(
+      Math.abs((start.diff(today, 'days') * 100) / start.diff(end, 'days'))
+    );
+  }, [currentGoal, setProgress]);
   return (
     <Container className="d-flex flex-column">
       <h1 style={{ textAlign: 'center' }}>{currentGoal?.description} Goal</h1>
@@ -31,7 +36,7 @@ const Milestone = ({ history }) => {
       </button>
       <div>
         <h2>Current Milestone: {currentMilestone?.index + 1}</h2>
-        <h2>Total Milestones: {currentGoal?.milestones.length}</h2>
+        <h2>Total Milestones: {currentGoal?.milestones?.length}</h2>
       </div>
       <h2>Goal progress bar</h2>
       <ProgressBar now={progress} />
@@ -41,9 +46,9 @@ const Milestone = ({ history }) => {
         <Link to="/addreflection">Add New Reflection</Link>
       </div>
       {currentGoal?.reflections
-        .slice(0)
-        .reverse()
-        .map((reflection, index) => {
+        ?.slice(0)
+        ?.reverse()
+        ?.map((reflection, index) => {
           return showMore || index < maxItems ? (
             <ReflectionTile key={reflection._id} reflection={reflection} />
           ) : null;

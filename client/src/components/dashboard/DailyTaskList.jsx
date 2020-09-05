@@ -18,18 +18,18 @@ const DailyTaskList = () => {
   useEffect(() => {
     let data = {};
 
-    if (shouldTaskUpdate(currentGoal?.dailyTask.lastUpdated)) {
+    if (shouldTaskUpdate(currentGoal?.dailyTask?.lastUpdated)) {
       data = {
         dailyTask: { lastUpdated: moment().format(), done: false }
       };
     }
-    if (shouldTaskUpdate(currentGoal?.reflected.lastUpdated)) {
+    if (shouldTaskUpdate(currentGoal?.reflected?.lastUpdated)) {
       data = {
         ...data,
         reflected: { lastUpdated: moment().format(), done: false }
       };
     }
-    if (shouldTaskUpdate(currentGoal?.bonus.lastUpdated)) {
+    if (shouldTaskUpdate(currentGoal?.bonus?.lastUpdated)) {
       data = {
         ...data,
         bonus: { lastUpdated: moment().format(), done: false }
@@ -60,7 +60,7 @@ const DailyTaskList = () => {
                   style={{ textAlign: 'right' }}
                   onChange={() => handleChange('dailyTask')}
                   type="checkbox"
-                  defaultChecked={currentGoal?.dailyTask.done}
+                  defaultChecked={currentGoal?.dailyTask?.done}
                 />
               </Col>
             </Row>
@@ -77,7 +77,7 @@ const DailyTaskList = () => {
                   style={{ textAlign: 'right' }}
                   onChange={() => handleChange('reflected')}
                   type="checkbox"
-                  defaultChecked={currentGoal?.reflected.done}
+                  defaultChecked={currentGoal?.reflected?.done}
                 />
               </Col>
             </Row>
@@ -96,7 +96,7 @@ const DailyTaskList = () => {
                   style={{ textAlign: 'right' }}
                   onChange={() => handleChange('bonus')}
                   type="checkbox"
-                  defaultChecked={currentGoal?.bonus.done}
+                  defaultChecked={currentGoal?.bonus?.done}
                 />
               </Col>
             </Row>
