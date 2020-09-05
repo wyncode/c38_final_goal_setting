@@ -88,7 +88,7 @@ const Reflection = ({ history }) => {
             setEditMode(!editMode);
           }}
         >
-          Edit
+          {!editMode ? 'edit' : 'back'}
         </button>
       </div>
       {editMode && <EmojiButtonGroup handleChange={handleChange} />}

@@ -29,7 +29,7 @@ const Milestone = ({ history }) => {
       <div className="m-pic">
         <Image
           className="milestone-pic"
-          src={require('../components/images/fitness.png')}
+          src={require(`../components/images/${currentGoal?.category?.toLowerCase()}.png`)}
         />
       </div>
       <h3 style={{ textAlign: 'center' }}>{currentGoal?.description}</h3>
