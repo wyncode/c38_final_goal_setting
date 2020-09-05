@@ -50,7 +50,7 @@ const Step3 = ({ handleSelect }) => {
   return (
     <Container>
       <div>
-        <Nav />
+        <Nav cross="/" />
       </div>
       <h5 className="steps">Step 3: Set Goal</h5>
       <p className="steps">

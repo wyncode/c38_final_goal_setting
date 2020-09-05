@@ -65,6 +65,16 @@ h3 {
   cursor: pointer;
 }
 
+.nav-1 {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 30px;
+  border-bottom: 1px solid lightgray;
+}
+
 /*************************/
 /* HomePage */
 /*************************/
@@ -378,20 +388,6 @@ h1 {
 .login-op {
   color: rgb(52, 102, 155);
   margin: 5px;
-}
-
-/*************************/
-/* Nav and Nav-1*/
-/*************************/
-
-.nav-1 {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-left: 20px;
-  padding-right: 30px;
-  border-bottom: 1px solid lightgray;
 }
 
 /*************************/

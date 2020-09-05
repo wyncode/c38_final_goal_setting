@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Container, Image, Button } from 'react-bootstrap';
-import Nav1 from '../components/Nav1';
+import Nav from '../components/Nav';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -61,7 +61,7 @@ const Profile = ({ history }) => {
 
   return (
     <>
-      <Nav1 />
+      <Nav cross="/dashboard" />
       <Container className="d-flex flex-column align-items-center justify-content-center mt-5 pb-4">
         <h2 className="pb-3">Your Profile</h2>
         <div>
