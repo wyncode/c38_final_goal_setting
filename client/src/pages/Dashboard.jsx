@@ -1,14 +1,13 @@
 import React, { useEffect, useContext } from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Container, Jumbotron, Image } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/dashboard/GoalTile';
 import { Link } from 'react-router-dom';
 import Nav1 from '../components/Nav1';
 import DailyTaskButton from '../components/dashboard/DailyTaskButton';
-import Img from 'react-cool-img';
 
-const Dashboard = () => {
+const Dashboard = ({ history }) => {
   const {
     setGoals,
     currentUser,
@@ -27,7 +26,7 @@ const Dashboard = () => {
           setGoals(response.data);
           setReloadTasks(false);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error.toString()));
   }, [reloadTasks, currentReflection, setReloadTasks, setGoals]);
 
   if (!currentUser) return null;
@@ -43,10 +42,13 @@ const Dashboard = () => {
             <h3>{currentUser?.name}</h3>
           </div>
           <div>
-            <Img
+            <Image
               className="dash-pic"
-              src={currentUser?.avatar}
-              placeholder={require('../resources/images/default_avatar.png')}
+              src={
+                currentUser?.avatar ||
+                require('../resources/images/default_avatar.png')
+              }
+              onClick={() => history.push('/profile')}
             />
           </div>
         </Jumbotron>
