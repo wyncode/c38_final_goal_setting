@@ -71,7 +71,6 @@ const Profile = ({ history }) => {
             <div>
               <div>
                 <h2>Your Profile</h2>
-<<<<<<< Updated upstream
                 <p className="profile-text">
                   Name: <span>{currentUser?.name}</span>
                 </p>
@@ -113,37 +112,6 @@ const Profile = ({ history }) => {
                   </Button>
                 </div>
               </div>
-=======
-                <p className="profile-text">Name: {currentUser?.name}</p>
-                <p className="profile-text">Email: {currentUser?.email}</p>
-              </div>
-            </div>
-
-            <div className="avatar-prev">
-              <Image
-                src={
-                  preview
-                    ? preview
-                    : currentUser?.avatar
-                    ? currentUser.avatar
-                    : require('../resources/images/default_avatar.png')
-                }
-                className="h-100 wa"
-                alt="profilePic"
-              />
-            </div>
-            <div>
-              <form className="d-flex flex-column" onSubmit={handleImage}>
-                <input type="file" accept="image/*" onChange={handleChange} />
-                <Button type="submit">Save Image</Button>
-              </form>
-            </div>
-
-            <div>
-              <Button className="delete" onClick={handleDelete}>
-                Delete Account
-              </Button>
->>>>>>> Stashed changes
             </div>
           </div>
         </div>
