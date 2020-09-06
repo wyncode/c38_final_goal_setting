@@ -20,24 +20,24 @@ const EditGoal = ({ history }) => {
   if (!currentGoal) history.push('/dashboard');
 
   useEffect(() => {
-    const end = moment(updates.dueDate);
-    const totalDays = end.diff(moment(currentGoal.createdAt), 'days');
-    let interval = totalDays / updates.milestones.length;
+    const end = moment(updates?.dueDate);
+    const totalDays = end.diff(moment(currentGoal?.createdAt), 'days');
+    let interval = totalDays / updates?.milestones?.length;
     let sum = 0;
     if (interval < 1) interval = 1;
-    const milestonesUpdates = updates.milestones.map(
+    const milestonesUpdates = updates?.milestones.map(
       (_, index, milestoneArray) => {
         sum = sum + interval;
         return {
           ...milestoneArray[index],
-          dueDate: moment(currentGoal.createdAt).add(sum, 'days').format()
+          dueDate: moment(currentGoal?.createdAt).add(sum, 'days').format()
         };
       }
     );
     let due = {};
     if (interval === 1) {
       due = {
-        dueDate: moment(currentGoal.createdAt)
+        dueDate: moment(currentGoal?.createdAt)
           .add(sum, 'days')
           .format('YYYY-MM-DD')
       };
@@ -45,7 +45,7 @@ const EditGoal = ({ history }) => {
 
     setRedoDates(false);
     setUpdates({ ...updates, ...due, milestones: milestonesUpdates });
-  }, [redoDates, currentGoal.createdAt]);
+  }, [redoDates, currentGoal?.createdAt]);
 
   useEffect(() => {
     setUpdates(

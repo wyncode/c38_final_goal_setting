@@ -4,7 +4,7 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import moment from 'moment';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
-
+import Nav1 from '../components/Nav1';
 const AddReflection = ({ history }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -53,6 +53,7 @@ const AddReflection = ({ history }) => {
 
   return (
     <Container className="add-reflection">
+      <Nav1 />
       <h3>Add Reflection</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Label>Day {dayNum}: Reflection</Form.Label>

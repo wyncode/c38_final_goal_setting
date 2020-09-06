@@ -5,7 +5,7 @@ import { Image, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
-
+import Nav1 from '../components/Nav1';
 const Reflection = ({ history }) => {
   const { currentReflection, currentGoal, setCurrentGoal } = useContext(
     AppContext
@@ -69,6 +69,7 @@ const Reflection = ({ history }) => {
 
   return (
     <Container className="d-flex flex-column align-items-center">
+      <Nav1 />
       <div className="d-flex">
         <h2>
           {!editMode ? (

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Nav1 from '../components/Nav1';
 import DailyTaskButton from '../components/dashboard/DailyTaskButton';
 import PlaceholderTile from '../components/dashboard/PlaceholderTile';
-
+import Img from 'react-cool-img';
 const Dashboard = ({ history }) => {
   const {
     setGoals,
@@ -43,7 +43,7 @@ const Dashboard = ({ history }) => {
             <h3>{currentUser?.name}</h3>
           </div>
           <div>
-            <Image
+            <Img
               className="dash-pic"
               src={
                 currentUser?.avatar ||

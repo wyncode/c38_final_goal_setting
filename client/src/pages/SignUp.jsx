@@ -26,7 +26,7 @@ const SignUp = ({ history }) => {
         setCurrentUser(response.data);
         history.push('/');
       })
-      .catch((error) => swal('Error', 'Please check the inputs', 'warning'));
+      .catch(() => swal('Error', 'Please check the inputs', 'warning'));
   };
   return (
     <Container className="signUp">

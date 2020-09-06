@@ -17,15 +17,17 @@ const Profile = ({ history }) => {
 
   const handleImage = (event) => {
     event.preventDefault();
-    const avatar = new FormData();
-    avatar.append('avatar', image, image.name);
-    console.log(avatar);
-    axios
-      .post('/api/users/avatar', avatar, { withCredentials: true })
-      .then((response) => {
-        setCurrentUser({ ...currentUser, avatar: response.data.secure_url });
-      })
-      .catch((error) => console.log(error));
+    if (image) {
+      const avatar = new FormData();
+      avatar.append('avatar', image, image.name);
+      console.log(avatar);
+      axios
+        .post('/api/users/avatar', avatar, { withCredentials: true })
+        .then((response) => {
+          setCurrentUser({ ...currentUser, avatar: response.data.secure_url });
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   const handleDelete = () => {

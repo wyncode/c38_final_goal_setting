@@ -6,7 +6,7 @@ import ReflectionTile from '../components/dashboard/ReflectionTile';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import moment from 'moment';
-
+import Nav1 from '../components/Nav1';
 const Milestone = ({ history }) => {
   const { currentMilestone, currentGoal } = useContext(AppContext);
   if (!currentMilestone || !currentGoal) history.push('/dashboard');
@@ -26,10 +26,15 @@ const Milestone = ({ history }) => {
   }, [currentGoal, setProgress]);
   return (
     <Container>
+      <Nav1 />
       <div className="m-pic">
         <Image
           className="milestone-pic"
-          src={require(`../components/images/${currentGoal?.category?.toLowerCase()}.png`)}
+          src={require(`../components/images/${
+            currentGoal?.category
+              ? currentGoal?.category?.toLowerCase()
+              : 'fitness'
+          }.png`)}
         />
       </div>
       <h3 style={{ textAlign: 'center' }}>{currentGoal?.description}</h3>
@@ -61,7 +66,7 @@ const Milestone = ({ history }) => {
 
         <div className="p-bar">
           <h2>Goal progress bar</h2>
-          <ProgressBar className="bar" variant="info" now={progress} />
+          <ProgressBar className="bar w-100" variant="info" now={progress} />
         </div>
 
         <DailyTaskList />
