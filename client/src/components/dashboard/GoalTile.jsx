@@ -58,12 +58,11 @@ const GoalTile = ({ goal }) => {
       onClick={() => goToMilestone(goal.milestones, goal)}
     >
       <Card.Body className="p-1 m-1">
-
         <Row className="current-icon-goal">
           <div>
             <Col>{theme?.icon}</Col>
           </div>
-          <div>
+          <div style={{ overflow: 'hidden' }}>
             <Col>{goal?.description}</Col>
           </div>
           <div>

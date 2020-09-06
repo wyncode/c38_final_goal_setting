@@ -20,7 +20,6 @@ const Profile = ({ history }) => {
     if (image) {
       const avatar = new FormData();
       avatar.append('avatar', image, image.name);
-      console.log(avatar);
       axios
         .post('/api/users/avatar', avatar, { withCredentials: true })
         .then((response) => {
@@ -71,19 +70,19 @@ const Profile = ({ history }) => {
             <p>Name: {currentUser?.name}</p>
             <p>Email: {currentUser?.email}</p>
           </div>
-          <Image
-            src={
-              preview
-                ? preview
-                : currentUser?.avatar
-                ? currentUser.avatar
-                : require('../resources/images/default_avatar.png')
-            }
-            alt="profilePic"
-            width={250}
-            height={250}
-            roundedCircle
-          />
+          <div className="avatar-prev">
+            <Image
+              src={
+                preview
+                  ? preview
+                  : currentUser?.avatar
+                  ? currentUser.avatar
+                  : require('../resources/images/default_avatar.png')
+              }
+              className="h-100 wa"
+              alt="profilePic"
+            />
+          </div>
         </div>
         <div className="mt-4">
           <form className="d-flex flex-column" onSubmit={handleImage}>

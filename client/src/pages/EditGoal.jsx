@@ -48,14 +48,15 @@ const EditGoal = ({ history }) => {
   }, [redoDates, currentGoal?.createdAt]);
 
   useEffect(() => {
-    setUpdates(
-      (({ dueDate, milestones, description, bonus }) => ({
-        dueDate,
-        milestones,
-        description,
-        bonus
-      }))(currentGoal)
-    );
+    currentGoal &&
+      setUpdates(
+        (({ dueDate, milestones, description, bonus }) => ({
+          dueDate,
+          milestones,
+          description,
+          bonus
+        }))(currentGoal)
+      );
   }, [currentGoal]);
 
   const handleSave = (event) => {

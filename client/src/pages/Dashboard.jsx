@@ -42,9 +42,9 @@ const Dashboard = ({ history }) => {
           <div className="username">
             <h3>{currentUser?.name}</h3>
           </div>
-          <div>
+          <div className="dash-pic">
             <Img
-              className="dash-pic"
+              className="wa h-100"
               src={
                 currentUser?.avatar ||
                 require('../resources/images/default_avatar.png')

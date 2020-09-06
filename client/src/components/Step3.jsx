@@ -11,9 +11,9 @@ const allDescription = {
     'Beef Up Your Squat'
   ],
   education: [
+    'Bulid Good Study Habits',
     'Master Basic Skills',
     'Become a Critical Thinker',
-    'Bulid Good Study Habits',
     'Earn a Degree or Certification'
   ],
   professional: [
@@ -40,7 +40,6 @@ const allDescription = {
     'Self Care',
     'Sleep a Little More'
   ]
-  // fill in the rest of the goals here
 };
 
 const Step3 = ({ handleSelect }) => {
