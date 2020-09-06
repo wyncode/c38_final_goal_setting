@@ -32,55 +32,58 @@ const Login = ({ history }) => {
   };
 
   return (
-    <Container className="login">
+    <Container>
       <Nav cross="/" />
-      <div>
-        <h1>Login</h1>
+
+      <div className="login">
+        <div>
+          <h1>Login</h1>
+        </div>
+        <Form onSubmit={handleSubmit}>
+          <div>
+            <Form.Label className="text">Email address</Form.Label>
+            <Form.Control
+              className="label"
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <Form.Label className="text">Password</Form.Label>
+            <Form.Control
+              className="label"
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <Link className="login-op" to="/reset-password">
+              Forgot Password?
+            </Link>
+            <Link className="login-op" to="/signup">
+              Need an Account? Sign up.
+            </Link>
+          </div>
+          <div>
+            <Form.Check type="checkbox" label="Remember Me" />
+          </div>
+          <div className="ilustration">
+            <Image
+              className="info-pic"
+              src={require('../components/images/login.png')}
+            />
+          </div>
+          <div className="info-btn-flex">
+            <Button variant="flat" className="info-btn" type="submit">
+              Login
+            </Button>
+          </div>
+        </Form>
       </div>
-      <Form onSubmit={handleSubmit}>
-        <div>
-          <Form.Label className="text">Email address</Form.Label>
-          <Form.Control
-            className="label"
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <Form.Label className="text">Password</Form.Label>
-          <Form.Control
-            className="label"
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <Link className="login-op" to="/reset-password">
-            Forgot Password?
-          </Link>
-          <Link className="login-op" to="/signup">
-            Need an Account? Sign up.
-          </Link>
-        </div>
-        <div>
-          <Form.Check type="checkbox" label="Remember Me" />
-        </div>
-        <div className="ilustration">
-          <Image
-            className="info-pic"
-            src={require('../components/images/login.png')}
-          />
-        </div>
-        <div className="info-btn-flex">
-          <Button className="info-btn" variant="secondary" type="submit">
-            Login
-          </Button>
-        </div>
-      </Form>
     </Container>
   );
 };

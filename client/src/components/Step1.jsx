@@ -20,7 +20,7 @@ const Step1 = ({ handleSelect }) => {
       </div>
       <h5 className="steps">Step 1: Choose your goal type</h5>
       <div className="wizard">
-        <div className="ilustrations-wizard">
+        <div>
           <div>
             <Image
               className="ilustration-step1"
@@ -59,17 +59,15 @@ const Step1 = ({ handleSelect }) => {
           </div>
         </div>
         <div className="btn-flex">
-          <div>
-            {goals.map((goal, index) => (
-              <button
-                className="wizard-btn1"
-                key={index}
-                onClick={() => handleSelect(goal)}
-              >
-                <p>{goal}</p>
-              </button>
-            ))}
-          </div>
+          {goals.map((goal, index) => (
+            <button
+              className="wizard-btn1"
+              key={index}
+              onClick={() => handleSelect(goal)}
+            >
+              <p>{goal}</p>
+            </button>
+          ))}
         </div>
       </div>
     </Container>

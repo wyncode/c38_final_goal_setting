@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { Container, Jumbotron, Image } from 'react-bootstrap';
+import { Container, Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import { AppContext } from '../context/AppContext';
 import GoalTile from '../components/dashboard/GoalTile';
@@ -79,6 +79,7 @@ const Dashboard = ({ history }) => {
           <Link to="/wizard">Add New Goal</Link>
         </div>
       </div>
+
       <div className="goals">
         <div>
           {goals?.length !== 0 ? (

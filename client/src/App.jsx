@@ -20,6 +20,8 @@ import SocialInfo from './components/goalsInfo/SocialInfo';
 import GoalsHome from './components/GoalsHome';
 import EditGoal from './pages/EditGoal';
 import Profile from './pages/Profile';
+import ResetPassword from './pages/ResetPassword';
+import UpdatePassword from './pages/UpdatePassword';
 
 const App = () => {
   return (
@@ -38,6 +40,8 @@ const App = () => {
           <Route exact path="/socialinfo" component={SocialInfo} />
           <Route exact path="/goalshome" component={GoalsHome} />
           <PrivateRoute exact path="/profile" component={Profile} />
+          <Route exact path="/reset-password" component={ResetPassword} />
+          <Route exact path="/update-password" component={UpdatePassword} />
           <PrivateRoute exact path="/wizard" component={Wizard} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/milestone" component={Milestone} />

@@ -29,72 +29,75 @@ const SignUp = ({ history }) => {
       .catch(() => swal('Error', 'Please check the inputs', 'warning'));
   };
   return (
-    <Container className="signUp">
+    <Container>
       <Nav cross="/" />
-      <div>
-        <h6>
-          The final step, lets set up your profile so we can save your progress.
-        </h6>
-        <p>Don't worry, your information is safe with us</p>
-      </div>
-      <div className="ilustration">
-        <Image
-          className="info-pic"
-          src={require('../components/images/profile.png')}
-        />
-      </div>
-      <Form onSubmit={handleSubmit}>
+      <div className="signUp">
         <div>
-          <Form.Label className="text">Name:</Form.Label>
-          <Form.Control
-            className="label"
-            type="name"
-            placeholder="Ex. John Smith"
-            name="name"
-            onChange={handleChange}
+          <h6>
+            The final step, lets set up your profile so we can save your
+            progress.
+          </h6>
+          <p>Don't worry, your information is safe with us</p>
+        </div>
+        <div className="ilustration">
+          <Image
+            className="info-pic"
+            src={require('../components/images/profile.png')}
           />
         </div>
-
-        <div>
-          <Form.Label className="text">Email address</Form.Label>
-          <Form.Control
-            className="label"
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            onChange={handleChange}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </div>
-        <div>
-          <Form.Label className="text">Password</Form.Label>
-          <Form.Control
-            className="label"
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <Link className="login-op" to="/login">
-            Already have an account? Login.
-          </Link>
-        </div>
-        <div>
-          <Form.Check type="checkbox" label="Remember Me" />
-        </div>
-
-        <div>
-          <div className="info-btn-flex">
-            <Button className="info-btn" variant="secondary" type="submit">
-              Login
-            </Button>
+        <Form onSubmit={handleSubmit}>
+          <div>
+            <Form.Label className="text">Name:</Form.Label>
+            <Form.Control
+              className="label"
+              type="name"
+              placeholder="Ex. John Smith"
+              name="name"
+              onChange={handleChange}
+            />
           </div>
-        </div>
-      </Form>
+
+          <div>
+            <Form.Label className="text">Email address</Form.Label>
+            <Form.Control
+              className="label"
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              onChange={handleChange}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </div>
+          <div>
+            <Form.Label className="text">Password</Form.Label>
+            <Form.Control
+              className="label"
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <Link className="login-op" to="/login">
+              Already have an account? Login.
+            </Link>
+          </div>
+          <div>
+            <Form.Check type="checkbox" label="Remember Me" />
+          </div>
+
+          <div>
+            <div className="info-btn-flex">
+              <Button variant="flat" className="info-btn" type="submit">
+                Login
+              </Button>
+            </div>
+          </div>
+        </Form>
+      </div>
     </Container>
   );
 };

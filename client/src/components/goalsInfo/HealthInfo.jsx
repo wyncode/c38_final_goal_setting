@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Image from 'react-bootstrap/Image';
 import Nav from '../Nav';
@@ -36,7 +37,8 @@ const HealthInfo = ({ history }) => {
               <Button
                 variant="flat"
                 className="info-btn"
-                onClick={() => history.push('/wizard')}
+                as={Link}
+                to="/wizard"
               >
                 Create Goal
               </Button>

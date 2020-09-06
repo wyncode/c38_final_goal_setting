@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Container, Form, Button, Image } from 'react-bootstrap';
+import { Container, Form, Image } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import moment from 'moment';
@@ -89,9 +89,14 @@ const AddReflection = ({ history }) => {
               </div>
             </Form.Group>
           </div>
-          <div className="reflection-btns">
-            <button className="ref-btn" type="submit">
-              Save
+          <div className="reflection-btn">
+            <button
+              variant="flat"
+              className="info-btn"
+              type="submit"
+              type="submit"
+            >
+              <p>Save</p>
             </button>
           </div>
         </div>

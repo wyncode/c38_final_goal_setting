@@ -61,45 +61,72 @@ const Profile = ({ history }) => {
   };
 
   return (
-    <>
-      <Nav cross="/dashboard" />
-      <Container className="d-flex flex-column align-items-center justify-content-center mt-5 pb-4">
-        <h2 className="pb-3">Your Profile</h2>
-        <div>
-          <div className="mt-3 p-2">
-            <p>Name: {currentUser?.name}</p>
-            <p>Email: {currentUser?.email}</p>
-          </div>
-          <div className="avatar-prev">
-            <Image
-              src={
-                preview
-                  ? preview
-                  : currentUser?.avatar
-                  ? currentUser.avatar
-                  : require('../resources/images/default_avatar.png')
-              }
-              className="h-100 wa"
-              alt="profilePic"
-            />
-          </div>
-        </div>
-        <div className="mt-4">
-          <form className="d-flex flex-column" onSubmit={handleImage}>
-            <input type="file" accept="image/*" onChange={handleChange} />
-            <Button variant="flat" className="my-2" type="submit">
-              Save Image
-            </Button>
-          </form>
-        </div>
+    <Container>
+      <div>
+        <Nav cross="/dashboard" />
+      </div>
+      <div className="profile-page">
+        <div className="profile">
+          <div>
+            <div>
+              <div>
+                <h2>Your Profile</h2>
+                <p className="profile-text">
+                  Name: <span>{currentUser?.name}</span>
+                </p>
+                <p className="profile-text">
+                  Email: <span>{currentUser?.email}</span>
+                </p>
+              </div>
+            </div>
+            <div className="profile-items">
+              <div>
+                <div className="avatar-prev">
+                  <Image
+                    src={
+                      preview
+                        ? preview
+                        : currentUser?.avatar
+                        ? currentUser.avatar
+                        : require('../resources/images/default_avatar.png')
+                    }
+                    className="h-100 wa"
+                    alt="profilePic"
+                  />
+                </div>
+                <div>
+                  <form className="profile-btns" onSubmit={handleImage}>
+                    <input
+                      className="upload-avatar"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                    <div className="profile-btn-flex">
+                      <Button
+                        variant="flat"
+                        className="profile-btn-save"
+                        type="submit"
+                      >
+                        Save Image
+                      </Button>
 
-        <div>
-          <Button variant="flat" className="delete" onClick={handleDelete}>
-            Delete Account
-          </Button>
+                      <Button
+                        variant="flat"
+                        className="profile-btn-delete"
+                        onClick={handleDelete}
+                      >
+                        Delete Account
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </Container>
-    </>
+      </div>
+    </Container>
   );
 };
 

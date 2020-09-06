@@ -12,7 +12,7 @@ const sendWelcomeEmail = async (email, name) => {
   </style>
   <h1 class="sampleh1" >Welcome to Task API</h1>
   <div>We hope you find our app useful </div>
-  <div>etc etc blah blah blah </div>
+
   `;
   try {
     await sgMail.send({
@@ -45,12 +45,12 @@ const forgotPasswordEmail = (email, token) => {
   <div>Click the link below to reset your password</div>
   <a target="_blank" rel="noopener noreferrer" href="${process.env.APP_URL}/api/password/${token}">Reset Password</a>
   `;
-  t;
+
   sgMail.send({
     to: email,
     from: `${process.env.FROM_EMAIL}`,
     subject: 'Password Reset.',
-    // text: `Hi ${name}! Please click the link below to reset your password.`
+    text: `Hi! Please click the link below to reset your password.`,
     html: exampleHTMLEmail
   });
 };
