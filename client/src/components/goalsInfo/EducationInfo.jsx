@@ -36,7 +36,7 @@ const EducationInfo = ({ history }) => {
             </p>
           </div>
           <div className="info-btn-flex">
-            <Button className="info-btn" as={Link} to="/wizard">
+            <Button variant="flat" className="info-btn" as={Link} to="/wizard">
               Create Goal
             </Button>
           </div>

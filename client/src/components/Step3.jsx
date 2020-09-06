@@ -58,11 +58,14 @@ const Step3 = ({ handleSelect }) => {
         Pick an end goal
       </p>
       <div className="wizard">
-        <div className="ilustration-step-3">
-          <Image
-            className="info-pic"
-            src={require('../components/images/booklover.png')}
-          />
+        <div>
+          <div className="ilustration-step-3">
+            <Image
+              className="info-pic"
+              src={require('../components/images/booklover.png')}
+            />
+          </div>
+
           <div className="btn-flex-step3">
             <div>
               {relevantDescription.map((description, index) => (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
+import Nav from '../components/Nav';
 
 const ResetPassword = () => {
   const [email, setEmail] = useState(null);
@@ -17,20 +18,29 @@ const ResetPassword = () => {
   };
 
   return (
-    <Container className="d-flex flex-column align-items-center justify-content-center fullscreen">
-      <h1>Reset Password</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Button type="submit">Send Email</Button>
-        </Form.Group>
-      </Form>
+    <Container>
+      <Nav cross="/" />
+      <div className="reset">
+        <div>
+          <h2>Reset Password</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Label>
+                <span>Email address</span>
+              </Form.Label>
+              <Form.Control
+                type="email"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Button className="info-btn" type="submit">
+                Send Email
+              </Button>
+            </Form.Group>
+          </Form>
+        </div>
+      </div>
     </Container>
   );
 };

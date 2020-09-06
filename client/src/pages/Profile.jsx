@@ -102,14 +102,24 @@ const Profile = ({ history }) => {
                       accept="image/*"
                       onChange={handleChange}
                     />
-                    <Button className="profile-btn-save" type="submit">
-                      Save Image
-                    </Button>
-                  </form>
+                    <div className="profile-btn-flex">
+                      <Button
+                        variant="flat"
+                        className="profile-btn-save"
+                        type="submit"
+                      >
+                        Save Image
+                      </Button>
 
-                  <Button className="profile-btn-delete" onClick={handleDelete}>
-                    Delete Account
-                  </Button>
+                      <Button
+                        variant="flat"
+                        className="profile-btn-delete"
+                        onClick={handleDelete}
+                      >
+                        Delete Account
+                      </Button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

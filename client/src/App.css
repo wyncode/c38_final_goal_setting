@@ -79,7 +79,9 @@ h3 {
   padding-right: 30px;
   border-bottom: 1px solid lightgray;
 }
-
+.nav-flex {
+  display: flex;
+}
 /*************************/
 /* HomePage */
 /*************************/
@@ -301,7 +303,7 @@ h1 {
   columns: 2;
   margin: 20px;
 }
-.goal-btn {
+.btn-flat1 {
   width: 150px;
   height: 50px;
   margin: 10px;
@@ -614,13 +616,12 @@ h1 {
 }
 .ilustration-step2 {
   width: 175px;
-  margin: 20px;
+  margin: 5px;
   margin-bottom: 20px;
 }
 .wizard-btn2 {
   width: 150px;
   height: 50px;
-  margin-left: 10px;
   background: #e8dcf7;
   border-radius: 20px;
   border-color: #e8dcf7;
@@ -684,7 +685,7 @@ h1 {
   margin: auto;
 }
 .btn-part4 p {
-  margin-top: 5px;
+  margin-top: 2px;
   font-style: normal;
   font-weight: bold;
   font-size: 17px;
@@ -996,24 +997,7 @@ h1 {
   background: #f5f5f5;
   cursor: text;
 }
-.reflection-btns {
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-}
-.ref-btn {
-  width: 150px;
-  height: 40px;
-  background: linear-gradient(
-    180deg,
-    rgba(173, 231, 217, 0.62) 21.88%,
-    rgba(173, 220, 209, 0.62) 26.04%,
-    rgba(127, 189, 173, 0.62) 52.08%
-  );
-  border: rgba(119, 205, 184, 0.62);
-  border-radius: 10px;
-  margin: auto;
-}
+
 /* add Reflection page*/
 .add-new-ref {
   display: inline;
@@ -1029,6 +1013,14 @@ h1 {
 .your-ref {
   padding-top: 30px;
 }
+.reflection-btn button {
+  display: flex;
+  justify-content: center;
+}
+.reflection-btn button p {
+  padding-top: 8px;
+}
+
 /* Profile Page*/
 .profile-page {
   display: flex;
@@ -1078,35 +1070,25 @@ h1 {
   margin-top: 20px;
 }
 .upload-avatar {
-  margin-left: 25px;
+  margin-left: 50px;
 }
 .profile-btn-save {
   width: 200px;
   height: 40px;
-  background: linear-gradient(
-    180deg,
-    rgba(173, 231, 217, 0.62) 21.88%,
-    rgba(173, 220, 209, 0.62) 26.04%,
-    rgba(127, 189, 173, 0.62) 52.08%
-  );
+  background: #8546d4;
   border: rgba(127, 189, 173, 0.62);
   border-radius: 10px;
-  margin-left: 30px;
+  margin-left: 50px;
   margin-top: 15px;
 }
 .profile-btn-delete {
   width: 200px;
   height: 40px;
-  background: linear-gradient(
-    180deg,
-    rgba(173, 231, 217, 0.62) 21.88%,
-    rgba(173, 220, 209, 0.62) 26.04%,
-    rgba(127, 189, 173, 0.62) 52.08%
-  );
+  background: #8546d4;
   border: rgba(119, 205, 184, 0.62);
   border-radius: 10px;
-  margin-left: 30px;
-  margin-top: 15px;
+  margin-left: 50px;
+  margin-top: 5px;
 }
 /* Edit your Goal*/
 .edit-goal {
@@ -1119,4 +1101,13 @@ h1 {
   display: flex;
   justify-content: center;
   margin-left: 30px;
+}
+/* Reset Password*/
+.reset {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.reset h2 {
+  text-align: center;
 }

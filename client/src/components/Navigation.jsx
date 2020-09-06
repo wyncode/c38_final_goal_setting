@@ -24,11 +24,11 @@ const Navigation = () => {
         <Navbar.Collapse>
           <div style={{ width: '10rem' }}>
             <NavDropdown.Divider />
-            <Dropdown.Item as={AnchorLink} offset="300" href="#createAGoal">
+            <Dropdown.Item as={AnchorLink} offset="0" href="#createAGoal">
               Create a Goal
             </Dropdown.Item>
             <NavDropdown.Divider />
-            <Dropdown.Item as={AnchorLink} offset="350" href="#howItWorks">
+            <Dropdown.Item as={AnchorLink} offset="0" href="#howItWorks">
               How it works
             </Dropdown.Item>
             <NavDropdown.Divider />

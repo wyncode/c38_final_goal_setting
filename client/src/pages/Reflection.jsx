@@ -137,14 +137,20 @@ const Reflection = ({ history }) => {
           </div>
         </div>
         {editMode && (
-          <div className="reflection-btns">
-            <div>
-              <Button className="ref-btn" onClick={handleDelete}>
+          <div>
+            <div className="d-flex justify-content-center m-auto">
+              <Button
+                variant="flat"
+                className="btn-part4 btn-flat"
+                onClick={handleDelete}
+              >
                 Delete
               </Button>
-            </div>
-            <div>
-              <Button className="ref-btn" onClick={handleSave}>
+              <Button
+                variant="flat"
+                className="btn-part4 delete"
+                onClick={handleSave}
+              >
                 Save
               </Button>
             </div>
