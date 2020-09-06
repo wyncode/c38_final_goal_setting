@@ -79,17 +79,20 @@ router.get('/api/password', async (req, res) => {
 // Redirect to password reset page
 // ******************************
 router.get('/api/password/:token', (req, res) => {
-  const { token } = req.params;
+  console.log('81')
+  const { token } = req.params; console.log('82')
   try {
     jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
       if (err) throw new Error(err.message);
-    });
+    }); console.log('86')
     res.cookie('jwt', token, {
       httpOnly: true,
       maxAge: 600000,
       sameSite: 'Strict'
     });
+    console.log('92')
     res.redirect(process.env.URL + '/update-password');
+    console.log(process.env.URL + '/update-password')
   } catch (error) {
     res.status(401).json({ error: error.toString() });
   }

@@ -34,7 +34,7 @@ const ResetPassword = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Button className="info-btn" type="submit">
+              <Button variant="flat" className="info-btn" type="submit">
                 Send Email
               </Button>
             </Form.Group>

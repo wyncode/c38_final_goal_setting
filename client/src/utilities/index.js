@@ -24,8 +24,8 @@ const getCurrentMilestoneObj = (milestoneArr) => {
     rangeEnd++;
   }
   return {
-    data: milestoneArr[0],
-    index: 0
+    data: milestoneArr[milestoneArr.length - 1],
+    index: milestoneArr.length - 1
   };
 };
 
