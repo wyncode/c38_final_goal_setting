@@ -15,15 +15,13 @@ const Step4 = ({ handleSelect }) => {
 
     const interval = totalDays / milestones.length;
     let sum = 0;
-    const milestonesUpdates = milestones.map(
-      (_, index, milestoneArray) => {
-        sum = sum + interval;
-        return {
-          ...milestoneArray[index],
-          dueDate: moment().add(sum, 'days').format()
-        };
-      }
-    );
+    const milestonesUpdates = milestones.map((_, index, milestoneArray) => {
+      sum = sum + interval;
+      return {
+        ...milestoneArray[index],
+        dueDate: moment().add(sum, 'days').format()
+      };
+    });
     setMilestones(milestonesUpdates);
   }, [formData]);
 
@@ -48,7 +46,7 @@ const Step4 = ({ handleSelect }) => {
   return (
     <Container>
       <div>
-        <Nav />
+        <Nav cross="/" />
       </div>
       <div>
         <h5 className="steps">Step 4: Set Milestones</h5>
@@ -87,7 +85,7 @@ const Step4 = ({ handleSelect }) => {
                   name="bonus"
                 />
               </Form.Group>
-              <Button className="btn-part4" type="submit">
+              <Button variant="flat" className="btn-part4" type="submit">
                 <p>Submit</p>
               </Button>
             </Form>

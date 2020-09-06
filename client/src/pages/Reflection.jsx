@@ -5,7 +5,7 @@ import { Image, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
-
+import Nav from '../components/Nav';
 const Reflection = ({ history }) => {
   const { currentReflection, currentGoal, setCurrentGoal } = useContext(
     AppContext
@@ -69,6 +69,7 @@ const Reflection = ({ history }) => {
 
   return (
     <Container>
+      <Nav cross="/milestone" />
       <div>
         <div className="reflection-page-header">
           <h2>
@@ -106,8 +107,8 @@ const Reflection = ({ history }) => {
           <p>How are you feeling today?</p>
           {editMode && <EmojiButtonGroup handleChange={handleChange} />}
         </div>
-        <div>
-          <Image className="w-75" src={preview || image} />
+        <div className="pb-3 d-flex justify-content-center">
+          <Image className="w-50" src={preview || image} />
         </div>
 
         <div className="upload-image">

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
+import { AppContext } from '../context/AppContext';
 const allDescription = {
   fitness: [
     'Run a 10K',
@@ -10,9 +11,9 @@ const allDescription = {
     'Beef Up Your Squat'
   ],
   education: [
+    'Bulid Good Study Habits',
     'Master Basic Skills',
     'Become a Critical Thinker',
-    'Bulid Good Study Habits',
     'Earn a Degree or Certification'
   ],
   professional: [
@@ -39,16 +40,16 @@ const allDescription = {
     'Self Care',
     'Sleep a Little More'
   ]
-  // fill in the rest of the goals here
 };
 
-const Step3 = ({ handleSelect, formData }) => {
+const Step3 = ({ handleSelect }) => {
+  const { formData } = useContext(AppContext);
   const relevantDescription = allDescription[formData.category.toLowerCase()];
-
+  const [input, setInput] = useState('');
   return (
     <Container>
       <div>
-        <Nav />
+        <Nav cross="/" />
       </div>
       <h5 className="steps">Step 3: Set Goal</h5>
       <p className="steps">
@@ -74,6 +75,24 @@ const Step3 = ({ handleSelect, formData }) => {
                   {description}
                 </button>
               ))}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log(input);
+                  handleSelect(input);
+                }}
+              >
+                <input
+                  type="text"
+                  className="wizard-btn3 p-2 no-out text-center"
+                  value={input}
+                  required
+                  placeholder="Type Your Own"
+                  onChange={(e) => {
+                    setInput(e.target.value);
+                  }}
+                />
+              </form>
             </div>
           </div>
         </div>

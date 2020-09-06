@@ -26,11 +26,11 @@ const SignUp = ({ history }) => {
         setCurrentUser(response.data);
         history.push('/');
       })
-      .catch((error) => swal('Error', 'Please check the inputs', 'warning'));
+      .catch(() => swal('Error', 'Please check the inputs', 'warning'));
   };
   return (
     <Container className="signUp">
-      <Nav />
+      <Nav cross="/" />
       <div>
         <h6>
           The final step, lets set up your profile so we can save your progress.

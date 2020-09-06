@@ -6,9 +6,6 @@ const AppContextProvider = ({ children }) => {
   // global state that can be used in any component in our application
   const [currentUser, setCurrentUser] = useState(null);
   const [goals, setGoals] = useState([]);
-  const [filteredGoals, setFilteredGoals] = useState([]);
-  const [search, setSearch] = useState('');
-  const [currentFilter, setCurrentFilter] = useState(null);
   const [currentMilestone, setCurrentMilestone] = useState(null);
   const [currentGoal, setCurrentGoal] = useState(null);
   const [formData, setFormData] = useState({});
@@ -46,12 +43,6 @@ const AppContextProvider = ({ children }) => {
         setCurrentUser,
         goals,
         setGoals,
-        filteredGoals,
-        setFilteredGoals,
-        search,
-        setSearch,
-        currentFilter,
-        setCurrentFilter,
         currentMilestone,
         setCurrentMilestone,
         currentGoal,

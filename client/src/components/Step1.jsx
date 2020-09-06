@@ -3,13 +3,20 @@ import Container from 'react-bootstrap/esm/Container';
 import Image from 'react-bootstrap/Image';
 import Nav from './Nav';
 
-const goals = ['Fitness', 'Education', 'Professional', 'Social', 'Finance', 'Health'];
+const goals = [
+  'Fitness',
+  'Education',
+  'Professional',
+  'Social',
+  'Finance',
+  'Health'
+];
 
 const Step1 = ({ handleSelect }) => {
   return (
     <Container>
       <div>
-        <Nav />
+        <Nav cross="/" />
       </div>
       <h5 className="steps">Step 1: Choose your goal type</h5>
       <div className="wizard">

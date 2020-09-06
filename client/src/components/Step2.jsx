@@ -29,7 +29,7 @@ const Step2 = ({ handleSelect }) => {
   return (
     <Container>
       <div>
-        <Nav />
+        <Nav cross="/" />
       </div>
       <h5 className="steps">Step 2: Goal length</h5>
       <div className="wizard">

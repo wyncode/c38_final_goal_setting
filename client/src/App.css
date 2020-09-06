@@ -1,6 +1,16 @@
 * {
   font-family: Quicksand;
 }
+.no-out:active {
+  outline: none;
+}
+
+.no-out:hover {
+  outline: none;
+}
+.no-out:focus {
+  outline: none;
+}
 
 .fullscreen {
   height: 100vh;
@@ -53,6 +63,16 @@ h3 {
   border: white;
   color: white;
   cursor: pointer;
+}
+
+.nav-1 {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 30px;
+  border-bottom: 1px solid lightgray;
 }
 
 /*************************/
@@ -371,20 +391,6 @@ h1 {
 }
 
 /*************************/
-/* Nav and Nav-1*/
-/*************************/
-
-.nav-1 {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-left: 20px;
-  padding-right: 30px;
-  border-bottom: 1px solid lightgray;
-}
-
-/*************************/
 /* Goals Info*/
 /*************************/
 
@@ -693,7 +699,22 @@ h1 {
   border-radius: 50%;
   margin-left: 5px;
   margin-top: 30px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.avatar-prev {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .daily-tasks {
   margin-top: 100px;
   display: flex;
@@ -805,7 +826,7 @@ h1 {
 .bar {
   background: white;
   border: 0.5px solid #455a64;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 10px 10px 10px 10px;
   height: 30px;
   width: 90%;
 }
@@ -840,6 +861,27 @@ h1 {
 
 .emoji {
   font-size: 30px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/*************************/
+/*Milestone Page*/
+/*************************/
+
+.btn-flat {
+  background-color: #8546d4;
+  color: white;
+}
+
+.btn-flat:hover {
+  color: white;
+}
+
+.delete {
+  background-color: #ca1b1b;
 }
 /* Reflection Page*/
 

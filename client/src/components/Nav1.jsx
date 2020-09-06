@@ -1,21 +1,39 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom';
+import { Container, Navbar } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import { VscArrowLeft } from 'react-icons/vsc';
 import { VscGear } from 'react-icons/vsc';
 
 const Nav1 = () => {
+  const history = useHistory();
+
   return (
-    <Container className="nav-1">
-      <Link className="profile-icon" as={Link} to="/Profile">
-        <VscArrowLeft size="30px" color="grey" />
-      </Link>
-
-      <h3>StoryLine</h3>
-
-      <Link className="profile-icon" as={Link} to="/">
-        <VscGear size="30px" color="grey" />
-      </Link>
+    <Container className="pt-3 pb-4">
+      <Navbar sticky="top" bg="white" expand="xlg">
+        <Navbar sticky="top">
+          <div
+            className="profile-icon"
+            onClick={() => {
+              history.goBack();
+            }}
+          >
+            <VscArrowLeft size="30px" color="grey" />
+          </div>
+        </Navbar>
+        <Navbar.Brand sticky="top" href="/">
+          <h3 className="m-0">StoryLine</h3>
+        </Navbar.Brand>
+        <Navbar sticky="top">
+          <div
+            className="profile-icon"
+            onClick={() => {
+              history.push('/profile');
+            }}
+          >
+            <VscGear size="30px" color="grey" />
+          </div>
+        </Navbar>
+      </Navbar>
     </Container>
   );
 };

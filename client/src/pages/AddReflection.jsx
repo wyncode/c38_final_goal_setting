@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import moment from 'moment';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
+import Nav1 from '../components/Nav1';
 const AddReflection = ({ history }) => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -47,19 +48,22 @@ const AddReflection = ({ history }) => {
   };
   return (
     <Container>
+      <Nav1 />
       <Form onSubmit={handleSubmit}>
         <div className="add-new-ref">
           <div className="reflection-page-header">
             <h2>Day {dayNum}: Reflection</h2>
           </div>
           <div>
-            {preview && <Image src={preview} alt="reflection" width={250} />}
-          </div>
-          <div>
             <Form.Group>
               <p>How do you feel today?</p>
               <EmojiButtonGroup handleChange={handleChange} />
             </Form.Group>
+          </div>
+          <div className="d-flex justify-content-center p-2">
+            {preview && (
+              <Image src={preview} alt="reflection" className="w-50 " />
+            )}
           </div>
           <div className="upload-image">
             <Form.Group>

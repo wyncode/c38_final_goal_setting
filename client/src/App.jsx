@@ -19,6 +19,7 @@ import ProfessionalInfo from './components/goalsInfo/ProfessionalInfo';
 import SocialInfo from './components/goalsInfo/SocialInfo';
 import GoalsHome from './components/GoalsHome';
 import EditGoal from './pages/EditGoal';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route exact path="/professionalinfo" component={ProfessionalInfo} />
           <Route exact path="/socialinfo" component={SocialInfo} />
           <Route exact path="/goalshome" component={GoalsHome} />
+          <PrivateRoute exact path="/profile" component={Profile} />
           <PrivateRoute exact path="/wizard" component={Wizard} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute exact path="/milestone" component={Milestone} />
