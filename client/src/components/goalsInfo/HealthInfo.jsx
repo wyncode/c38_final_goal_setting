@@ -1,16 +1,15 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Button } from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Image from 'react-bootstrap/Image';
 import Nav from '../Nav';
 
-const HealthInfo = () => {
+const HealthInfo = ({ history }) => {
   return (
     <div>
       <Container>
         <div>
-          <Nav />
+          <Nav cross="/" />
         </div>
         <Jumbotron className="goals-info">
           <div className="ilustration">
@@ -34,11 +33,13 @@ const HealthInfo = () => {
               </p>
             </div>
             <div className="info-btn-flex">
-              <button className="info-btn">
-                <Link className="info-btn-txt" as={Link} to="/wizard">
-                  Create Goal
-                </Link>
-              </button>
+              <Button
+                variant="flat"
+                className="info-btn"
+                onClick={() => history.push('/wizard')}
+              >
+                Create Goal
+              </Button>
             </div>
           </div>
         </Jumbotron>

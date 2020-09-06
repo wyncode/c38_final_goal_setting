@@ -88,14 +88,14 @@ const Profile = ({ history }) => {
         <div className="mt-4">
           <form className="d-flex flex-column" onSubmit={handleImage}>
             <input type="file" accept="image/*" onChange={handleChange} />
-            <Button className="my-2" type="submit">
+            <Button variant="flat" className="my-2" type="submit">
               Save Image
             </Button>
           </form>
         </div>
 
         <div>
-          <Button variant="danger" onClick={handleDelete}>
+          <Button variant="flat" className="delete" onClick={handleDelete}>
             Delete Account
           </Button>
         </div>

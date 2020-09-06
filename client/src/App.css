@@ -847,3 +847,20 @@ h1 {
 .rotate {
   transform: rotate(180deg);
 }
+
+/*************************/
+/*Milestone Page*/
+/*************************/
+
+.btn-flat {
+  background-color: #8546d4;
+  color: white;
+}
+
+.btn-flat:hover {
+  color: white;
+}
+
+.delete {
+  background-color: #ca1b1b;
+}

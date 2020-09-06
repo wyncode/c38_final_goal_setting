@@ -85,7 +85,7 @@ const Step4 = ({ handleSelect }) => {
                   name="bonus"
                 />
               </Form.Group>
-              <Button className="btn-part4" type="submit">
+              <Button variant="flat" className="btn-part4" type="submit">
                 <p>Submit</p>
               </Button>
             </Form>

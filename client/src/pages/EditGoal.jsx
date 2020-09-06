@@ -127,8 +127,8 @@ const EditGoal = ({ history }) => {
   };
 
   return (
-    <Container>
-      <Nav />
+    <Container className="pb-2">
+      <Nav cross="/dashboard" />
       <Form onSubmit={handleSave}>
         <h5 className="steps">Edit Your Goal</h5>
         <p className="steps"></p>
@@ -186,13 +186,19 @@ const EditGoal = ({ history }) => {
             value={updates?.bonus?.description}
           />
         </Form.Group>
-        <Button className="btn-part4" type="submit">
-          Save
-        </Button>
+        <div className="d-flex justify-content-center">
+          <Button variant="flat" className="btn-part4 btn-flat" type="submit">
+            Save
+          </Button>
+          <Button
+            variant="flat"
+            className="btn-part4 delete"
+            onClick={handleDelete}
+          >
+            Delete
+          </Button>
+        </div>
       </Form>
-      <Button className="btn-part4" onClick={handleDelete}>
-        Delete
-      </Button>
     </Container>
   );
 };
