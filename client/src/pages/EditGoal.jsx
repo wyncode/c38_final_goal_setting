@@ -130,7 +130,7 @@ const EditGoal = ({ history }) => {
   return (
     <Container className="pb-2">
       <Nav cross="/dashboard" />
-      <Form onSubmit={handleSave}>
+      <Form className="edit-goal" onSubmit={handleSave}>
         <h5 className="steps">Edit Your Goal</h5>
         <p className="steps"></p>
         <Form.Group>
@@ -187,7 +187,7 @@ const EditGoal = ({ history }) => {
             value={updates?.bonus?.description}
           />
         </Form.Group>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center m-auto">
           <Button variant="flat" className="btn-part4 btn-flat" type="submit">
             Save
           </Button>

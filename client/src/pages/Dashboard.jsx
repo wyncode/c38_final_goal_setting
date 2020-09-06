@@ -79,6 +79,7 @@ const Dashboard = ({ history }) => {
           <Link to="/wizard">Add New Goal</Link>
         </div>
       </div>
+
       <div className="goals">
         <div>
           {goals?.length !== 0 ? (

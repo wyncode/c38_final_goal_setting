@@ -37,15 +37,17 @@ const Milestone = ({ history }) => {
           }.png`)}
         />
       </div>
-      <h3 style={{ textAlign: 'center' }}>{currentGoal?.description}</h3>
-      <button
-        className="editButton"
-        onClick={() => {
-          history.push('/editgoal');
-        }}
-      >
-        Edit
-      </button>
+      <div className="m-header">
+        <h3 style={{ textAlign: 'center' }}>{currentGoal?.description}</h3>
+        <button
+          className="editButton"
+          onClick={() => {
+            history.push('/editgoal');
+          }}
+        >
+          Edit
+        </button>
+      </div>
       <div className="milestones">
         <div className="current-m">
           <div>

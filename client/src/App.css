@@ -761,7 +761,7 @@ h1 {
   justify-content: space-between;
 }
 .add-new {
-  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .current-goal {
   display: flex;
@@ -786,8 +786,10 @@ h1 {
   justify-content: space-between;
   padding: 0px 10%;
 }
-/*Milestone Page*/
 
+/*************************/
+/*Milestone Page*/
+/*************************/
 .milestones {
   display: inline;
 }
@@ -806,6 +808,13 @@ h1 {
   height: 300px;
   align-items: center;
   margin-bottom: 20px;
+}
+.m-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+.editButton {
+  margin-bottom: 10px;
 }
 .current-m {
   display: flex;
@@ -866,23 +875,16 @@ h1 {
 .rotate {
   transform: rotate(180deg);
 }
-
-/*************************/
-/*Milestone Page*/
-/*************************/
-
 .btn-flat {
   background-color: #8546d4;
   color: white;
+  margin: 5px;
 }
 
 .btn-flat:hover {
   color: white;
 }
 
-.delete {
-  background-color: #ca1b1b;
-}
 /* Reflection Page*/
 
 .reflection-page-header {
@@ -998,4 +1000,88 @@ h1 {
 }
 .your-ref {
   padding-top: 30px;
+}
+/* Profile Page*/
+.profile-page {
+  display: flex;
+  justify-content: center;
+}
+.profile {
+  display: inline;
+}
+.profile h2 {
+  text-align: center;
+  margin-right: 15px;
+}
+.profile-text {
+  text-align: center;
+}
+.profile p {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 19px;
+  color: #777777;
+}
+.profile span {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 19px;
+  color: #4f4f4f;
+}
+
+.profile-items {
+  display: flex;
+  justify-content: center;
+  margin-left: 75px;
+}
+.avatar-prev {
+  display: flex;
+  justify-content: center;
+}
+.profile-btns {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.upload-avatar {
+  margin-left: 25px;
+}
+.profile-btn-save {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(173, 231, 217, 0.62) 21.88%,
+    rgba(173, 220, 209, 0.62) 26.04%,
+    rgba(127, 189, 173, 0.62) 52.08%
+  );
+  border: rgba(127, 189, 173, 0.62);
+  border-radius: 10px;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+.profile-btn-delete {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(173, 231, 217, 0.62) 21.88%,
+    rgba(173, 220, 209, 0.62) 26.04%,
+    rgba(127, 189, 173, 0.62) 52.08%
+  );
+  border: rgba(119, 205, 184, 0.62);
+  border-radius: 10px;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+/* Edit your Goal*/
+.edit-goal {
+  padding: 10px;
+  color: rgba(37, 85, 73, 0.62);
+  background: rgba(196, 238, 228, 0.62);
+  border-radius: 10px;
 }
