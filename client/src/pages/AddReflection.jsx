@@ -12,18 +12,15 @@ const AddReflection = ({ history }) => {
   const [reflection, setReflection] = useState(null);
   const { currentUser, currentGoal, setCurrentGoal } = useContext(AppContext);
   if (!currentGoal || !currentUser) history.push('/dashboard');
-
   useEffect(() => {
     currentGoal && setDayNum(getDayNumber(currentGoal.createdAt));
     setReflection({ title: `Day ${dayNum}: Reflection` });
   }, [dayNum, currentGoal]);
-
   const getDayNumber = (createdDate) => {
     const start = moment(createdDate);
     const today = moment();
     return today.diff(start, 'days') + 1;
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const reflectionPost = new FormData();
@@ -41,7 +38,6 @@ const AddReflection = ({ history }) => {
       .catch((error) => console.log(error));
     history.push('/milestone');
   };
-
   const handleChange = (event) => {
     if (event.target.name === 'image') {
       setPreview(URL.createObjectURL(event.target.files[0]));
@@ -50,38 +46,57 @@ const AddReflection = ({ history }) => {
       setReflection({ ...reflection, [event.target.name]: event.target.value });
     }
   };
-
   return (
-    <Container className="add-reflection">
+    <Container>
       <Nav1 />
-      <h3>Add Reflection</h3>
       <Form onSubmit={handleSubmit}>
-        <Form.Label>Day {dayNum}: Reflection</Form.Label>
-        <Form.Group>
-          <Form.File
-            name="image"
-            accept="image/*"
-            onChange={handleChange}
-          ></Form.File>
-        </Form.Group>
-        {preview && <Image src={preview} alt="reflection" width={250} />}
-        <Form.Group>
-          <Form.Label>How do you feel today?</Form.Label>
-          <EmojiButtonGroup handleChange={handleChange} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Write down any thoughts</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows="5"
-            name="notes"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Button type="submit">Save</Button>
+        <div className="add-new-ref">
+          <div className="reflection-page-header">
+            <h2>Day {dayNum}: Reflection</h2>
+          </div>
+          <div>
+            <Form.Group>
+              <p>How do you feel today?</p>
+              <EmojiButtonGroup handleChange={handleChange} />
+            </Form.Group>
+          </div>
+          <div className="d-flex justify-content-center p-2">
+            {preview && (
+              <Image src={preview} alt="reflection" className="w-50 " />
+            )}
+          </div>
+          <div className="upload-image">
+            <Form.Group>
+              <Form.File
+                className="choose-file"
+                name="image"
+                accept="image/*"
+                onChange={handleChange}
+              ></Form.File>
+            </Form.Group>
+          </div>
+          <div>
+            <Form.Group>
+              <p>Write down any thoughts</p>
+              <div className="reflection-text">
+                <textarea
+                  className="text-area-ref"
+                  as="textarea"
+                  rows="5"
+                  name="notes"
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+            </Form.Group>
+          </div>
+          <div className="reflection-btns">
+            <button className="ref-btn" type="submit">
+              Save
+            </button>
+          </div>
+        </div>
       </Form>
     </Container>
   );
 };
-
 export default AddReflection;

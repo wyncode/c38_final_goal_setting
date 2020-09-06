@@ -11,10 +11,10 @@ const EmojiButtonGroup = ({ handleChange }) => {
   ];
 
   return (
-    <ToggleButtonGroup type="checkbox" name="emoji">
+    <ToggleButtonGroup className="radio-emoji" type="checkbox" name="emoji">
       {emojis.map((emoji) => (
         <ToggleButton
-          className="px-4"
+          className="edit-emoji"
           style={{ fontSize: '2rem' }}
           key={emoji.id}
           name="emoji"

@@ -33,7 +33,7 @@ const Dashboard = ({ history }) => {
   if (!currentUser) return null;
 
   return (
-    <Container className="dashboard">
+    <Container className="">
       <div>
         <Nav1 />
       </div>

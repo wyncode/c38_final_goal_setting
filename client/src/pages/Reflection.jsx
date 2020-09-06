@@ -5,7 +5,7 @@ import { Image, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
 import EmojiButtonGroup from '../components/dashboard/EmojiButtonGroup';
-import Nav1 from '../components/Nav1';
+import Nav from '../components/Nav';
 const Reflection = ({ history }) => {
   const { currentReflection, currentGoal, setCurrentGoal } = useContext(
     AppContext
@@ -68,54 +68,89 @@ const Reflection = ({ history }) => {
   };
 
   return (
-    <Container className="d-flex flex-column align-items-center">
-      <Nav1 />
-      <div className="d-flex">
-        <h2>
-          {!editMode ? (
-            reflection?.title
-          ) : (
-            <input
-              value={reflection?.title}
-              onChange={handleChange}
-              name="title"
-            ></input>
-          )}
-        </h2>
-        <h2>{!editMode && reflection?.emoji}</h2>
-        <button
-          className="editButton"
-          onClick={() => {
-            setEditMode(!editMode);
-          }}
-        >
-          {!editMode ? 'edit' : 'back'}
-        </button>
-      </div>
-      {editMode && <EmojiButtonGroup handleChange={handleChange} />}
-      <Image className="w-75" src={preview || image} />
-      {editMode && (
-        <Form.File
-          name="image"
-          accept="image/*"
-          onChange={handleChange}
-        ></Form.File>
-      )}
-      {!editMode ? (
-        <p>{reflection?.notes}</p>
-      ) : (
-        <input
-          value={reflection?.notes}
-          name="notes"
-          onChange={handleChange}
-        ></input>
-      )}
-      {editMode && (
-        <div>
-          <Button onClick={handleDelete}>Delete</Button>
-          <Button onClick={handleSave}>Save</Button>
+    <Container>
+      <Nav cross="/milestone" />
+      <div>
+        <div className="reflection-page-header">
+          <h2>
+            {!editMode ? (
+              reflection?.title
+            ) : (
+              <input
+                value={reflection?.title}
+                onChange={handleChange}
+                className="text-area-edit"
+                name="title"
+              ></input>
+            )}
+          </h2>
+
+          <div>
+            <button
+              className="editButton"
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                setEditMode(!editMode);
+              }}
+            >
+              Edit
+            </button>
+          </div>
         </div>
-      )}
+      </div>
+      <div className="reflection-page-emoji">
+        <h2>{!editMode && reflection?.emoji}</h2>
+      </div>
+
+      <div className="reflection-edit">
+        <div>
+          <p>How are you feeling today?</p>
+          {editMode && <EmojiButtonGroup handleChange={handleChange} />}
+        </div>
+        <div className="pb-3 d-flex justify-content-center">
+          <Image className="w-50" src={preview || image} />
+        </div>
+
+        <div className="upload-image">
+          {editMode && (
+            <Form.File
+              className="choose-file"
+              name="image"
+              accept="image/*"
+              onChange={handleChange}
+            ></Form.File>
+          )}
+        </div>
+        <p className="your-ref">Your Reflection</p>
+        <div className="reflection-text">
+          <div>
+            {!editMode ? (
+              <p>{reflection?.notes}</p>
+            ) : (
+              <textarea
+                className="text-area-ref"
+                value={reflection?.notes}
+                name="notes"
+                onChange={handleChange}
+              ></textarea>
+            )}
+          </div>
+        </div>
+        {editMode && (
+          <div className="reflection-btns">
+            <div>
+              <Button className="ref-btn" onClick={handleDelete}>
+                Delete
+              </Button>
+            </div>
+            <div>
+              <Button className="ref-btn" onClick={handleSave}>
+                Save
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
     </Container>
   );
 };
