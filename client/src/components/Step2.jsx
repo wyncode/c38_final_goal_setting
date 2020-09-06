@@ -33,7 +33,7 @@ const Step2 = ({ handleSelect }) => {
       </div>
       <h5 className="steps">Step 2: Goal length</h5>
       <div className="wizard">
-        <div className="ilustrations-wizard">
+        <div>
           <div>
             <Image
               className="ilustration-step2-1"
@@ -60,17 +60,15 @@ const Step2 = ({ handleSelect }) => {
           </div>
         </div>
         <div className="btn-flex">
-          <div>
-            {dueDate.map((dueDate, index) => (
-              <button
-                className="wizard-btn2"
-                key={index}
-                onClick={() => handleClick(dueDate)}
-              >
-                <p>{dueDate}</p>
-              </button>
-            ))}
-          </div>
+          {dueDate.map((dueDate, index) => (
+            <button
+              className="wizard-btn2"
+              key={index}
+              onClick={() => handleClick(dueDate)}
+            >
+              <p>{dueDate}</p>
+            </button>
+          ))}
         </div>
       </div>
     </Container>

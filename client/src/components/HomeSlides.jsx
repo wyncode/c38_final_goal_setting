@@ -29,9 +29,10 @@ function HomeSlides({ props }) {
             </div>
             <div className="t-text">
               <p>
-                "I hate setting goals, always have, always will. This website
-                though has completely changed that."
-                <br /> -Nick Miller
+                "I hate setting goals, always have. This website though has
+                completely changed that."
+                <br />
+                -Nick Miller
               </p>
             </div>
           </div>
@@ -44,7 +45,8 @@ function HomeSlides({ props }) {
               <p>
                 "Because of StoryLine, I was able to track my savings and
                 eventually buy my first home"
-                <br /> -Demi Cahills
+                <br />
+                -Demi Cahills
               </p>
             </div>
           </div>
@@ -55,9 +57,10 @@ function HomeSlides({ props }) {
             </div>
             <div className="t-text">
               <p>
-                "I love a challenge - and taking advantage of Storyline's
-                teaching challenges enhances my techniques."
-                <br /> -Gessica Tortolano
+                "I love taking advantage of Storyline's challenges enhances my
+                techniques."
+                <br />
+                -Gessica Tortolano
               </p>
             </div>
           </div>

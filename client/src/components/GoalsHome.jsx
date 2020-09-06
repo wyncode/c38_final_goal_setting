@@ -1,49 +1,58 @@
 import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 const GoalsHome = () => {
   return (
     <Container>
-      <Jumbotron className="home-1" id="createAGoal">
-        <div className="goals">
-          <h3>Goal Types</h3>
-          <p>
-            Not sure what type of goals you are looking to achieve?
-            <br />
-            Take a look a the ones we offer
-          </p>
-          <div className="goal-btns">
-            <button>
-              <Link className="link" as={Link} to="/FitnessInfo">
-                Fitness
-              </Link>
-            </button>
-            <button>
-              <Link className="link" as={Link} to="/EducationInfo">
-                Education
-              </Link>
-            </button>
-            <button>
-              <Link className="link" as={Link} to="/FinanceInfo">
-                Finance
-              </Link>
-            </button>
-            <button>
-              <Link className="link" as={Link} to="/ProfessionalInfo">
-                Professional
-              </Link>
-            </button>
-            <button>
-              <Link className="link" as={Link} to="/SocialInfo">
-                Social
-              </Link>
-            </button>
-            <button>
-              <Link className="link" as={Link} to="/HealthInfo">
-                Health
-              </Link>
-            </button>
+      <Jumbotron className="home-1">
+        <div className="goals-home">
+          <div className="goals">
+            <div className="goals-head">
+              <h3>Goal Types</h3>
+              <p>
+                Not sure what type of goals you are looking to achieve?
+                <br />
+                Take a look at the ones we offer
+              </p>
+            </div>
+
+            <div className="goal-btns">
+              <div className="goal-btns-flex">
+                <div>
+                  <Button className="goal-btn" as={Link} to="/FitnessInfo">
+                    <p>Fitness</p>
+                  </Button>
+                </div>
+                <div>
+                  <Button className="goal-btn" as={Link} to="/EducationInfo">
+                    <p>Education</p>
+                  </Button>
+                </div>
+                <div>
+                  <Button className="goal-btn" as={Link} to="/FinanceInfo">
+                    <p>Finance</p>
+                  </Button>
+                </div>
+                <div>
+                  <Button className="goal-btn" as={Link} to="/ProfessionalInfo">
+                    <p>Professional</p>
+                  </Button>
+                </div>
+                <div>
+                  <Button className="goal-btn" as={Link} to="/SocialInfo">
+                    <p>Social</p>
+                  </Button>
+                </div>
+
+                <div>
+                  <Button className="goal-btn" as={Link} to="/HealthInfo">
+                    <p>Health</p>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Jumbotron>

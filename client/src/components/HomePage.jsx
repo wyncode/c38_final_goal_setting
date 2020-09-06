@@ -11,24 +11,28 @@ const HomePage = () => {
     <Container>
       <Jumbotron className="home">
         <div>
-          <h1>Create your</h1>
-          <h1>Best Life</h1>
-          <br />
-          <h5>Commit, Reflect & Conquer</h5>
-          <br />
-          <p className="quote">
-            Ready to crate a goal?
+          <div>
+            <h1>Create your</h1>
+            <h1>Best Life</h1>
             <br />
-            Tap the button below to
+            <h5>Commit, Reflect & Conquer</h5>
             <br />
-            get started
-          </p>
-          <br />
-          <button className="home-btn">
-            <AnchorLink href="#createAGoal">
-              <p>Create a Goal</p>
-            </AnchorLink>
-          </button>
+            <p className="quote">
+              Ready to crate a goal?
+              <br />
+              Tap the button below to
+              <br />
+              get started
+            </p>
+            <br />
+          </div>
+          <div className="homepage-btn">
+            <button className="home-btn">
+              <AnchorLink href="#createAGoal">
+                <p>Create a Goal</p>
+              </AnchorLink>
+            </button>
+          </div>
         </div>
       </Jumbotron>
 
@@ -82,22 +86,28 @@ const HomePage = () => {
           <div>
             <h3>Goal Trends</h3>
             <p>
-              80% of the population never set goals.
-              <br /> Out of the 20% who do, only 30% achieve their goal.
+              80% of the population never set goals. Out of the 20% who do, only
+              30% achieve their goal.
             </p>
-            <div className="pie">
-              <div className="piechart"></div>
-            </div>
-            <div className="percentage">
+          </div>
+
+          <div className="pie">
+            <div className="piechart"></div>
+          </div>
+          <div className="percentage">
+            <div className="stat-percent">
               <div className="p-blue"></div>
               <div>
                 <p>% of population who do not set goals</p>
               </div>
-
+            </div>
+            <div className="stat-percent">
               <div className="p-pink"></div>
               <div>
                 <p>% of population that sets goals</p>
               </div>
+            </div>
+            <div className="stat-percent">
               <div className="p-white"></div>
               <div>
                 <p>% of population that achieve their goals</p>

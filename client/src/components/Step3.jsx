@@ -57,13 +57,12 @@ const Step3 = ({ handleSelect }) => {
         <br />
         Pick an end goal
       </p>
-      <div className="step3">
-        <div className="ilustration-step3">
+      <div className="wizard">
+        <div className="ilustration-step-3">
           <Image
             className="info-pic"
             src={require('../components/images/booklover.png')}
           />
-
           <div className="btn-flex-step3">
             <div>
               {relevantDescription.map((description, index) => (
@@ -72,7 +71,7 @@ const Step3 = ({ handleSelect }) => {
                   key={index}
                   onClick={() => handleSelect(description)}
                 >
-                  {description}
+                  <p>{description}</p>
                 </button>
               ))}
               <form
