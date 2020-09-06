@@ -1064,14 +1064,21 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
 .profile-btns {
+  display: flexbox;
+  flex-direction: column;
+  columns: 1;
+  margin-top: 20px;
+}
+.profile-btn-flex {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
 }
 .upload-avatar {
   margin-left: 50px;
 }
+
 .profile-btn-save {
   width: 200px;
   height: 40px;
