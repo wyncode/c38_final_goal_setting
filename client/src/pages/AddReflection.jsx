@@ -90,12 +90,7 @@ const AddReflection = ({ history }) => {
             </Form.Group>
           </div>
           <div className="reflection-btn">
-            <button
-              variant="flat"
-              className="info-btn"
-              type="submit"
-              type="submit"
-            >
+            <button variant="flat" className="info-btn" type="submit">
               <p>Save</p>
             </button>
           </div>
