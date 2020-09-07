@@ -13,13 +13,18 @@ const getCurrentMilestoneObj = (milestoneArr) => {
       milestoneArr[rangeEnd].dueDate
     );
 
+    if (Moment().isBefore(milestoneArr[rangeStart].dueDate)) {
+      return {
+        data: milestoneArr[0],
+        index: 0
+      };
+    }
     if (range.contains(today)) {
       return {
         data: milestoneArr[rangeStart],
         index: rangeStart
       };
     }
-
     rangeStart++;
     rangeEnd++;
   }
